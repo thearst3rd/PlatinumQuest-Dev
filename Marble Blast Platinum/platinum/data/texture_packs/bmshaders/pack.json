@@ -168,7 +168,7 @@
     "platinum/data/interiors_bm/bm_tile11_B": "BMTileMaterial",
     "platinum/data/interiors_bm/bm_tile11_C": "BMTileMaterial",
     "platinum/data/interiors_bm/bm_tile11_D": "BMTileMaterial",
-    "platinum/data/interiors_bm/bm_trim": "BMTileMaterial",
+    "platinum/data/interiors_bm/bm_trim": "BMSpecMaterial",
     "platinum/data/interiors_bm/bm_friction_bounce_high": "BMBounceMaterial",
     "platinum/data/interiors_bm/bm_friction_bounce_low": "BMBounceMaterial",
     "platinum/data/interiors_bm/bm_friction_bounce_med": "BMBounceMaterial",
