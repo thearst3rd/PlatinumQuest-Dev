@@ -1020,7 +1020,7 @@ new SimGroup(MissionGroup) {
          timeBonus = "5000";
    };
    new Item() {
-      position = "-5.5 -33 25";
+      position = "-17.5 -33 26";
       rotation = "0 0 1 90.0002";
       scale = "1 1 1";
       dataBlock = "TimeTravelItem5Sec_BM";

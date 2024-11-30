@@ -54,8 +54,8 @@ new SimGroup(MissionGroup) {
             triggerRadius = "3";
       };
       new StaticShape(SandWall) {
-         position = "8 26 -7.5";
-         rotation = "0 0 1 90.0002";
+         position = "0 -13 -17.5";
+         rotation = "1 0 0 0";
          scale = "1 1 1";
          dataBlock = "HelpBubble";
             disable = "0";
@@ -629,14 +629,14 @@ new SimGroup(MissionGroup) {
          respawnPoint = "Check2";
    };
    new TSStatic() {
-      position = "15 26 -7.9";
-      rotation = "-0.57735 0.577352 0.57735 120";
+      position = "0 -3 -17.75";
+      rotation = "-1 1.52627e-006 -1.52926e-006 90.0002";
       scale = "0.5 0.4 1";
       shapeName = "~/data/shapes_bm/signs/bm_chevron.dts";
    };
    new TSStatic() {
-      position = "15 26 -6.4";
-      rotation = "-0.57735 0.577352 0.57735 120";
+      position = "0 -3 -16.25";
+      rotation = "-1 1.52627e-006 -1.52926e-006 90.0002";
       scale = "0.5 0.4 1";
       shapeName = "~/data/shapes_bm/signs/bm_chevron.dts";
    };

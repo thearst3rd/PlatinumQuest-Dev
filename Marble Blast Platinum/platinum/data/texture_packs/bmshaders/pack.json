@@ -108,6 +108,10 @@
       "normal": "platinum/data/texture_packs/bmshaders/interiors_bm/bm_wood.normal",
       "specular": "platinum/data/texture_packs/bmshaders/interiors_bm/bm_wood.spec"
     },
+    "BMBeamWoodMaterial": {
+      "normal": "platinum/data/texture_packs/bmshaders/interiors_bm/bm_beam_wood.normal",
+      "specular": "platinum/data/texture_packs/bmshaders/interiors_bm/bm_beam_wood.spec"
+    },
     "BMRockMaterial": {
       "normal": "platinum/data/texture_packs/bmshaders/interiors_bm/bm_rock.normal",
       "specular": "platinum/data/texture_packs/bmshaders/interiors_bm/bm_rock.spec"
@@ -205,7 +209,7 @@
     "platinum/data/interiors_bm/bm_physics_propulsion": "BMPhysicsMaterial",
     "platinum/data/interiors_bm/bm_physics_repulsion": "BMPhysicsMaterial",
     "platinum/data/interiors_bm/bm_wood": "BMWoodMaterial",
-    "platinum/data/interiors_bm/bm_beam_wood": "BMWoodMaterial",
+    "platinum/data/interiors_bm/bm_beam_wood": "BMBeamWoodMaterial",
     "platinum/data/interiors_bm/metal_bm": "BMSpecMaterial",
     "platinum/data/interiors_bm/solid_bm_black": "BMSpecMaterial",
     "platinum/data/interiors_bm/button_bm": "BMSpecMaterial",
