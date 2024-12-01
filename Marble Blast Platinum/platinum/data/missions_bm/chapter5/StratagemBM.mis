@@ -3,16 +3,16 @@ new SimGroup(MissionGroup) {
 
    new ScriptObject(MissionInfo) {
          artist = "James C.";
-         awesomeTime = "55000";
+         awesomeTime = "60000";
          desc = "Use the strategies available to conquer this skill course.";
          game = "Blasted";
          gameMode = "null";
-         goldTime = "100000";
+         goldTime = "105000";
          level = "4";
          name = "Stratagem";
-         platinumTime = "85000";
+         platinumTime = "90000";
          type = "Custom";
-         ultimateTime = "70000";
+         ultimateTime = "75000";
    };
    new SimGroup(SceneryGroup) {
 
@@ -1000,7 +1000,7 @@ new SimGroup(MissionGroup) {
       dataBlock = "RoundBumper_BM";
    };
    new Item() {
-      position = "1 7 0.5";
+      position = "7 33 6.5";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "SuperSpeedItem_BM";
@@ -1763,33 +1763,33 @@ new SimGroup(MissionGroup) {
       scale = "1 1 1";
       dataBlock = "LightPanel_BM";
    };
-   new StaticShape() {
-      position = "2.75 39 3.5";
-      rotation = "-1 0 0 90.0002";
-      scale = "1 1 1";
-      dataBlock = "LightPanel_BM";
-   };
-   new StaticShape() {
-      position = "7.25 39 3.5";
-      rotation = "-1 0 0 90.0002";
-      scale = "1 1 1";
-      dataBlock = "LightPanel_BM";
-   };
-   new StaticShape() {
-      position = "7.25 24.5 7";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "LightPanel_BM";
-   };
-   new StaticShape() {
-      position = "2.75 24.5 7";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "LightPanel_BM";
-   };
-   new StaticShape() {
-      position = "3 12.75 7";
+   new TSStatic() {
+      position = "27 65 17.85";
       rotation = "0 0 1 90.0002";
+      scale = "0.7 0.7 0.7";
+      shapeName = "~/data/shapes_bm/signs/bm_checkpointsign.dts";
+   };
+   new TSStatic() {
+      position = "-5 -22 21.85";
+      rotation = "0 0 1 90.0002";
+      scale = "0.7 0.7 0.7";
+      shapeName = "~/data/shapes_bm/signs/bm_checkpointsign.dts";
+   };
+   new StaticShape() {
+      position = "9.25 31.5 6.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "LightPanel_BM";
+   };
+   new StaticShape() {
+      position = "4.75 31.5 6.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "LightPanel_BM";
+   };
+   new StaticShape() {
+      position = "4.75 35 6.5";
+      rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "LightPanel_BM";
    };
@@ -1800,7 +1800,7 @@ new SimGroup(MissionGroup) {
       dataBlock = "LightPanel_BM";
    };
    new StaticShape() {
-      position = "9.25 13.5 7";
+      position = "9.25 7.5 9";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "LightPanel_BM";
@@ -1842,7 +1842,7 @@ new SimGroup(MissionGroup) {
       dataBlock = "LightPanel_BM";
    };
    new StaticShape() {
-      position = "7.25 19.5 7";
+      position = "6.75 35.5 6.5";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "LightPanel_BM";
@@ -2131,13 +2131,13 @@ new SimGroup(MissionGroup) {
       dataBlock = "LightPanel_BM";
    };
    new StaticShape() {
-      position = "7.25 30.5 0.5";
+      position = "7.25 22.5 0.5";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "LightPanel_BM";
    };
    new StaticShape() {
-      position = "2.75 30.5 0.5";
+      position = "2.75 22.5 0.5";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "LightPanel_BM";
@@ -2323,7 +2323,7 @@ new SimGroup(MissionGroup) {
       dataBlock = "LightPanel_BM";
    };
    new StaticShape() {
-      position = "9.25 19 7";
+      position = "9.25 12.5 9";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "LightPanel_BM";
@@ -2439,7 +2439,7 @@ new SimGroup(MissionGroup) {
    };
    new StaticShape() {
       position = "-6.75 61.25 24.45";
-      rotation = "-0.278776 0.919003 -0.278777 94.8335";
+      rotation = "-0.278776 0.919003 -0.278777 94.8334";
       scale = "1 1 1";
       dataBlock = "SignNight_BM";
    };
@@ -2750,8 +2750,8 @@ new SimGroup(MissionGroup) {
       shapeName = "~/data/shapes_bm/signs/bm_finishsign.dts";
    };
    new TSStatic() {
-      position = "-0.25 4.5 11.2";
-      rotation = "0 0 1 123.75";
+      position = "2 41.5 6.75";
+      rotation = "4.64224e-006 1 1.53034e-005 33.7501";
       scale = "0.4 0.4 0.4";
       shapeName = "~/data/shapes_bm/signs/bm_hazardsign.dts";
    };
@@ -2828,17 +2828,59 @@ new SimGroup(MissionGroup) {
       scale = "0.7 0.7 0.7";
       shapeName = "~/data/shapes_bm/signs/bm_checkpointsign.dts";
    };
-   new TSStatic() {
-      position = "-5 -22 21.85";
-      rotation = "0 0 1 90.0002";
-      scale = "0.7 0.7 0.7";
-      shapeName = "~/data/shapes_bm/signs/bm_checkpointsign.dts";
+   new StaticShape() {
+      position = "0.75 42.5 4.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "LightPanel_BM";
    };
-   new TSStatic() {
-      position = "27 65 17.85";
-      rotation = "0 0 1 90.0002";
-      scale = "0.7 0.7 0.7";
-      shapeName = "~/data/shapes_bm/signs/bm_checkpointsign.dts";
+   new StaticShape() {
+      position = "0.75 39.5 4.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "LightPanel_BM";
+   };
+   new StaticShape() {
+      position = "9.25 38.5 6.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "LightPanel_BM";
+   };
+   new StaticShape() {
+      position = "6.75 38.5 6.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "LightPanel_BM";
+   };
+   new StaticShape() {
+      position = "2.25 44 4.5";
+      rotation = "1 0 0 0";
+      scale = "0.5 0.5 0.5";
+      dataBlock = "RoundBumper_BM";
+   };
+   new StaticShape() {
+      position = "3.5 46.5 4.5";
+      rotation = "1 0 0 0";
+      scale = "0.5 0.5 0.5";
+      dataBlock = "RoundBumper_BM";
+   };
+   new StaticShape() {
+      position = "5.75 46 4.5";
+      rotation = "1 0 0 0";
+      scale = "0.5 0.5 0.5";
+      dataBlock = "RoundBumper_BM";
+   };
+   new StaticShape() {
+      position = "8.5 45.5 4.5";
+      rotation = "1 0 0 0";
+      scale = "0.5 0.5 0.5";
+      dataBlock = "RoundBumper_BM";
+   };
+   new StaticShape() {
+      position = "7.5 43.5 4.5";
+      rotation = "1 0 0 0";
+      scale = "0.5 0.5 0.5";
+      dataBlock = "RoundBumper_BM";
    };
 };
 //--- OBJECT WRITE END ---

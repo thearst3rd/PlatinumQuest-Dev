@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <!--Torque Constructor Scene document http://www.garagegames.com-->
-<ConstructorScene version="4" creator="Torque Constructor" date="2024/10/10 16:18:08">
+<ConstructorScene version="4" creator="Torque Constructor" date="2024/11/30 13:30:33">
     <Sunlight azimuth="180" elevation="35" color="255 255 255" ambient="64 64 64" />
     <LightingOptions lightingSystem="" ineditor_defaultLightmapSize="256" ineditor_maxLightmapSize="256" ineditor_lightingPerformanceHint="0" ineditor_shadowPerformanceHint="1" ineditor_TAPCompatibility="0" ineditor_useSunlight="0" export_defaultLightmapSize="256" export_maxLightmapSize="256" export_lightingPerformanceHint="0" export_shadowPerformanceHint="1" export_TAPCompatibility="0" export_useSunlight="0" />
     <GameTypes>
@@ -199,7 +199,7 @@
                         <Properties next_time="1000" smoothing="2" />
                     </Entity>
                 </Entities>
-                <Brushes nextBrushID="494">
+                <Brushes nextBrushID="532">
                     <Brush id="0" owner="0" type="0" pos="0 0 0.25" rot="1 0 0 0" scale="" transform="1 0 0 0 0 1 0 0 0 0 1 0.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
                             <Vertex pos="3 3 0.25" />
@@ -352,12 +352,12 @@
                     </Brush>
                     <Brush id="5" owner="0" type="0" pos="5 25 0.25" rot="1 0 0 0" scale="" transform="1 0 0 5 0 1 0 25 0 0 1 0.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
-                            <Vertex pos="2 6 0.25" />
-                            <Vertex pos="2 6 -0.25" />
+                            <Vertex pos="2 -2 0.25" />
+                            <Vertex pos="2 -2 -0.25" />
                             <Vertex pos="2 -6 0.25" />
                             <Vertex pos="2 -6 -0.25" />
-                            <Vertex pos="-2 6 0.25" />
-                            <Vertex pos="-2 6 -0.25" />
+                            <Vertex pos="-2 -2 0.25" />
+                            <Vertex pos="-2 -2 -0.25" />
                             <Vertex pos="-2 -6 0.25" />
                             <Vertex pos="-2 -6 -0.25" />
                         </Vertices>
@@ -367,7 +367,7 @@
                         <Face id="1" plane="-1 0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -6" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
                         <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -380,7 +380,7 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="6" owner="0" type="0" pos="5 32 0.375" rot="1 0 0 0" scale="" transform="1 0 0 5 0 1 0 32 0 0 1 0.375 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                    <Brush id="6" owner="0" type="0" pos="5 24 0.375" rot="1 0 0 0" scale="" transform="1 0 0 5 0 1 0 24 0 0 1 0.375 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
                             <Vertex pos="2 1 0.375" />
                             <Vertex pos="2 1 -0.125" />
@@ -410,14 +410,14 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="7" owner="0" type="0" pos="5 34 0.749999" rot="1 0 0 0" scale="" transform="1 0 0 5 0 1 0 34 0 0 1 0.749999 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                    <Brush id="7" owner="0" type="0" pos="5 26 0.749999" rot="1 0 0 0" scale="" transform="1 0 0 5 0 1 0 26 0 0 1 0.749999 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
-                            <Vertex pos="2 1 0.5" />
-                            <Vertex pos="2 1 9.53674e-007" />
+                            <Vertex pos="2 3 1" />
+                            <Vertex pos="2 3 0.500001" />
                             <Vertex pos="2 -1 -5.96046e-008" />
                             <Vertex pos="2 -1 -0.5" />
-                            <Vertex pos="-2 1 0.5" />
-                            <Vertex pos="-2 1 9.53674e-007" />
+                            <Vertex pos="-2 3 1" />
+                            <Vertex pos="-2 3 0.500001" />
                             <Vertex pos="-2 -1 -5.96046e-008" />
                             <Vertex pos="-2 -1 -0.5" />
                         </Vertices>
@@ -427,7 +427,7 @@
                         <Face id="1" plane="-1 -0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -1" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
                         <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 0 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -440,14 +440,14 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="8" owner="0" type="0" pos="5 36 1.375" rot="1 0 0 0" scale="" transform="1 0 0 5 0 1 0 36 0 0 1 1.375 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                    <Brush id="8" owner="0" type="0" pos="3 30 1.875" rot="1 0 0 0" scale="" transform="1 0 0 3 0 1 0 30 0 0 1 1.875 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
-                            <Vertex pos="2 1 0.625" />
-                            <Vertex pos="2 1 0.125" />
+                            <Vertex pos="2 3 1.375" />
+                            <Vertex pos="2 3 0.875" />
                             <Vertex pos="2 -1 -0.125" />
                             <Vertex pos="2 -1 -0.625" />
-                            <Vertex pos="-2 1 0.625" />
-                            <Vertex pos="-2 1 0.125" />
+                            <Vertex pos="-2 3 1.375" />
+                            <Vertex pos="-2 3 0.875" />
                             <Vertex pos="-2 -1 -0.125" />
                             <Vertex pos="-2 -1 -0.625" />
                         </Vertices>
@@ -457,7 +457,7 @@
                         <Face id="1" plane="-1 -0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0 -1 160 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -1" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 160 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 160 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
                         <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 -32 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -470,46 +470,16 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="9" owner="0" type="0" pos="5 38 2.25" rot="1 0 0 0" scale="" transform="1 0 0 5 0 1 0 38 0 0 1 2.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="0 1 0.749999" />
-                            <Vertex pos="0 1 0.25" />
-                            <Vertex pos="0 -1 -0.25" />
-                            <Vertex pos="0 -1 -0.749999" />
-                            <Vertex pos="-2 1 0.749999" />
-                            <Vertex pos="-2 1 0.25" />
-                            <Vertex pos="-2 -1 -0.25" />
-                            <Vertex pos="-2 -1 -0.749999" />
-                        </Vertices>
-                        <Face id="0" plane="1 -0 0 -0" album="Blasted" material="bm_edge_white" texgens="0 1 0 -128 0 0 -1 192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 -0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0 -1 192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -1" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 128 0 0 -1 -64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="0 -0.447213 0.894427 -0.223606" album="Blasted" material="bm_stripe_caution2" texgens="1 -1.5 0 224 0 -1 0 64 0 0.5 0.5" texRot="0" texScale="0.5 0.5" texDiv="128 128">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="0 0.447213 -0.894427 -0.223606" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 128 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
                     <Brush id="10" owner="0" type="0" pos="5 41 16" rot="1 0 0 0" scale="" transform="1 0 0 5 0 1 0 41 0 0 1 16 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
                             <Vertex pos="2 2 8" />
-                            <Vertex pos="2 2 -8" />
+                            <Vertex pos="2 2 -50" />
                             <Vertex pos="2 -2 8" />
-                            <Vertex pos="2 -2 -8" />
+                            <Vertex pos="2 -2 -50" />
                             <Vertex pos="-2 2 8" />
-                            <Vertex pos="-2 2 -8" />
+                            <Vertex pos="-2 2 -50" />
                             <Vertex pos="-2 -2 8" />
-                            <Vertex pos="-2 -2 -8" />
+                            <Vertex pos="-2 -2 -50" />
                         </Vertices>
                         <Face id="0" plane="1 -0 0 -2" album="Blasted" material="bm_grid_blank4" texgens="0 1 0 0 0 0 -1 1024 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
                             <Indices indices=" 3 2 0 1" />
@@ -526,11 +496,11 @@
                         <Face id="4" plane="-0 0 1 -8" album="Blasted" material="bm_tile03_C" texgens="1 0 0 1536 0 -1 0 -10240 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
                             <Indices indices=" 6 4 0 2" />
                         </Face>
-                        <Face id="5" plane="0 0 -1 -8" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
+                        <Face id="5" plane="0 0 -1 -50" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="11" owner="0" type="0" pos="5 22 6.75" rot="1 0 0 0" scale="" transform="1 0 0 5 0 1 0 22 0 0 1 6.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                    <Brush id="11" owner="0" type="0" pos="7 10 8.75" rot="1 0 0 0" scale="" transform="1 0 0 7 0 1 0 10 0 0 1 8.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
                             <Vertex pos="2 3 0.25" />
                             <Vertex pos="2 3 -0.25" />
@@ -557,66 +527,6 @@
                             <Indices indices=" 6 4 0 2" />
                         </Face>
                         <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 384 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
-                    <Brush id="12" owner="0" type="0" pos="6 16 6.75" rot="1 0 0 0" scale="" transform="1 0 0 6 0 1 0 16 0 0 1 6.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="3 3 0.25" />
-                            <Vertex pos="3 3 -0.25" />
-                            <Vertex pos="3 -3 0.25" />
-                            <Vertex pos="3 -3 -0.25" />
-                            <Vertex pos="-3 3 0.25" />
-                            <Vertex pos="-3 3 -0.25" />
-                            <Vertex pos="-3 -3 0.25" />
-                            <Vertex pos="-3 -3 -0.25" />
-                        </Vertices>
-                        <Face id="0" plane="1 -0 0 -3" album="Blasted" material="bm_edge_white" texgens="0 1 0 -640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 0 0 -3" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -3" album="Blasted" material="bm_edge_white" texgens="1 0 0 -640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_tile06_C" texgens="1 0 0 1792 0 -1 0 -3840 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 -128 0 -1 0 384 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
-                    <Brush id="13" owner="0" type="0" pos="7 10 7.75" rot="1 0 0 0" scale="" transform="1 0 0 7 0 1 0 10 0 0 1 7.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="2 3 -0.750001" />
-                            <Vertex pos="2 3 -1.25" />
-                            <Vertex pos="2 -3 1.25" />
-                            <Vertex pos="2 -3 0.750001" />
-                            <Vertex pos="-2 3 -0.750001" />
-                            <Vertex pos="-2 3 -1.25" />
-                            <Vertex pos="-2 -3 1.25" />
-                            <Vertex pos="-2 -3 0.750001" />
-                        </Vertices>
-                        <Face id="0" plane="1 0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 1 0 -640 0 0 -1 320 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -640 0 0 -1 320 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 -192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -3" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 320 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="-0 0.316228 0.948683 -0.23717" album="Blasted" material="bm_tile06_C" texgens="1 0 0 2048 0 -1 0 -2304 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="-0 -0.316228 -0.948683 -0.23717" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 384 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
@@ -664,7 +574,7 @@
                         <Face id="0" plane="1 -0 0 -3" album="Blasted" material="bm_edge_white" texgens="0 1 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 3 2 0 1" />
                         </Face>
-                        <Face id="1" plane="-1 0 0 -3" album="" material="bm_trim" texgens="0 -1 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="1" plane="-1 0 0 -3" album="" material="bm_trim" texgens="0 -1 0 -768 0 0 -1 -2240 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
                         <Face id="2" plane="0 1 -0 -2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -721,7 +631,7 @@
                             <Vertex pos="-7 -2 0.25" />
                             <Vertex pos="-7 -2 -0.25" />
                         </Vertices>
-                        <Face id="0" plane="1 -0 0 -7" album="" material="bm_trim" texgens="0 1 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="0" plane="1 -0 0 -7" album="" material="bm_trim" texgens="0 1 0 -256 0 0 -1 -2240 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 3 2 0 1" />
                         </Face>
                         <Face id="1" plane="-1 0 0 -7" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -751,7 +661,7 @@
                             <Vertex pos="-1 -2 0.25" />
                             <Vertex pos="-1 -2 -0.25" />
                         </Vertices>
-                        <Face id="0" plane="1 -0 0 -1" album="" material="bm_trim" texgens="0 1 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="0" plane="1 -0 0 -1" album="" material="bm_trim" texgens="0 1 0 768 0 0 -1 -2240 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 3 2 0 1" />
                         </Face>
                         <Face id="1" plane="-1 0 0 -1" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -784,7 +694,7 @@
                         <Face id="0" plane="1 -0 0 -1" album="Blasted" material="bm_edge_white" texgens="0 1 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 3 2 0 1" />
                         </Face>
-                        <Face id="1" plane="-1 0 0 -1" album="" material="bm_trim" texgens="0 -1 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="1" plane="-1 0 0 -1" album="" material="bm_trim" texgens="0 -1 0 256 0 0 -1 -2240 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
                         <Face id="2" plane="0 1 -0 -2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -128 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -967,7 +877,7 @@
                         <Face id="1" plane="-1 0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -896 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -4" album="" material="bm_trim" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 -4" album="" material="bm_trim" texgens="-1 0 0 7424 0 0 -1 -704 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
                         <Face id="3" plane="0 -1 0 -4" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -1000,7 +910,7 @@
                         <Face id="2" plane="0 1 -0 -4" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
-                        <Face id="3" plane="0 -1 0 -4" album="" material="bm_trim" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="3" plane="0 -1 0 -4" album="" material="bm_trim" texgens="1 0 0 -7424 0 0 -1 -192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 6 2 3" />
                         </Face>
                         <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_friction_ice" texgens="1 0 0 -7424 0 -1 0 -11520 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
@@ -1033,7 +943,7 @@
                         <Face id="3" plane="0 -1 0 -4" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 6 2 3" />
                         </Face>
-                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_friction_sand" texgens="1 0 0 256 0 -1 0 512 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
+                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_friction_sand" texgens="1 0 0 -3712 0 -1 0 -6784 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
                             <Indices indices=" 6 4 0 2" />
                         </Face>
                         <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 512 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
@@ -1120,7 +1030,7 @@
                         <Face id="2" plane="0 1 -0 -4" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
-                        <Face id="3" plane="0 -1 0 -4" album="" material="bm_trim" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="3" plane="0 -1 0 -4" album="" material="bm_trim" texgens="1 0 0 -11008 0 0 -1 -1856 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 6 2 3" />
                         </Face>
                         <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_tile06_C" texgens="1 0 0 -10752 0 -1 0 -10752 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
@@ -1240,7 +1150,7 @@
                         <Face id="2" plane="0 1 -0 -4" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
-                        <Face id="3" plane="0 -1 0 -4" album="" material="bm_trim" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="3" plane="0 -1 0 -4" album="" material="bm_trim" texgens="1 0 0 -9472 0 0 -1 -2624 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 6 2 3" />
                         </Face>
                         <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_tile06_C" texgens="1 0 0 -9216 0 -1 0 -7168 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
@@ -1264,7 +1174,7 @@
                         <Face id="0" plane="1 -0 0 -3" album="Blasted" material="bm_edge_white" texgens="0 1 0 -640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 3 2 0 1" />
                         </Face>
-                        <Face id="1" plane="-1 0 0 -3" album="" material="bm_trim" texgens="0 -1 0 -640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="1" plane="-1 0 0 -3" album="" material="bm_trim" texgens="0 -1 0 -9216 0 0 -1 -2624 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
                         <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -2140,7 +2050,7 @@
                         <Face id="2" plane="0 1 -0 -2" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 -128 0 0 -1 384 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
-                        <Face id="3" plane="0 -1 0 -2" album="Blasted" material="bm_friction_sand" texgens="1 0 0 384 0 0 -1 384 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
+                        <Face id="3" plane="0 -1 0 -2" album="Blasted" material="bm_friction_sand" texgens="1 0 0 -1536 0 0 -1 -896 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
                             <Indices indices=" 7 6 2 3" />
                         </Face>
                         <Face id="4" plane="-0 0 1 -3" album="Blasted" material="bm_grid_blank4" texgens="1 0 0 128 0 -1 0 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
@@ -2173,7 +2083,7 @@
                         <Face id="3" plane="0 -1 0 -2" album="Blasted" material="bm_grid_blank4" texgens="1 0 0 128 0 0 -1 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
                             <Indices indices=" 7 6 2 3" />
                         </Face>
-                        <Face id="4" plane="-0 0 1 -2" album="Blasted" material="bm_friction_sand" texgens="1 0 0 384 0 -1 0 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
+                        <Face id="4" plane="-0 0 1 -2" album="Blasted" material="bm_friction_sand" texgens="1 0 0 -1536 0 -1 0 -8832 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
                             <Indices indices=" 6 4 0 2" />
                         </Face>
                         <Face id="5" plane="0 0 -1 -4" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 -128 0 -1 0 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
@@ -2434,7 +2344,7 @@
                         <Face id="0" plane="1 -0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 1 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 3 2 0 1" />
                         </Face>
-                        <Face id="1" plane="-1 0 0 -2" album="" material="bm_trim" texgens="0 -1 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="1" plane="-1 0 0 -2" album="" material="bm_trim" texgens="0 -1 0 -10496 0 0 -1 -4544 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
                         <Face id="2" plane="0 1 -0 -2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -2977,7 +2887,7 @@
                         <Face id="1" plane="-1 0 0 -2" album="Blasted" material="bm_grid_blank4" texgens="0 -1 0 0 0 0 -1 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -2" album="Blasted" material="bm_friction_sand" texgens="-1 0 0 256 0 0 -1 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
+                        <Face id="2" plane="0 1 -0 -2" album="Blasted" material="bm_friction_sand" texgens="-1 0 0 2176 0 0 -1 -3328 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
                         <Face id="3" plane="0 -1 0 -2" album="Blasted" material="bm_grid_blank4" texgens="1 0 0 0 0 0 -1 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
@@ -3103,7 +3013,7 @@
                         <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_mp2" texgens="1 0 0 -896 0.75 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 6 2 3" />
                         </Face>
-                        <Face id="4" plane="-0.6 0 0.8 -0.2" album="Blasted" material="bm_friction_sand" texgens="0 -1 0 128 -1 0 0 512 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
+                        <Face id="4" plane="-0.6 0 0.8 -0.2" album="Blasted" material="bm_friction_sand" texgens="0 -1 0 -3072 -1 0 0 5248 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
                             <Indices indices=" 6 4 0 2" />
                         </Face>
                         <Face id="5" plane="0.6 0 -0.8 -0.2" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 -256 0 -1 0 128 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
@@ -4078,7 +3988,7 @@
                         <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 -896 0.25 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 6 2 3" />
                         </Face>
-                        <Face id="4" plane="-0.242536 0 0.970142 -0.242535" album="Blasted" material="bm_friction_sand" texgens="1 0 0 0 0 -1 0 128 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
+                        <Face id="4" plane="-0.242536 0 0.970142 -0.242535" album="Blasted" material="bm_friction_sand" texgens="1 0 0 896 0 -1 0 1280 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
                             <Indices indices=" 6 4 0 2" />
                         </Face>
                         <Face id="5" plane="0.242536 0 -0.970143 -0.242536" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 -256 0 -1 0 128 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
@@ -4447,12 +4357,12 @@
                     </Brush>
                     <Brush id="159" owner="0" type="0" pos="2.75 25 0.25" rot="1 0 0 0" scale="" transform="1 0 0 2.75 0 1 0 25 0 0 1 0.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
-                            <Vertex pos="0.25 6 0.25" />
-                            <Vertex pos="0.25 6 -0.25" />
+                            <Vertex pos="0.25 -2 0.25" />
+                            <Vertex pos="0.25 -2 -0.25" />
                             <Vertex pos="0.25 -6 0.25" />
                             <Vertex pos="0.25 -6 -0.25" />
-                            <Vertex pos="-0.25 6 0.25" />
-                            <Vertex pos="-0.25 6 -0.25" />
+                            <Vertex pos="-0.25 -2 0.25" />
+                            <Vertex pos="-0.25 -2 -0.25" />
                             <Vertex pos="-0.25 -6 0.25" />
                             <Vertex pos="-0.25 -6 -0.25" />
                         </Vertices>
@@ -4462,7 +4372,7 @@
                         <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -6" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
                         <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -4477,12 +4387,12 @@
                     </Brush>
                     <Brush id="160" owner="0" type="0" pos="7.25 25 0.25" rot="1 0 0 0" scale="" transform="1 0 0 7.25 0 1 0 25 0 0 1 0.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
-                            <Vertex pos="0.25 6 0.25" />
-                            <Vertex pos="0.25 6 -0.25" />
+                            <Vertex pos="0.25 -2 0.25" />
+                            <Vertex pos="0.25 -2 -0.25" />
                             <Vertex pos="0.25 -6 0.25" />
                             <Vertex pos="0.25 -6 -0.25" />
-                            <Vertex pos="-0.25 6 0.25" />
-                            <Vertex pos="-0.25 6 -0.25" />
+                            <Vertex pos="-0.25 -2 0.25" />
+                            <Vertex pos="-0.25 -2 -0.25" />
                             <Vertex pos="-0.25 -6 0.25" />
                             <Vertex pos="-0.25 -6 -0.25" />
                         </Vertices>
@@ -4492,7 +4402,7 @@
                         <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -6" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
                         <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -4505,7 +4415,7 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="161" owner="0" type="0" pos="2.75 32 0.375" rot="1 0 0 0" scale="" transform="1 0 0 2.75 0 1 0 32 0 0 1 0.375 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                    <Brush id="161" owner="0" type="0" pos="2.75 24 0.375" rot="1 0 0 0" scale="" transform="1 0 0 2.75 0 1 0 24 0 0 1 0.375 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
                             <Vertex pos="0.25 1 0.375" />
                             <Vertex pos="0.25 1 -0.125" />
@@ -4535,14 +4445,14 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="162" owner="0" type="0" pos="2.75 34 0.749999" rot="1 0 0 0" scale="" transform="1 0 0 2.75 0 1 0 34 0 0 1 0.749999 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                    <Brush id="162" owner="0" type="0" pos="2.75 26 0.749999" rot="1 0 0 0" scale="" transform="1 0 0 2.75 0 1 0 26 0 0 1 0.749999 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
-                            <Vertex pos="0.25 1 0.5" />
-                            <Vertex pos="0.25 1 9.53674e-007" />
+                            <Vertex pos="0.25 3 1" />
+                            <Vertex pos="0.25 3 0.500001" />
                             <Vertex pos="0.25 -1 -5.96046e-008" />
                             <Vertex pos="0.25 -1 -0.5" />
-                            <Vertex pos="-0.25 1 0.5" />
-                            <Vertex pos="-0.25 1 9.53674e-007" />
+                            <Vertex pos="-0.25 3 1" />
+                            <Vertex pos="-0.25 3 0.500001" />
                             <Vertex pos="-0.25 -1 -5.96046e-008" />
                             <Vertex pos="-0.25 -1 -0.5" />
                         </Vertices>
@@ -4552,7 +4462,7 @@
                         <Face id="1" plane="-1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0.25 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -1" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
                         <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 0 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -4565,14 +4475,14 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="163" owner="0" type="0" pos="2.75 36 1.375" rot="1 0 0 0" scale="" transform="1 0 0 2.75 0 1 0 36 0 0 1 1.375 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                    <Brush id="163" owner="0" type="0" pos="0.75 30 1.875" rot="1 0 0 0" scale="" transform="1 0 0 0.75 0 1 0 30 0 0 1 1.875 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
-                            <Vertex pos="0.25 1 0.625" />
-                            <Vertex pos="0.25 1 0.125" />
+                            <Vertex pos="0.25 3 1.375" />
+                            <Vertex pos="0.25 3 0.875" />
                             <Vertex pos="0.25 -1 -0.125" />
                             <Vertex pos="0.25 -1 -0.625" />
-                            <Vertex pos="-0.25 1 0.625" />
-                            <Vertex pos="-0.25 1 0.125" />
+                            <Vertex pos="-0.25 3 1.375" />
+                            <Vertex pos="-0.25 3 0.875" />
                             <Vertex pos="-0.25 -1 -0.125" />
                             <Vertex pos="-0.25 -1 -0.625" />
                         </Vertices>
@@ -4582,7 +4492,7 @@
                         <Face id="1" plane="-1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0.375 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -1" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 160 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 160 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
                         <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 -32 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -4595,37 +4505,7 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="164" owner="0" type="0" pos="2.75 38 2.25" rot="1 0 0 0" scale="" transform="1 0 0 2.75 0 1 0 38 0 0 1 2.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="0.25 1 0.749999" />
-                            <Vertex pos="0.25 1 0.25" />
-                            <Vertex pos="0.25 -1 -0.25" />
-                            <Vertex pos="0.25 -1 -0.749999" />
-                            <Vertex pos="-0.25 1 0.749999" />
-                            <Vertex pos="-0.25 1 0.25" />
-                            <Vertex pos="-0.25 -1 -0.25" />
-                            <Vertex pos="-0.25 -1 -0.749999" />
-                        </Vertices>
-                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -128 0 0 -1 192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0.5 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -1" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 -64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="0 -0.447213 0.894427 -0.223606" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="0 0.447213 -0.894427 -0.223606" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
-                    <Brush id="165" owner="0" type="0" pos="7.25 32 0.375" rot="1 0 0 0" scale="" transform="1 0 0 7.25 0 1 0 32 0 0 1 0.375 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                    <Brush id="165" owner="0" type="0" pos="7.25 24 0.375" rot="1 0 0 0" scale="" transform="1 0 0 7.25 0 1 0 24 0 0 1 0.375 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
                             <Vertex pos="0.25 1 0.375" />
                             <Vertex pos="0.25 1 -0.125" />
@@ -4655,14 +4535,14 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="166" owner="0" type="0" pos="7.25 34 0.749999" rot="1 0 0 0" scale="" transform="1 0 0 7.25 0 1 0 34 0 0 1 0.749999 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                    <Brush id="166" owner="0" type="0" pos="7.25 26 0.749999" rot="1 0 0 0" scale="" transform="1 0 0 7.25 0 1 0 26 0 0 1 0.749999 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
-                            <Vertex pos="0.25 1 0.5" />
-                            <Vertex pos="0.25 1 9.53674e-007" />
+                            <Vertex pos="0.25 3 1" />
+                            <Vertex pos="0.25 3 0.500001" />
                             <Vertex pos="0.25 -1 -5.96046e-008" />
                             <Vertex pos="0.25 -1 -0.5" />
-                            <Vertex pos="-0.25 1 0.5" />
-                            <Vertex pos="-0.25 1 9.53674e-007" />
+                            <Vertex pos="-0.25 3 1" />
+                            <Vertex pos="-0.25 3 0.500001" />
                             <Vertex pos="-0.25 -1 -5.96046e-008" />
                             <Vertex pos="-0.25 -1 -0.5" />
                         </Vertices>
@@ -4672,7 +4552,7 @@
                         <Face id="1" plane="-1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -1" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
                         <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 0 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -4685,14 +4565,14 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="167" owner="0" type="0" pos="7.25 36 1.375" rot="1 0 0 0" scale="" transform="1 0 0 7.25 0 1 0 36 0 0 1 1.375 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                    <Brush id="167" owner="0" type="0" pos="5.25 30 1.875" rot="1 0 0 0" scale="" transform="1 0 0 5.25 0 1 0 30 0 0 1 1.875 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
-                            <Vertex pos="0.25 1 0.625" />
-                            <Vertex pos="0.25 1 0.125" />
+                            <Vertex pos="0.25 3 1.375" />
+                            <Vertex pos="0.25 3 0.875" />
                             <Vertex pos="0.25 -1 -0.125" />
                             <Vertex pos="0.25 -1 -0.625" />
-                            <Vertex pos="-0.25 1 0.625" />
-                            <Vertex pos="-0.25 1 0.125" />
+                            <Vertex pos="-0.25 3 1.375" />
+                            <Vertex pos="-0.25 3 0.875" />
                             <Vertex pos="-0.25 -1 -0.125" />
                             <Vertex pos="-0.25 -1 -0.625" />
                         </Vertices>
@@ -4702,7 +4582,7 @@
                         <Face id="1" plane="-1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0 -1 160 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -1" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 160 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 160 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
                         <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 -32 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -4715,127 +4595,7 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="168" owner="0" type="0" pos="7.25 38 2.25" rot="1 0 0 0" scale="" transform="1 0 0 7.25 0 1 0 38 0 0 1 2.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="0.25 1 0.749999" />
-                            <Vertex pos="0.25 1 0.25" />
-                            <Vertex pos="0.25 -1 -0.25" />
-                            <Vertex pos="0.25 -1 -0.749999" />
-                            <Vertex pos="-0.25 1 0.749999" />
-                            <Vertex pos="-0.25 1 0.25" />
-                            <Vertex pos="-0.25 -1 -0.25" />
-                            <Vertex pos="-0.25 -1 -0.749999" />
-                        </Vertices>
-                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -128 0 0.5 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0 -1 192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -1" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 -64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="0 -0.447213 0.894427 -0.223606" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="0 0.447213 -0.894427 -0.223606" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
-                    <Brush id="169" owner="0" type="0" pos="5 41 5.5" rot="1 0 0 0" scale="" transform="1 0 0 5 0 1 0 41 0 0 1 5.5 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="2 2 2.5" />
-                            <Vertex pos="2 2 -2.5" />
-                            <Vertex pos="2 -2 2.5" />
-                            <Vertex pos="2 -2 -2.5" />
-                            <Vertex pos="-2 2 2.5" />
-                            <Vertex pos="-2 2 -2.5" />
-                            <Vertex pos="-2 -2 2.5" />
-                            <Vertex pos="-2 -2 -2.5" />
-                        </Vertices>
-                        <Face id="0" plane="1 -0 0 -2" album="Blasted" material="bm_grid_blank4" texgens="0 1 0 0 0 0 -1 320 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 0 0 -2" album="Blasted" material="bm_grid_blank4" texgens="0 -1 0 0 0 0 -1 320 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -2" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 0 -1 320 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -2" album="" material="bm_stripe_caution1" texgens="1 0 1 288 0 0 -1 160 0 0.5 0.5" texRot="0" texScale="0.5 0.5" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="-0 0 1 -2.5" album="Blasted" material="bm_grid_blank4" texgens="1 0 0 0 0 -1 0 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="0 0 -1 -2.5" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
-                    <Brush id="170" owner="0" type="0" pos="5 41 -3.5" rot="1 0 0 0" scale="" transform="1 0 0 5 0 1 0 41 0 0 1 -3.5 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="2 2 6.5" />
-                            <Vertex pos="2 2 -30.5" />
-                            <Vertex pos="2 -2 6.5" />
-                            <Vertex pos="2 -2 -30.5" />
-                            <Vertex pos="-2 2 6.5" />
-                            <Vertex pos="-2 2 -30.5" />
-                            <Vertex pos="-2 -2 6.5" />
-                            <Vertex pos="-2 -2 -30.5" />
-                        </Vertices>
-                        <Face id="0" plane="1 -0 0 -2" album="Blasted" material="bm_grid_blank4" texgens="0 1 0 0 0 0 -1 832 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 0 0 -2" album="Blasted" material="bm_grid_blank4" texgens="0 -1 0 0 0 0 -1 832 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -2" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 0 -1 832 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -2" album="Blasted" material="bm_grid_blank4" texgens="1 0 0 0 0 0 -1 832 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="-0 0 1 -6.5" album="Blasted" material="bm_grid_blank4" texgens="1 0 0 0 0 -1 0 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="0 0 -1 -30.5" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
-                    <Brush id="171" owner="0" type="0" pos="2.75 19 6.75" rot="1 0 0 0" scale="" transform="1 0 0 2.75 0 1 0 19 0 0 1 6.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="0.25 6 0.25" />
-                            <Vertex pos="0.25 6 -0.25" />
-                            <Vertex pos="0.25 -6 0.25" />
-                            <Vertex pos="0.25 -6 -0.25" />
-                            <Vertex pos="-0.25 6 0.25" />
-                            <Vertex pos="-0.25 6 -0.25" />
-                            <Vertex pos="-0.25 -6 0.25" />
-                            <Vertex pos="-0.25 -6 -0.25" />
-                        </Vertices>
-                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -6" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
-                    <Brush id="172" owner="0" type="0" pos="7.25 22 6.75" rot="1 0 0 0" scale="" transform="1 0 0 7.25 0 1 0 22 0 0 1 6.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                    <Brush id="172" owner="0" type="0" pos="9.25 10 8.75" rot="1 0 0 0" scale="" transform="1 0 0 9.25 0 1 0 10 0 0 1 8.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
                             <Vertex pos="0.25 3 0.25" />
                             <Vertex pos="0.25 3 -0.25" />
@@ -4865,67 +4625,7 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="173" owner="0" type="0" pos="8.5 19.25 6.75" rot="1 0 0 0" scale="" transform="1 0 0 8.5 0 1 0 19.25 0 0 1 6.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="1 0.25 0.25" />
-                            <Vertex pos="1 0.25 -0.25" />
-                            <Vertex pos="1 -0.25 0.25" />
-                            <Vertex pos="1 -0.25 -0.25" />
-                            <Vertex pos="-1 0.25 0.25" />
-                            <Vertex pos="-1 0.25 -0.25" />
-                            <Vertex pos="-1 -0.25 0.25" />
-                            <Vertex pos="-1 -0.25 -0.25" />
-                        </Vertices>
-                        <Face id="0" plane="1 -0 0 -1" album="Blasted" material="bm_edge_white" texgens="0 1 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 0 0 -1" album="Blasted" material="bm_edge_white" texgens="0 -1 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -128 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -0.25" album="Blasted" material="bm_edge_white" texgens="1 0 0 -128 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_edge_white" texgens="1 0 0 -128 0 -1 0 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -128 0 -1 0 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
-                    <Brush id="174" owner="0" type="0" pos="3.5 12.75 6.75" rot="1 0 0 0" scale="" transform="1 0 0 3.5 0 1 0 12.75 0 0 1 6.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="1 0.25 0.25" />
-                            <Vertex pos="1 0.25 -0.25" />
-                            <Vertex pos="1 -0.25 0.25" />
-                            <Vertex pos="1 -0.25 -0.25" />
-                            <Vertex pos="-1 0.25 0.25" />
-                            <Vertex pos="-1 0.25 -0.25" />
-                            <Vertex pos="-1 -0.25 0.25" />
-                            <Vertex pos="-1 -0.25 -0.25" />
-                        </Vertices>
-                        <Face id="0" plane="1 -0 0 -1" album="Blasted" material="bm_edge_white" texgens="0 1 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 0 0 -1" album="Blasted" material="bm_edge_white" texgens="0 -1 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -128 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -0.25" album="Blasted" material="bm_edge_white" texgens="1 0 0 -128 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_edge_white" texgens="1 0 0 -128 0 -1 0 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -128 0 -1 0 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
-                    <Brush id="175" owner="0" type="0" pos="9.25 16 6.75" rot="1 0 0 0" scale="" transform="1 0 0 9.25 0 1 0 16 0 0 1 6.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                    <Brush id="175" owner="0" type="0" pos="4.75 10 8.75" rot="1 0 0 0" scale="" transform="1 0 0 4.75 0 1 0 10 0 0 1 8.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
                             <Vertex pos="0.25 3 0.25" />
                             <Vertex pos="0.25 3 -0.25" />
@@ -4952,126 +4652,6 @@
                             <Indices indices=" 6 4 0 2" />
                         </Face>
                         <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 768 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
-                    <Brush id="176" owner="0" type="0" pos="9.25 10 7.75" rot="1 0 0 0" scale="" transform="1 0 0 9.25 0 1 0 10 0 0 1 7.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="0.25 3 -0.750001" />
-                            <Vertex pos="0.25 3 -1.25" />
-                            <Vertex pos="0.25 -3 1.25" />
-                            <Vertex pos="0.25 -3 0.750001" />
-                            <Vertex pos="-0.25 3 -0.750001" />
-                            <Vertex pos="-0.25 3 -1.25" />
-                            <Vertex pos="-0.25 -3 1.25" />
-                            <Vertex pos="-0.25 -3 0.750001" />
-                        </Vertices>
-                        <Face id="0" plane="1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -640 0 -0.333333 -1 64.0003 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -640 0 0 -1 320 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 -192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -3" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 320 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="-0 0.316228 0.948683 -0.23717" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 768 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="-0 -0.316228 -0.948683 -0.23717" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 768 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
-                    <Brush id="177" owner="0" type="0" pos="4.75 10 7.75" rot="1 0 0 0" scale="" transform="1 0 0 4.75 0 1 0 10 0 0 1 7.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="0.25 3 -0.750001" />
-                            <Vertex pos="0.25 3 -1.25" />
-                            <Vertex pos="0.25 -3 1.25" />
-                            <Vertex pos="0.25 -3 0.750001" />
-                            <Vertex pos="-0.25 3 -0.750001" />
-                            <Vertex pos="-0.25 3 -1.25" />
-                            <Vertex pos="-0.25 -3 1.25" />
-                            <Vertex pos="-0.25 -3 0.750001" />
-                        </Vertices>
-                        <Face id="0" plane="1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -640 0 0 -1 320 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -640 0 -0.333333 -1 64.0003 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 -192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -3" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 320 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="-0 0.316228 0.948683 -0.23717" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 768 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="-0 -0.316228 -0.948683 -0.23717" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 768 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
-                    <Brush id="178" owner="0" type="0" pos="2.75 39.25 5.25" rot="1 0 0 0" scale="" transform="1 0 0 2.75 0 1 0 39.25 0 0 1 5.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="0.25 0.25 2.75" />
-                            <Vertex pos="0.25 0.25 -2.75" />
-                            <Vertex pos="0.25 -0.25 2.75" />
-                            <Vertex pos="0.25 -0.25 -2.75" />
-                            <Vertex pos="-0.25 0.25 2.25" />
-                            <Vertex pos="-0.25 0.25 -2.75" />
-                            <Vertex pos="-0.25 -0.25 2.25" />
-                            <Vertex pos="-0.25 -0.25 -2.75" />
-                        </Vertices>
-                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 64 0 0 -1 704 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 64 0 0 -1 576 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 704 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -0.25" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 704 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="-0.707107 0 0.707107 -1.76777" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="0 0 -1 -2.75" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
-                    <Brush id="179" owner="0" type="0" pos="7.25 39.25 5.25" rot="1 0 0 0" scale="" transform="1 0 0 7.25 0 1 0 39.25 0 0 1 5.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="0.25 0.25 2.25" />
-                            <Vertex pos="0.25 0.25 -2.75" />
-                            <Vertex pos="0.25 -0.25 2.25" />
-                            <Vertex pos="0.25 -0.25 -2.75" />
-                            <Vertex pos="-0.25 0.25 2.75" />
-                            <Vertex pos="-0.25 0.25 -2.75" />
-                            <Vertex pos="-0.25 -0.25 2.75" />
-                            <Vertex pos="-0.25 -0.25 -2.75" />
-                        </Vertices>
-                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 64 0 0 -1 576 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 64 0 0 -1 704 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 704 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -0.25" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 704 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="0.707107 0 0.707107 -1.76777" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="0 0 -1 -2.75" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
@@ -5225,7 +4805,7 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="185" owner="0" type="0" pos="5 25.125 6.75" rot="1 0 0 0" scale="" transform="1 0 0 5 0 1 0 25.125 0 0 1 6.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                    <Brush id="185" owner="0" type="0" pos="7 13.125 8.75" rot="1 0 0 0" scale="" transform="1 0 0 7 0 1 0 13.125 0 0 1 8.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
                             <Vertex pos="2.5 0.125 0.25" />
                             <Vertex pos="2.5 0.125 -0.25" />
@@ -5236,22 +4816,22 @@
                             <Vertex pos="-2.5 -0.125 0.25" />
                             <Vertex pos="-2.5 -0.125 -0.25" />
                         </Vertices>
-                        <Face id="0" plane="1 -0 0 -2.5" album="" material="bm_trim" texgens="0 1 0 32 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="0" plane="1 -0 0 -2.5" album="" material="bm_trim" texgens="0 1 0 3360 0 0 -1 -2240 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 3 2 0 1" />
                         </Face>
-                        <Face id="1" plane="-1 0 0 -2.5" album="" material="bm_trim" texgens="0 -1 0 96 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="1" plane="-1 0 0 -2.5" album="" material="bm_trim" texgens="0 -1 0 -3360 0 0 -1 -2240 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -0.125" album="" material="bm_trim" texgens="-1 0 0 640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 -0.125" album="" material="bm_trim" texgens="-1 0 0 -1792 0 0 -1 -2240 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
-                        <Face id="3" plane="0 -1 0 -0.125" album="" material="bm_trim" texgens="1 0 0 -512 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="3" plane="0 -1 0 -0.125" album="" material="bm_trim" texgens="1 0 0 1792 0 0 -1 -2240 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 6 2 3" />
                         </Face>
-                        <Face id="4" plane="-0 0 1 -0.25" album="" material="bm_trim" texgens="1 0 0 -512 0 -1 0 96 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="4" plane="-0 0 1 -0.25" album="" material="bm_trim" texgens="1 0 0 1792 0 -1 0 -3360 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 6 4 0 2" />
                         </Face>
-                        <Face id="5" plane="0 0 -1 -0.25" album="" material="bm_trim" texgens="-1 0 0 640 0 -1 0 96 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="5" plane="0 0 -1 -0.25" album="" material="bm_trim" texgens="-1 0 0 -1792 0 -1 0 -3360 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
@@ -5956,7 +5536,7 @@
                             <Vertex pos="-2 -3 0.25" />
                             <Vertex pos="-2 -3 -0.25" />
                         </Vertices>
-                        <Face id="0" plane="1 -0 0 -2" album="" material="bm_trim" texgens="0 1 0 -640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="0" plane="1 -0 0 -2" album="" material="bm_trim" texgens="0 1 0 5632 0 0 -1 -3392 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 3 2 0 1" />
                         </Face>
                         <Face id="1" plane="-1 0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
@@ -7456,22 +7036,22 @@
                             <Vertex pos="-0.125 -2.5 0.25" />
                             <Vertex pos="-0.125 -2.5 -0.25" />
                         </Vertices>
-                        <Face id="0" plane="1 -0 0 -0.125" album="" material="bm_trim" texgens="0 1 0 640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="0" plane="1 -0 0 -0.125" album="" material="bm_trim" texgens="0 1 0 10496 0 0 -1 -6080 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 3 2 0 1" />
                         </Face>
-                        <Face id="1" plane="-1 0 0 -0.125" album="" material="bm_trim" texgens="0 -1 0 -512 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="1" plane="-1 0 0 -0.125" album="" material="bm_trim" texgens="0 -1 0 -10496 0 0 -1 -6080 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -2.5" album="" material="bm_trim" texgens="-1 0 0 1248 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 -2.5" album="" material="bm_trim" texgens="-1 0 0 -1824 0 0 -1 -6080 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
-                        <Face id="3" plane="0 -1 0 -2.5" album="" material="bm_trim" texgens="1 0 0 -1120 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="3" plane="0 -1 0 -2.5" album="" material="bm_trim" texgens="1 0 0 1824 0 0 -1 -6080 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 6 2 3" />
                         </Face>
-                        <Face id="4" plane="-0 0 1 -0.25" album="" material="bm_trim" texgens="1 0 0 -1120 0 -1 0 -512 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="4" plane="-0 0 1 -0.25" album="" material="bm_trim" texgens="1 0 0 1824 0 -1 0 -10496 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 6 4 0 2" />
                         </Face>
-                        <Face id="5" plane="0 0 -1 -0.25" album="" material="bm_trim" texgens="-1 0 0 1248 0 -1 0 -512 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="5" plane="0 0 -1 -0.25" album="" material="bm_trim" texgens="-1 0 0 -1824 0 -1 0 -10496 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
@@ -7846,22 +7426,22 @@
                             <Vertex pos="-0.125 -2.5 0.25" />
                             <Vertex pos="-0.125 -2.5 -0.25" />
                         </Vertices>
-                        <Face id="0" plane="1 -0 0 -0.125" album="" material="bm_trim" texgens="0 1 0 640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="0" plane="1 -0 0 -0.125" album="" material="bm_trim" texgens="0 1 0 9472 0 0 -1 -4544 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 3 2 0 1" />
                         </Face>
-                        <Face id="1" plane="-1 0 0 -0.125" album="" material="bm_trim" texgens="0 -1 0 -512 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="1" plane="-1 0 0 -0.125" album="" material="bm_trim" texgens="0 -1 0 -9472 0 0 -1 -4544 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -2.5" album="" material="bm_trim" texgens="-1 0 0 1184 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 -2.5" album="" material="bm_trim" texgens="-1 0 0 15136 0 0 -1 -4544 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
-                        <Face id="3" plane="0 -1 0 -2.5" album="" material="bm_trim" texgens="1 0 0 -1056 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="3" plane="0 -1 0 -2.5" album="" material="bm_trim" texgens="1 0 0 -15136 0 0 -1 -4544 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 6 2 3" />
                         </Face>
-                        <Face id="4" plane="-0 0 1 -0.25" album="" material="bm_trim" texgens="1 0 0 -1056 0 -1 0 -512 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="4" plane="-0 0 1 -0.25" album="" material="bm_trim" texgens="1 0 0 -15136 0 -1 0 -9472 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 6 4 0 2" />
                         </Face>
-                        <Face id="5" plane="0 0 -1 -0.25" album="" material="bm_trim" texgens="-1 0 0 1184 0 -1 0 -512 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="5" plane="0 0 -1 -0.25" album="" material="bm_trim" texgens="-1 0 0 15136 0 -1 0 -9472 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
@@ -10596,22 +10176,22 @@
                             <Vertex pos="-2.5 -0.125 0.25" />
                             <Vertex pos="-2.5 -0.125 -0.25" />
                         </Vertices>
-                        <Face id="0" plane="1 -0 0 -2.5" album="" material="bm_trim" texgens="0 1 0 32 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="0" plane="1 -0 0 -2.5" album="" material="bm_trim" texgens="0 1 0 18208 0 0 -1 -6080 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 3 2 0 1" />
                         </Face>
-                        <Face id="1" plane="-1 0 0 -2.5" album="" material="bm_trim" texgens="0 -1 0 96 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="1" plane="-1 0 0 -2.5" album="" material="bm_trim" texgens="0 -1 0 -18208 0 0 -1 -6080 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 5 4 6" />
                         </Face>
-                        <Face id="2" plane="0 1 -0 -0.125" album="" material="bm_trim" texgens="-1 0 0 640 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="2" plane="0 1 -0 -0.125" album="" material="bm_trim" texgens="-1 0 0 2304 0 0 -1 -6080 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 5 1 0 4" />
                         </Face>
-                        <Face id="3" plane="0 -1 0 -0.125" album="" material="bm_trim" texgens="1 0 0 -512 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="3" plane="0 -1 0 -0.125" album="" material="bm_trim" texgens="1 0 0 -2304 0 0 -1 -6080 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 6 2 3" />
                         </Face>
-                        <Face id="4" plane="-0 0 1 -0.25" album="" material="bm_trim" texgens="1 0 0 -512 0 -1 0 96 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="4" plane="-0 0 1 -0.25" album="" material="bm_trim" texgens="1 0 0 -2304 0 -1 0 -18208 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 6 4 0 2" />
                         </Face>
-                        <Face id="5" plane="0 0 -1 -0.25" album="" material="bm_trim" texgens="-1 0 0 640 0 -1 0 96 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                        <Face id="5" plane="0 0 -1 -0.25" album="" material="bm_trim" texgens="-1 0 0 2304 0 -1 0 -18208 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
@@ -11215,36 +10795,6 @@
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
-                    <Brush id="492" owner="0" type="0" pos="5 38 2.25" rot="1 0 0 0" scale="" transform="1 0 0 5 0 1 0 38 0 0 1 2.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
-                        <Vertices>
-                            <Vertex pos="2 1 0.749999" />
-                            <Vertex pos="2 1 0.25" />
-                            <Vertex pos="2 -1 -0.25" />
-                            <Vertex pos="2 -1 -0.749999" />
-                            <Vertex pos="0 1 0.749999" />
-                            <Vertex pos="0 1 0.25" />
-                            <Vertex pos="0 -1 -0.25" />
-                            <Vertex pos="0 -1 -0.749999" />
-                        </Vertices>
-                        <Face id="0" plane="1 -0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 1 0 -128 0 0 -1 192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 3 2 0 1" />
-                        </Face>
-                        <Face id="1" plane="-1 -0 0 -0" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0 -1 192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 5 4 6" />
-                        </Face>
-                        <Face id="2" plane="0 1 -0 -1" album="Blasted" material="bm_edge_white" texgens="-1 0 0 128 0 0 -1 192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 5 1 0 4" />
-                        </Face>
-                        <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 -64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
-                            <Indices indices=" 7 6 2 3" />
-                        </Face>
-                        <Face id="4" plane="0 -0.447213 0.894427 -0.223606" album="Blasted" material="bm_stripe_caution2" texgens="1 1.5 0 96 0 -1 0 64 0 0.5 0.5" texRot="0" texScale="0.5 0.5" texDiv="128 128">
-                            <Indices indices=" 6 4 0 2" />
-                        </Face>
-                        <Face id="5" plane="0 0.447213 -0.894427 -0.223606" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 128 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
-                            <Indices indices=" 7 3 1 5" />
-                        </Face>
-                    </Brush>
                     <Brush id="493" owner="0" type="0" pos="26 65 20" rot="1 0 0 0" scale="" transform="1 0 0 26 0 1 0 65 0 0 1 20 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
                         <Vertices>
                             <Vertex pos="3 2 -6" />
@@ -11272,6 +10822,846 @@
                             <Indices indices=" 6 4 0 2" />
                         </Face>
                         <Face id="5" plane="0 0 -1 -12" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 128 0 -1 0 256 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="503" owner="0" type="0" pos="3 34 3.25" rot="1 0 0 0" scale="" transform="1 0 0 3 0 1 0 34 0 0 1 3.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0 3 1" />
+                            <Vertex pos="0 3 0.500001" />
+                            <Vertex pos="0 -1 0" />
+                            <Vertex pos="0 -1 -0.5" />
+                            <Vertex pos="-2 3 1" />
+                            <Vertex pos="-2 3 0.500001" />
+                            <Vertex pos="-2 -1 -5.96046e-008" />
+                            <Vertex pos="-2 -1 -0.5" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -0" album="Blasted" material="bm_edge_white" texgens="0 1 0 -128 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 -0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 0 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="0 -0.242536 0.970143 -0.242536" album="Blasted" material="bm_tile06_C" texgens="1 0 0 1536 0 -1 0 -8448 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0.242536 -0.970142 -0.242535" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 128 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="504" owner="0" type="0" pos="0.75 34 3.25" rot="1 0 0 0" scale="" transform="1 0 0 0.75 0 1 0 34 0 0 1 3.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 3 1" />
+                            <Vertex pos="0.25 3 0.500001" />
+                            <Vertex pos="0.25 -1 -5.96046e-008" />
+                            <Vertex pos="0.25 -1 -0.5" />
+                            <Vertex pos="-0.25 3 1" />
+                            <Vertex pos="-0.25 3 0.500001" />
+                            <Vertex pos="-0.25 -1 -5.96046e-008" />
+                            <Vertex pos="-0.25 -1 -0.5" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -128 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0.25 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 0 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="0 -0.242536 0.970143 -0.242536" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0.242536 -0.970142 -0.242535" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="505" owner="0" type="0" pos="3.25 34 3.25" rot="1 0 0 0" scale="" transform="1 0 0 3.25 0 1 0 34 0 0 1 3.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 3 1" />
+                            <Vertex pos="0.25 3 0.500001" />
+                            <Vertex pos="0.25 -1 -5.96046e-008" />
+                            <Vertex pos="0.25 -1 -0.5" />
+                            <Vertex pos="-0.25 3 1" />
+                            <Vertex pos="-0.25 3 0.500001" />
+                            <Vertex pos="-0.25 -1 -5.96046e-008" />
+                            <Vertex pos="-0.25 -1 -0.5" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -128 0 0.25 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 0 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="0 -0.242536 0.970143 -0.242536" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0.242536 -0.970142 -0.242535" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="506" owner="0" type="0" pos="3 38 4.125" rot="1 0 0 0" scale="" transform="1 0 0 3 0 1 0 38 0 0 1 4.125 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0 1 0.375" />
+                            <Vertex pos="0 1 -0.125" />
+                            <Vertex pos="0 -1 0.125" />
+                            <Vertex pos="0 -1 -0.375" />
+                            <Vertex pos="-2 1 0.375" />
+                            <Vertex pos="-2 1 -0.125" />
+                            <Vertex pos="-2 -1 0.125" />
+                            <Vertex pos="-2 -1 -0.375" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -0" album="Blasted" material="bm_edge_white" texgens="0 1 0 -128 0 0 -1 96 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 -0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0 -1 96 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 -1" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 96 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 32 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="0 -0.124035 0.992278 -0.248069" album="Blasted" material="bm_tile06_C" texgens="1 0 0 1536 0 -1 0 -7936 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0.124035 -0.992278 -0.248069" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 128 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="507" owner="0" type="0" pos="0.75 38 4.125" rot="1 0 0 0" scale="" transform="1 0 0 0.75 0 1 0 38 0 0 1 4.125 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 1 0.375" />
+                            <Vertex pos="0.25 1 -0.125" />
+                            <Vertex pos="0.25 -1 0.125" />
+                            <Vertex pos="0.25 -1 -0.375" />
+                            <Vertex pos="-0.25 1 0.375" />
+                            <Vertex pos="-0.25 1 -0.125" />
+                            <Vertex pos="-0.25 -1 0.125" />
+                            <Vertex pos="-0.25 -1 -0.375" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -128 0 0 -1 96 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0.125 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 -1" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 96 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 32 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="0 -0.124035 0.992278 -0.248069" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0.124035 -0.992278 -0.248069" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="508" owner="0" type="0" pos="3.25 38 4.125" rot="1 0 0 0" scale="" transform="1 0 0 3.25 0 1 0 38 0 0 1 4.125 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 1 0.375" />
+                            <Vertex pos="0.25 1 -0.125" />
+                            <Vertex pos="0.25 -1 0.125" />
+                            <Vertex pos="0.25 -1 -0.375" />
+                            <Vertex pos="-0.25 1 0.375" />
+                            <Vertex pos="-0.25 1 -0.125" />
+                            <Vertex pos="-0.25 -1 0.125" />
+                            <Vertex pos="-0.25 -1 -0.375" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -128 0 0.125 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0 -1 96 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 -1" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 96 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 32 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="0 -0.124035 0.992278 -0.248069" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0.124035 -0.992278 -0.248069" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="509" owner="0" type="0" pos="2.25 26 0.749999" rot="1 0 0 0" scale="" transform="1 0 0 2.25 0 1 0 26 0 0 1 0.749999 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 3 1" />
+                            <Vertex pos="0.25 3 0.500001" />
+                            <Vertex pos="0.25 2.5 0.875" />
+                            <Vertex pos="0.25 2.5 0.375" />
+                            <Vertex pos="-1.75 3 1" />
+                            <Vertex pos="-1.75 3 0.500001" />
+                            <Vertex pos="-1.75 2.5 0.875" />
+                            <Vertex pos="-1.75 2.5 0.375" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -128 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 -0 0 -1.75" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0.25 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 2.5" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 224 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="0 -0.242536 0.970143 -0.242535" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0.242537 -0.970142 -0.24254" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="510" owner="0" type="0" pos="5.75 30 1.875" rot="1 0 0 0" scale="" transform="1 0 0 5.75 0 1 0 30 0 0 1 1.875 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="1.75 -0.5 0.0625" />
+                            <Vertex pos="1.75 -0.5 -0.4375" />
+                            <Vertex pos="1.75 -1 -0.125" />
+                            <Vertex pos="1.75 -1 -0.625" />
+                            <Vertex pos="-0.25 -0.5 0.0625" />
+                            <Vertex pos="-0.25 -0.5 -0.4375" />
+                            <Vertex pos="-0.25 -1 -0.125" />
+                            <Vertex pos="-0.25 -1 -0.625" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -1.75" album="Blasted" material="bm_edge_white" texgens="0 1 0 -128 0 0.375 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0 -1 160 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 0.5" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 16 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -1" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 -32 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="0 -0.351123 0.936329 -0.234082" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0.351123 -0.936329 -0.234082" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="511" owner="0" type="0" pos="5.25 30.5 2.375" rot="1 0 0 0" scale="" transform="1 0 0 5.25 0 1 0 30.5 0 0 1 2.375 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 3 1" />
+                            <Vertex pos="0.25 3 0.500001" />
+                            <Vertex pos="0.25 2.5 0.875" />
+                            <Vertex pos="0.25 2.5 0.375" />
+                            <Vertex pos="-1.75 3 1" />
+                            <Vertex pos="-1.75 3 0.500001" />
+                            <Vertex pos="-1.75 2.5 0.875" />
+                            <Vertex pos="-1.75 2.5 0.375" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -640 0 0.25 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 -0 0 -1.75" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -128 0 0.25 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 -3" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 128 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 2.5" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 224 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="0 -0.242536 0.970143 -0.242535" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0.242537 -0.970142 -0.24254" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 256 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="512" owner="0" type="0" pos="1 45 4.25" rot="1 0 0 0" scale="" transform="1 0 0 1 0 1 0 45 0 0 1 4.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="2 -2 0.25" />
+                            <Vertex pos="2 -2 -0.25" />
+                            <Vertex pos="2 -6 0.25" />
+                            <Vertex pos="2 -6 -0.25" />
+                            <Vertex pos="0 -2 0.25" />
+                            <Vertex pos="0 -2 -0.25" />
+                            <Vertex pos="0 -6 0.25" />
+                            <Vertex pos="0 -6 -0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 0" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_tile06_C" texgens="1 0 0 1536 0 -1 0 -6144 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 768 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="513" owner="0" type="0" pos="0.75 45 4.25" rot="1 0 0 0" scale="" transform="1 0 0 0.75 0 1 0 45 0 0 1 4.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 -2 0.25" />
+                            <Vertex pos="0.25 -2 -0.25" />
+                            <Vertex pos="0.25 -6 0.25" />
+                            <Vertex pos="0.25 -6 -0.25" />
+                            <Vertex pos="-0.25 -2 0.25" />
+                            <Vertex pos="-0.25 -2 -0.25" />
+                            <Vertex pos="-0.25 -6 0.25" />
+                            <Vertex pos="-0.25 -6 -0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="514" owner="0" type="0" pos="1 49 4.25" rot="1 0 0 0" scale="" transform="1 0 0 1 0 1 0 49 0 0 1 4.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="2 -2 0.25" />
+                            <Vertex pos="2 -2 -0.25" />
+                            <Vertex pos="2 -6 0.25" />
+                            <Vertex pos="2 -6 -0.25" />
+                            <Vertex pos="0 -2 0.25" />
+                            <Vertex pos="0 -2 -0.25" />
+                            <Vertex pos="0 -6 0.25" />
+                            <Vertex pos="0 -6 -0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 0" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_friction_mud" texgens="1 0 0 128 0 -1 0 -6272 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 768 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="515" owner="0" type="0" pos="3 51 4.25" rot="1 0 0 0" scale="" transform="1 0 0 3 0 1 0 51 0 0 1 4.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="4 -4 0.25" />
+                            <Vertex pos="4 -4 -0.25" />
+                            <Vertex pos="4 -6 0.25" />
+                            <Vertex pos="4 -6 -0.25" />
+                            <Vertex pos="0 -4 0.25" />
+                            <Vertex pos="0 -4 -0.25" />
+                            <Vertex pos="0 -6 0.25" />
+                            <Vertex pos="0 -6 -0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -4" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 0" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 4" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_friction_mud" texgens="1 0 0 384 0 -1 0 -6528 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 768 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="516" owner="0" type="0" pos="7 49 4.25" rot="1 0 0 0" scale="" transform="1 0 0 7 0 1 0 49 0 0 1 4.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="2 -2 0.25" />
+                            <Vertex pos="2 -2 -0.25" />
+                            <Vertex pos="2 -6 0.25" />
+                            <Vertex pos="2 -6 -0.25" />
+                            <Vertex pos="0 -2 0.25" />
+                            <Vertex pos="0 -2 -0.25" />
+                            <Vertex pos="0 -6 0.25" />
+                            <Vertex pos="0 -6 -0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 0" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_friction_mud" texgens="1 0 0 896 0 -1 0 -6272 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="512 512">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 768 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="517" owner="0" type="0" pos="7 45 4.25" rot="1 0 0 0" scale="" transform="1 0 0 7 0 1 0 45 0 0 1 4.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="2 -2 0.25" />
+                            <Vertex pos="2 -2 -0.25" />
+                            <Vertex pos="2 -6 2.25" />
+                            <Vertex pos="2 -6 1.75" />
+                            <Vertex pos="0 -2 0.25" />
+                            <Vertex pos="0 -2 -0.25" />
+                            <Vertex pos="0 -6 2.25" />
+                            <Vertex pos="0 -6 1.75" />
+                        </Vertices>
+                        <Face id="0" plane="1 0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 0" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0.447214 0.894427 0.67082" album="Blasted" material="bm_tile06_C" texgens="1 0 0 1536 0 -1 0 -6144 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="-0 -0.447214 -0.894427 -1.11803" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 768 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="518" owner="0" type="0" pos="7 41 6.25" rot="1 0 0 0" scale="" transform="1 0 0 7 0 1 0 41 0 0 1 6.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="2 -2 0.25" />
+                            <Vertex pos="2 -2 -0.25" />
+                            <Vertex pos="2 -6 0.25" />
+                            <Vertex pos="2 -6 -0.25" />
+                            <Vertex pos="0 -2 0.25" />
+                            <Vertex pos="0 -2 -0.25" />
+                            <Vertex pos="0 -6 0.25" />
+                            <Vertex pos="0 -6 -0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 0" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_tile06_C" texgens="1 0 0 1536 0 -1 0 -6144 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 768 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="519" owner="0" type="0" pos="7 37 6.25" rot="1 0 0 0" scale="" transform="1 0 0 7 0 1 0 37 0 0 1 6.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="2 -2 0.25" />
+                            <Vertex pos="2 -2 -0.25" />
+                            <Vertex pos="2 -6 0.25" />
+                            <Vertex pos="2 -6 -0.25" />
+                            <Vertex pos="-2 -2 0.25" />
+                            <Vertex pos="-2 -2 -0.25" />
+                            <Vertex pos="-2 -6 0.25" />
+                            <Vertex pos="-2 -6 -0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_tile06_C" texgens="1 0 0 1536 0 -1 0 -6144 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 768 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="520" owner="0" type="0" pos="7 33 6.25" rot="1 0 0 0" scale="" transform="1 0 0 7 0 1 0 33 0 0 1 6.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="2 -2 0.25" />
+                            <Vertex pos="2 -2 -0.25" />
+                            <Vertex pos="2 -4 0.75" />
+                            <Vertex pos="2 -4 0.25" />
+                            <Vertex pos="-2 -2 0.25" />
+                            <Vertex pos="-2 -2 -0.25" />
+                            <Vertex pos="-2 -4 0.75" />
+                            <Vertex pos="-2 -4 0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -4" album="Blasted" material="bm_edge_white" texgens="1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0.242536 0.970143 0.242536" album="Blasted" material="bm_tile06_C" texgens="1 0 0 1536 0 -1 0 -6144 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="-0 -0.242536 -0.970143 -0.727607" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 768 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="521" owner="0" type="0" pos="7 31 6.25" rot="1 0 0 0" scale="" transform="1 0 0 7 0 1 0 31 0 0 1 6.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="2 -2 0.75" />
+                            <Vertex pos="2 -2 0.25" />
+                            <Vertex pos="2 -4 1.75" />
+                            <Vertex pos="2 -4 1.25" />
+                            <Vertex pos="-2 -2 0.75" />
+                            <Vertex pos="-2 -2 0.25" />
+                            <Vertex pos="-2 -4 1.75" />
+                            <Vertex pos="-2 -4 1.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 -2" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -384 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -4" album="" material="bm_trim" texgens="1 0 0 1792 0 0 -1 -1600 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0.447214 0.894427 0.223607" album="Blasted" material="bm_tile06_C" texgens="1 0 0 1536 0 -1 0 -6144 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="512 512">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="-0 -0.447214 -0.894427 -0.67082" album="Blasted" material="bm_grid_blank4" texgens="-1 0 0 0 0 -1 0 768 0 0.25 0.25" texRot="0" texScale="0.25 0.25" texDiv="256 256">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="522" owner="0" type="0" pos="9.25 41 6.25" rot="1 0 0 0" scale="" transform="1 0 0 9.25 0 1 0 41 0 0 1 6.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 -2 0.25" />
+                            <Vertex pos="0.25 -2 -0.25" />
+                            <Vertex pos="0.25 -10 0.25" />
+                            <Vertex pos="0.25 -10 -0.25" />
+                            <Vertex pos="-0.25 -2 0.25" />
+                            <Vertex pos="-0.25 -2 -0.25" />
+                            <Vertex pos="-0.25 -10 0.25" />
+                            <Vertex pos="-0.25 -10 -0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -10" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="523" owner="0" type="0" pos="6.75 41 6.25" rot="1 0 0 0" scale="" transform="1 0 0 6.75 0 1 0 41 0 0 1 6.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 -2 0.25" />
+                            <Vertex pos="0.25 -2 -0.25" />
+                            <Vertex pos="0.25 -6 0.25" />
+                            <Vertex pos="0.25 -6 -0.25" />
+                            <Vertex pos="-0.25 -2 0.25" />
+                            <Vertex pos="-0.25 -2 -0.25" />
+                            <Vertex pos="-0.25 -6 0.25" />
+                            <Vertex pos="-0.25 -6 -0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="524" owner="0" type="0" pos="9.25 45 6.25" rot="1 0 0 0" scale="" transform="1 0 0 9.25 0 1 0 45 0 0 1 6.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 -2 -1.75" />
+                            <Vertex pos="0.25 -2 -2.25" />
+                            <Vertex pos="0.25 -6 0.25" />
+                            <Vertex pos="0.25 -6 -0.25" />
+                            <Vertex pos="-0.25 -2 -1.75" />
+                            <Vertex pos="-0.25 -2 -2.25" />
+                            <Vertex pos="-0.25 -6 0.25" />
+                            <Vertex pos="-0.25 -6 -0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 640 0 -0.5 -1 -704 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0.447214 0.894427 2.45967" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="-0 -0.447214 -0.894427 -2.90689" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="525" owner="0" type="0" pos="4.75 37 6.25" rot="1 0 0 0" scale="" transform="1 0 0 4.75 0 1 0 37 0 0 1 6.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 -2 0.25" />
+                            <Vertex pos="0.25 -2 -0.25" />
+                            <Vertex pos="0.25 -6 0.25" />
+                            <Vertex pos="0.25 -6 -0.25" />
+                            <Vertex pos="-0.25 -2 0.25" />
+                            <Vertex pos="-0.25 -2 -0.25" />
+                            <Vertex pos="-0.25 -6 0.25" />
+                            <Vertex pos="-0.25 -6 -0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -6" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="526" owner="0" type="0" pos="5.5 35.25 6.25" rot="1 0 0 0" scale="" transform="1 0 0 5.5 0 1 0 35.25 0 0 1 6.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="1 0.25 0.25" />
+                            <Vertex pos="1 0.25 -0.25" />
+                            <Vertex pos="1 -0.25 0.25" />
+                            <Vertex pos="1 -0.25 -0.25" />
+                            <Vertex pos="-1 0.25 0.25" />
+                            <Vertex pos="-1 0.25 -0.25" />
+                            <Vertex pos="-1 -0.25 0.25" />
+                            <Vertex pos="-1 -0.25 -0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 -0 0 -1" album="Blasted" material="bm_edge_white" texgens="0 1 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 -1" album="Blasted" material="bm_edge_white" texgens="0 -1 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -128 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -0.25" album="Blasted" material="bm_edge_white" texgens="1 0 0 -128 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0 1 -0.25" album="Blasted" material="bm_edge_white" texgens="1 0 0 -128 0 -1 0 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="0 0 -1 -0.25" album="Blasted" material="bm_edge_white" texgens="-1 0 0 -128 0 -1 0 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="527" owner="0" type="0" pos="4.75 33 6.25" rot="1 0 0 0" scale="" transform="1 0 0 4.75 0 1 0 33 0 0 1 6.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 -2 0.25" />
+                            <Vertex pos="0.25 -2 -0.25" />
+                            <Vertex pos="0.25 -4 0.75" />
+                            <Vertex pos="0.25 -4 0.25" />
+                            <Vertex pos="-0.25 -2 0.25" />
+                            <Vertex pos="-0.25 -2 -0.25" />
+                            <Vertex pos="-0.25 -4 0.75" />
+                            <Vertex pos="-0.25 -4 0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -896 0 -0.25 -1 -64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -4" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0.242536 0.970143 0.242536" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="-0 -0.242536 -0.970143 -0.727607" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="528" owner="0" type="0" pos="4.75 31 6.75" rot="1 0 0 0" scale="" transform="1 0 0 4.75 0 1 0 31 0 0 1 6.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 -2 0.25" />
+                            <Vertex pos="0.25 -2 -0.25" />
+                            <Vertex pos="0.25 -4 1.25" />
+                            <Vertex pos="0.25 -4 0.75" />
+                            <Vertex pos="-0.25 -2 0.25" />
+                            <Vertex pos="-0.25 -2 -0.25" />
+                            <Vertex pos="-0.25 -4 1.25" />
+                            <Vertex pos="-0.25 -4 0.75" />
+                        </Vertices>
+                        <Face id="0" plane="1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -896 0 -0.5 -1 -192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -4" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0.447214 0.894427 0.67082" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="-0 -0.447214 -0.894427 -1.11803" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="530" owner="0" type="0" pos="9.25 33 6.25" rot="1 0 0 0" scale="" transform="1 0 0 9.25 0 1 0 33 0 0 1 6.25 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 -2 0.25" />
+                            <Vertex pos="0.25 -2 -0.25" />
+                            <Vertex pos="0.25 -4 0.75" />
+                            <Vertex pos="0.25 -4 0.25" />
+                            <Vertex pos="-0.25 -2 0.25" />
+                            <Vertex pos="-0.25 -2 -0.25" />
+                            <Vertex pos="-0.25 -4 0.75" />
+                            <Vertex pos="-0.25 -4 0.25" />
+                        </Vertices>
+                        <Face id="0" plane="1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 640 0 -0.25 -1 -64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -4" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0.242536 0.970143 0.242536" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="-0 -0.242536 -0.970143 -0.727607" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 3 1 5" />
+                        </Face>
+                    </Brush>
+                    <Brush id="531" owner="0" type="0" pos="9.25 31 6.75" rot="1 0 0 0" scale="" transform="1 0 0 9.25 0 1 0 31 0 0 1 6.75 0 0 0 1" group="-1" locked="0" nextFaceID="7" nextVertexID="9">
+                        <Vertices>
+                            <Vertex pos="0.25 -2 0.25" />
+                            <Vertex pos="0.25 -2 -0.25" />
+                            <Vertex pos="0.25 -4 1.25" />
+                            <Vertex pos="0.25 -4 0.75" />
+                            <Vertex pos="-0.25 -2 0.25" />
+                            <Vertex pos="-0.25 -2 -0.25" />
+                            <Vertex pos="-0.25 -4 1.25" />
+                            <Vertex pos="-0.25 -4 0.75" />
+                        </Vertices>
+                        <Face id="0" plane="1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 1 0 640 0 -0.5 -1 -192 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 3 2 0 1" />
+                        </Face>
+                        <Face id="1" plane="-1 0 0 -0.25" album="Blasted" material="bm_edge_white" texgens="0 -1 0 -1408 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 5 4 6" />
+                        </Face>
+                        <Face id="2" plane="0 1 -0 2" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 5 1 0 4" />
+                        </Face>
+                        <Face id="3" plane="0 -1 0 -4" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 0 -1 64 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 7 6 2 3" />
+                        </Face>
+                        <Face id="4" plane="-0 0.447214 0.894427 0.67082" album="Blasted" material="bm_edge_white" texgens="1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
+                            <Indices indices=" 6 4 0 2" />
+                        </Face>
+                        <Face id="5" plane="-0 -0.447214 -0.894427 -1.11803" album="Blasted" material="bm_edge_white" texgens="-1 0 0 64 0 -1 0 1536 0 0.125 0.125" texRot="0" texScale="0.125 0.125" texDiv="128 128">
                             <Indices indices=" 7 3 1 5" />
                         </Face>
                     </Brush>
