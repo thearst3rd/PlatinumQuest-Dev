@@ -128,7 +128,7 @@ $LBPref::ShowRecords = false;
 $pref::Music::Songs["LB"]     = "Spring Water.ogg";
 $pref::Music::Songs["Menu"]   = "Close To Water.ogg";
 $pref::Music::Songs["XP"]   = "shellXP.ogg";
-$pref::Music::Songs["Game"]   = "";
+$pref::Music::Songs["Game"]   = "*";
 
 //Graphics
 $pref::Snore = true;

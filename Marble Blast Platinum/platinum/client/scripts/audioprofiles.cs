@@ -382,10 +382,11 @@ function buildMusicList() {
 	}
 }
 
-$Music::Songs["LB"]     = "Comforting Mystery.ogg";
+
+$Music::Songs["LB"]     = "Spring Water.ogg";
 $Music::Songs["Menu"]   = "Close To Water.ogg";
 $Music::Songs["XP"]   = "ShellXP.ogg";
-$Music::Songs["Game"]   = "";
+$Music::Songs["Game"]   = "*";
 
 function getMusicFile(%location) {
 	//Grab the songs for the location
