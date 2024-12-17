@@ -986,7 +986,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter3/PathfindingIngenuityBM.dif";
          interiorIndex = "1";
          basePosition = "0 0 0";
@@ -1028,7 +1028,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter3/PathfindingIngenuityBM.dif";
          interiorIndex = "2";
          basePosition = "0 0 0";
@@ -1128,7 +1128,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter3/PathfindingIngenuityBM.dif";
          interiorIndex = "4";
          basePosition = "0 0 0";
@@ -1186,7 +1186,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter3/PathfindingIngenuityBM.dif";
          interiorIndex = "5";
          basePosition = "0 0 0";
@@ -1244,7 +1244,7 @@ new SimGroup(MissionGroup) {
          position = "-3 -5.5 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter3/PathfindingIngenuityBM.dif";
          interiorIndex = "6";
          basePosition = "-3 -5.5 0";
@@ -1302,7 +1302,7 @@ new SimGroup(MissionGroup) {
          position = "3 -2.5 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter3/PathfindingIngenuityBM.dif";
          interiorIndex = "7";
          basePosition = "3 -2.5 0";

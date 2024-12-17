@@ -365,7 +365,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter4/VanillaPassBM.dif";
          interiorIndex = "1";
          basePosition = "0 0 0";
@@ -575,7 +575,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter4/VanillaPassBM.dif";
          interiorIndex = "6";
          basePosition = "0 0 0";

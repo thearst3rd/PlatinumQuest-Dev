@@ -1104,7 +1104,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter1/OneMoreAscentBasher2.dif";
          interiorIndex = "0";
          basePosition = "0 0 0";
@@ -1286,7 +1286,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter1/OneMoreAscentBasher3.dif";
          interiorIndex = "0";
          basePosition = "0 0 0";
@@ -1344,7 +1344,7 @@ new SimGroup(MissionGroup) {
          position = "32 -52 9";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter1/OneMoreAscentBasher2.dif";
          interiorIndex = "0";
          basePosition = "32 -52 9";
@@ -1402,7 +1402,7 @@ new SimGroup(MissionGroup) {
          position = "-8 4 2";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter1/OneMoreAscentBasher4.dif";
          interiorIndex = "0";
          basePosition = "-8 4 2";
@@ -1461,7 +1461,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter1/OneMoreAscentBasher4.dif";
          interiorIndex = "0";
          basePosition = "0 0 0";

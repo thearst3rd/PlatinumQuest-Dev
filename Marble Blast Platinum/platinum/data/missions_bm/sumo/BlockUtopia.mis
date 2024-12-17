@@ -5,20 +5,16 @@ new SimGroup(MissionGroup) {
          CustomRadarRule = "0";
          Radar = "1";
          Time = "120000";
-         alarmStartTime = "15";
          artist = "Your name here";
-         blast = "1";
-         blueSpawnChance = "0";
          desc = "Simply indescribable.";
+         game = "Blasted";
          gameMode = "hunt";
-         level = "5";
+         level = "1";
          maxGemsPerSpawn = "6";
-         name = "Entertainment District";
-         platinumSpawnChance = "0";
+         name = "Block Utopia";
          radiusFromGem = "20";
-         redSpawnChance = "0";
+         spawnBlock = "40";
          type = "Custom";
-         yellowSpawnChance = "0";
    };
    new MissionArea(MissionArea) {
       area = "-360 -648 720 1296";
@@ -45,7 +41,7 @@ new SimGroup(MissionGroup) {
       fogVolume1 = "-1 7.45949e-031 1.3684e-038";
       fogVolume2 = "-1 1.07208e-014 8.756e-014";
       fogVolume3 = "-1 5.1012e-010 2.05098e-008";
-      materialList = "~/data/skies_bm/Night/sky_day.dml";
+      materialList = "~/data/skies_bm/Day/sky_day.dml";
       windVelocity = "1 0 0";
       windEffectPrecipitation = "0";
       noRenderBans = "1";
@@ -54,9 +50,9 @@ new SimGroup(MissionGroup) {
       fogVolumeColor3 = "128.000000 128.000000 128.000000 14435505.000000";
    };
    new Sun() {
-      direction = "0.6 0 -0.8";
-      color = "0.200000 0.200000 0.200000 1.000000";
-      ambient = "0.050000 0.050000 0.100000 1.000000";
+      direction = "-0.48795 0 -0.872872";
+      color = "1.000000 1.000000 1.000000 1.000000";
+      ambient = "0.500000 0.500000 0.600000 1.000000";
    };
    new SimGroup(PathNodeGroup) {
 
@@ -429,468 +425,15 @@ new SimGroup(MissionGroup) {
             useScale = "1";
       };
    };
-   new StaticShape() {
-      position = "-19 3 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "-19 1 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "-19 -1 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "-19 -3 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "-17 1 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "-17 -3 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "-17 3 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
    new InteriorInstance() {
       position = "0 0 0";
       rotation = "1 0 0 0";
       scale = "1 1 1";
-      interiorFile = "~/data/interiors_bm/sumo/EntertainmentDistrictBM.dif";
+      interiorFile = "~/data/interiors_bm/sumo/BlockUtopia.dif";
       showTerrainInside = "0";
    };
-   new StaticShape() {
-      position = "-12 -4 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "-12 -2 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "-12 2 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "-12 4 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "-10 0 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "-10 -2 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "-10 2 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "-10 4 16";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "BMFadePlatform";
-         StartOffset = "0";
-         fadeStyle = "fade";
-         fadeinTime = "500";
-         fadeoutTime = "500";
-         functionality = "trapdoor";
-         invisibleTime = "2000";
-         permanent = "0";
-         skin = "base";
-         visibleTime = "500";
-   };
-   new StaticShape() {
-      position = "6 -20 0.5";
-      rotation = "0 1 0 90";
-      scale = "1 1 1";
-      dataBlock = "DuctFanWalled_BM";
-   };
-   new StaticShape() {
-      position = "-6 -20 0.5";
-      rotation = "0.707107 -2.00972e-014 0.707107 180";
-      scale = "1 1 1";
-      dataBlock = "DuctFanWalled_BM";
-   };
-   new StaticShape() {
-      position = "10 -20 0.5";
-      rotation = "0.707107 -2.00972e-014 0.707107 180";
-      scale = "1 1 1";
-      dataBlock = "DuctFanWalled_BM";
-   };
-   new StaticShape() {
-      position = "-10 -20 0.5";
-      rotation = "0 1 0 90";
-      scale = "1 1 1";
-      dataBlock = "DuctFanWalled_BM";
-   };
-   new StaticShape() {
-      position = "2 -34 0.5";
-      rotation = "0.707107 -2.00972e-014 0.707107 180";
-      scale = "1 1 1";
-      dataBlock = "DuctFanWalled_BM";
-   };
-   new StaticShape() {
-      position = "-2 -34 0.5";
-      rotation = "0 1 0 90";
-      scale = "1 1 1";
-      dataBlock = "DuctFanWalled_BM";
-   };
-   new StaticShape() {
-      position = "37.25 24.25 8.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "30.5 19.75 8.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "25.5 22.75 8.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "20 18 8.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "18 25.5 8.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "22 30.75 8.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "19.75 36.25 8.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "12.75 38.75 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "9.75 35.75 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "5.75 37.75 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "2.5 33.25 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "2.5 33.25 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "10.75 28.75 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "7.25 31.5 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "12.75 33.25 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "14.5 27 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "14.5 27 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "6 24 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "8.25 26.75 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "4 29 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "12.25 22.5 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "18.75 12.25 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "20.5 7.75 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "23.75 10.5 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "26.5 14.5 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "25.5 6.5 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "27.75 9.25 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "29.5 12.5 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "33 10.75 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "30.5 7 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "35.5 13.75 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
-   new StaticShape() {
-      position = "37.25 8 4.5";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "RoundBumper_BM";
-   };
    new Trigger() {
-      position = "-21.5 33.5 0.5";
+      position = "-46.5 -9.5 1";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "SpawnTrigger";
@@ -899,7 +442,7 @@ new SimGroup(MissionGroup) {
          gravity = "0";
    };
    new Trigger() {
-      position = "-32.5 0.5 16.5";
+      position = "-54.5 24.5 1";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "SpawnTrigger";
@@ -908,7 +451,7 @@ new SimGroup(MissionGroup) {
          gravity = "0";
    };
    new Trigger() {
-      position = "-0.5 -51.5 0.5";
+      position = "-54.5 48.5 1";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "SpawnTrigger";
@@ -917,7 +460,7 @@ new SimGroup(MissionGroup) {
          gravity = "0";
    };
    new Trigger() {
-      position = "-0.5 -35.5 12.625";
+      position = "-46.5 82.5 1";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "SpawnTrigger";
@@ -926,7 +469,7 @@ new SimGroup(MissionGroup) {
          gravity = "0";
    };
    new Trigger() {
-      position = "35.5 0.5 0.5";
+      position = "-12.5 90.5 1";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "SpawnTrigger";
@@ -935,7 +478,7 @@ new SimGroup(MissionGroup) {
          gravity = "0";
    };
    new Trigger() {
-      position = "37.5 38.5 12.5";
+      position = "11.5 90.5 1";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "SpawnTrigger";
@@ -944,7 +487,7 @@ new SimGroup(MissionGroup) {
          gravity = "0";
    };
    new Trigger() {
-      position = "-4.5 32.5 0.5";
+      position = "45.5 82.5 1";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "SpawnTrigger";
@@ -953,7 +496,43 @@ new SimGroup(MissionGroup) {
          gravity = "0";
    };
    new Trigger() {
-      position = "-32.5 0.5 0.5";
+      position = "53.5 48.5 1";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "SpawnTrigger";
+      polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+         center = "1";
+         gravity = "0";
+   };
+   new Trigger() {
+      position = "53.5 24.5 1";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "SpawnTrigger";
+      polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+         center = "1";
+         gravity = "0";
+   };
+   new Trigger() {
+      position = "45.5 -9.5 1";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "SpawnTrigger";
+      polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+         center = "1";
+         gravity = "0";
+   };
+   new Trigger() {
+      position = "11.5 -17.5 1";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "SpawnTrigger";
+      polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+         center = "1";
+         gravity = "0";
+   };
+   new Trigger() {
+      position = "-12.5 -17.5 1";
       rotation = "1 0 0 0";
       scale = "1 1 1";
       dataBlock = "SpawnTrigger";
@@ -962,349 +541,154 @@ new SimGroup(MissionGroup) {
          gravity = "0";
    };
    new Item() {
-      position = "20.25 23.75 8.5";
-      rotation = "0 0 1 45";
-      scale = "1 1 1";
-      dataBlock = "SuperSpeedItem_BM";
-      collideable = "0";
-      static = "1";
-      rotate = "1";
-         noRespawn = "0";
-         showHelpOnPickup = "0";
-         timeout = "10000";
-   };
-   new Item() {
-      position = "1 3 -0.5";
+      position = "1 35 8.5";
       rotation = "1 0 0 0";
       scale = "2 2 2";
       dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
-         noParticles = "0";
          noRespawn = "0";
    };
    new Item() {
-      position = "-10 22 10.5";
-      rotation = "0 0 1 45";
-      scale = "1 1 1";
-      dataBlock = "MegaMarbleItem_BM";
-      collideable = "0";
-      static = "1";
-      rotate = "1";
-         noRespawn = "0";
-         showHelpOnPickup = "0";
-         timeout = "10000";
-   };
-   new Item() {
-      position = "3 14 0.5";
-      rotation = "0 0 1 45";
-      scale = "1 1 1";
-      dataBlock = "MegaMarbleItem_BM";
-      collideable = "0";
-      static = "1";
-      rotate = "1";
-         noRespawn = "0";
-         showHelpOnPickup = "0";
-         timeout = "10000";
-   };
-   new Item() {
-      position = "9.25 32.5 4.5";
-      rotation = "0 0 1 45";
-      scale = "1 1 1";
-      dataBlock = "SuperSpeedItem_BM";
-      collideable = "0";
-      static = "1";
-      rotate = "1";
-         noRespawn = "0";
-         showHelpOnPickup = "0";
-         timeout = "10000";
-   };
-   new Trigger(gemchange) {
-      position = "-55 55.5 -7";
-      rotation = "1 0 0 0";
-      scale = "110.5 0 87";
-      dataBlock = "GemChangeTrigger";
-      polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-         gemBonus = "-10";
-   };
-   new Item() {
-      position = "21 -6.5 0.5";
-      rotation = "0 0 1 45.0001";
-      scale = "1 1 1";
-      dataBlock = "SuperSpeedItem_BM";
-      collideable = "0";
-      static = "1";
-      rotate = "1";
-   };
-   new Trigger(gemchange) {
-      position = "55.5 55.5 -7";
-      rotation = "1 0 0 0";
-      scale = "0 127 87";
-      dataBlock = "GemChangeTrigger";
-      polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-         gemBonus = "-10";
-   };
-   new Item() {
-      position = "8.75 -42.5 0.5";
-      rotation = "0 0 1 45";
-      scale = "1 1 1";
-      dataBlock = "MegaMarbleItem_BM";
-      collideable = "0";
-      static = "1";
-      rotate = "1";
-         noRespawn = "0";
-         showHelpOnPickup = "0";
-         timeout = "10000";
-   };
-   new Item() {
-      position = "-8 -20 15";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "MegaMarbleItem_BM";
-      collideable = "0";
-      static = "1";
-      rotate = "1";
-   };
-   new Item() {
-      position = "8 -20 15";
-      rotation = "1 0 0 0";
-      scale = "1 1 1";
-      dataBlock = "SuperSpeedItem_BM";
-      collideable = "0";
-      static = "1";
-      rotate = "1";
-   };
-   new Trigger(gemchange) {
-      position = "-55 -71.5 -7";
-      rotation = "1 0 0 0";
-      scale = "110.5 0 87";
-      dataBlock = "GemChangeTrigger";
-      polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-         gemBonus = "-10";
-   };
-   new Item() {
-      position = "-15.25 -12.25 0.5";
-      rotation = "0 0 1 45";
-      scale = "1 1 1";
-      dataBlock = "MegaMarbleItem_BM";
-      collideable = "0";
-      static = "1";
-      rotate = "1";
-         noRespawn = "0";
-         showHelpOnPickup = "0";
-         timeout = "10000";
-   };
-   new Trigger(gemchange) {
-      position = "-55 55.5 -7";
-      rotation = "1 0 0 0";
-      scale = "0 127 87";
-      dataBlock = "GemChangeTrigger";
-      polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-         gemBonus = "-10";
-   };
-   new Item() {
-      position = "24.5 8.5 4.5";
-      rotation = "0 0 1 45";
-      scale = "1 1 1";
-      dataBlock = "SuperSpeedItem_BM";
-      collideable = "0";
-      static = "1";
-      rotate = "1";
-         noRespawn = "0";
-         showHelpOnPickup = "0";
-         timeout = "10000";
-   };
-   new Item() {
-      position = "-14.5 17.25 0.5";
-      rotation = "0 0 1 45";
-      scale = "1 1 1";
-      dataBlock = "SuperSpeedItem_BM";
-      collideable = "0";
-      static = "1";
-      rotate = "1";
-         noRespawn = "0";
-         showHelpOnPickup = "0";
-         timeout = "10000";
-   };
-   new Item() {
-      position = "2.75 -28.75 -0.5";
-      rotation = "0 0 1 45";
-      scale = "1 1 1";
-      dataBlock = "SuperSpeedItem_BM";
-      collideable = "0";
-      static = "1";
-      rotate = "1";
-         noRespawn = "0";
-         showHelpOnPickup = "0";
-         timeout = "10000";
-   };
-   new Trigger(gemchange) {
-      position = "-55 55.5 80";
-      rotation = "1 0 0 0";
-      scale = "110.5 127 0";
-      dataBlock = "GemChangeTrigger";
-      polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-         gemBonus = "-10";
-   };
-   new Trigger(gemchange) {
-      position = "-55 55.5 -7";
-      rotation = "1 0 0 0";
-      scale = "110.5 127 0";
-      dataBlock = "GemChangeTrigger";
-      polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-         gemBonus = "-10";
-   };
-   new Trigger(Bounds) {
-      position = "-55 -71.5 -7";
-      rotation = "1 0 0 0";
-      scale = "110.5 127 87";
-      dataBlock = "InBoundsTrigger";
-      polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
-   };
-   new Item() {
-      position = "3 -3 -0.5";
+      position = "3 35 8";
       rotation = "1 0 0 0";
       scale = "2 2 2";
       dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
-         noParticles = "0";
          noRespawn = "0";
    };
    new Item() {
-      position = "3 -1 0";
+      position = "3 37 8";
       rotation = "1 0 0 0";
       scale = "2 2 2";
       dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
-         noParticles = "0";
          noRespawn = "0";
    };
    new Item() {
-      position = "-2 0 0.5";
+      position = "-1 39 8.5";
       rotation = "1 0 0 0";
       scale = "2 2 2";
       dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
-         noParticles = "0";
          noRespawn = "0";
    };
    new Item() {
-      position = "-3 3 -0.5";
+      position = "-3 39 8";
       rotation = "1 0 0 0";
       scale = "2 2 2";
       dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
-         noParticles = "0";
          noRespawn = "0";
    };
    new Item() {
-      position = "-1 3 -4.47035e-008";
+      position = "-3 35 8";
       rotation = "1 0 0 0";
       scale = "2 2 2";
       dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
-         noParticles = "0";
          noRespawn = "0";
    };
    new Item() {
-      position = "1 -3 0.5";
+      position = "-1 33 8";
       rotation = "1 0 0 0";
       scale = "2 2 2";
       dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
-         noParticles = "0";
          noRespawn = "0";
    };
    new Item() {
-      position = "-3 -3 -0.5";
+      position = "1 39 7.5";
       rotation = "1 0 0 0";
       scale = "2 2 2";
       dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
-         noParticles = "0";
          noRespawn = "0";
    };
    new Item() {
-      position = "-1 -3 -0.5";
+      position = "5 41 7.5";
       rotation = "1 0 0 0";
       scale = "2 2 2";
       dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
-         noParticles = "0";
          noRespawn = "0";
    };
    new Item() {
-      position = "1 -1 -0.5";
+      position = "1 33 7.5";
       rotation = "1 0 0 0";
       scale = "2 2 2";
       dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
-         noParticles = "0";
          noRespawn = "0";
    };
    new Item() {
-      position = "1 1 -0.5";
+      position = "3 31 7.5";
       rotation = "1 0 0 0";
       scale = "2 2 2";
       dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
-         noParticles = "0";
          noRespawn = "0";
    };
    new Item() {
-      position = "3 3 -0.5";
+      position = "5 35 7.5";
       rotation = "1 0 0 0";
       scale = "2 2 2";
       dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
-         noParticles = "0";
          noRespawn = "0";
    };
    new Item() {
-      position = "3 1 -0.5";
+      position = "-5 33 7.5";
       rotation = "1 0 0 0";
       scale = "2 2 2";
       dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
-         noParticles = "0";
          noRespawn = "0";
    };
    new Item() {
-      position = "7 7 16.5";
-      rotation = "0 0 1 45";
-      scale = "1 1 1";
-      dataBlock = "MegaMarbleItem_BM";
+      position = "-1 37 7.5";
+      rotation = "1 0 0 0";
+      scale = "2 2 2";
+      dataBlock = "GemItemHuntPurple_BM";
       collideable = "0";
       static = "1";
       rotate = "1";
          noRespawn = "0";
-         showHelpOnPickup = "0";
-         timeout = "10000";
+   };
+   new Item() {
+      position = "-3 41 7.5";
+      rotation = "1 0 0 0";
+      scale = "2 2 2";
+      dataBlock = "GemItemHuntPurple_BM";
+      collideable = "0";
+      static = "1";
+      rotate = "1";
+         noRespawn = "0";
    };
 };
 //--- OBJECT WRITE END ---

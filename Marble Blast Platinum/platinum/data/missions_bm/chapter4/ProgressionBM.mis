@@ -1492,7 +1492,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter4/ProgressionBM.dif";
          interiorIndex = "4";
          basePosition = "0 0 0";
@@ -1550,7 +1550,7 @@ new SimGroup(MissionGroup) {
          position = "0 6 1";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter4/ProgressionBM.dif";
          interiorIndex = "4";
          basePosition = "0 6 1";
@@ -1608,7 +1608,7 @@ new SimGroup(MissionGroup) {
          position = "6 6 2";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter4/ProgressionBM.dif";
          interiorIndex = "4";
          basePosition = "6 6 2";
@@ -1650,7 +1650,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter4/ProgressionBM.dif";
          interiorIndex = "5";
          basePosition = "0 0 0";
@@ -1692,7 +1692,7 @@ new SimGroup(MissionGroup) {
          position = "4 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter4/ProgressionBM.dif";
          interiorIndex = "5";
          basePosition = "4 0 0";
@@ -1735,7 +1735,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter4/ProgressionBM.dif";
          interiorIndex = "6";
          basePosition = "0 0 0";
@@ -1785,7 +1785,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter4/ProgressionBM.dif";
          interiorIndex = "7";
          basePosition = "0 0 0";
@@ -1835,7 +1835,7 @@ new SimGroup(MissionGroup) {
          position = "10 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter4/ProgressionBM.dif";
          interiorIndex = "7";
          basePosition = "10 0 0";
@@ -1878,7 +1878,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter4/ProgressionBM.dif";
          interiorIndex = "8";
          basePosition = "0 0 0";
@@ -1920,7 +1920,7 @@ new SimGroup(MissionGroup) {
          position = "0 -14 1";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter4/ProgressionBM.dif";
          interiorIndex = "8";
          basePosition = "0 -14 1";

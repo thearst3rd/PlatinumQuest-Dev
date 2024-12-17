@@ -339,7 +339,7 @@ new SimGroup(MissionGroup) {
          position = "0 0 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter2/PerilousGauntletNew.dif";
          interiorIndex = "1";
          basePosition = "0 0 0";
@@ -381,7 +381,7 @@ new SimGroup(MissionGroup) {
          position = "0 4 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter2/PerilousGauntletNew.dif";
          interiorIndex = "1";
          basePosition = "0 4 0";
@@ -424,7 +424,7 @@ new SimGroup(MissionGroup) {
          position = "0 8 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter2/PerilousGauntletNew.dif";
          interiorIndex = "1";
          basePosition = "0 8 0";
@@ -467,7 +467,7 @@ new SimGroup(MissionGroup) {
          position = "-8 16 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter2/PerilousGauntletNew.dif";
          interiorIndex = "1";
          basePosition = "-8 16 0";
@@ -510,7 +510,7 @@ new SimGroup(MissionGroup) {
          position = "-8 20 0";
          rotation = "1 0 0 0";
          scale = "1 1 1";
-         dataBlock = "PathedDefault";
+         dataBlock = "PathedMovingBlock";
          interiorResource = "platinum/data/interiors_bm/chapter2/PerilousGauntletNew.dif";
          interiorIndex = "1";
          basePosition = "-8 20 0";
