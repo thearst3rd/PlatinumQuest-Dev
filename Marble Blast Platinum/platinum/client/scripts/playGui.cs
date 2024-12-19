@@ -326,33 +326,6 @@ function PlayGui::updateGems(%this, %updateMax) {
 		$PlayGuiGem = false;
 	}
 
-
-	if ($PlayGuiTT) {
-		// PQ gets its own TT
-		if ($currentGame $= "PlatinumQuest") {
-			%skins = "base";
-			%dts = $usermods @ "/data/shapes_pq/gameplay/powerups/timetravel.dts";
-		} else if
-		   ($currentGame $= "Ultra") {
-			%skins = "base";
-			%dts = $usermods @ "/data/shapes_mbu/items/timetravel.dts";
-		} else if
-		   (Sky.materialList $= "platinum/data/skies/sky_day.dml") {
-			%skins = "mbg";
-			%dts = $usermods @ "/data/shapes/items/timetravel.dts";
-		} else {
-			%skins = "base";
-			%dts = $usermods @ "/data/shapes/items/timetravel.dts";
-		}
-
-		// choose it
-		%skin = getWord(%skins, getRandom(0, getWordCount(%skins) - 1));
-		echo("Setting the PlayGUI TT to" SPC %skin);
-
-		PGCountdownTTImage.setModel(%dts, %skin);
-		$PlayGuiTT = false;
-	}
-
 	if (!ClientMode::callback("shouldUpdateGems", true))
 		return;
 
@@ -746,7 +719,6 @@ function PlayGui::resetTimer(%this,%dt) {
 
 	%this.stopCountdown();
 	%this.updateCountdown();
-	%this.updateTimeTravelCountdown(); // main_gi v4.2.3
 	%this.updateCountdownLeft();
 	%this.updateControls();
 	%this.stopTimer();
@@ -916,9 +888,6 @@ package frameAdvance {
 
 		ClientMode::callBack("onFrameAdvance", "", %timeDelta);
 
-		//Cannon
-		updateCannon(%timeDelta);
-
 		if ($Client::MovingObjectsActive) {
 			updateClientMovingObjects(%timeDelta);
 			updateClientParentedObjects(%timeDelta);
@@ -1015,11 +984,6 @@ function PlayGui::updateTimer(%this, %timeInc) {
 			%this.bonusTime = 0;
 		}
 	}
-	%this.updateTimeTravelCountdown(); // main_gi v4.2.3
-	if (!%this.stopped && !%this.bonusTime) {
-		alxStop($BonusSfx);
-		$BonusSfx = "";
-	}
 	%this.allTTime = add64_int(%this.allTTime, %timeInc);
 
 	%mult = ClientMode::callback("timeMultiplier", 1);
@@ -1036,108 +1000,6 @@ function PlayGui::updateTimer(%this, %timeInc) {
 	}
 
 	%this.updateControls();
-}
-
-function clientCmdUpdateTimeTravelCountdown() {
-	// main_gi v4.2.3: By default, the color DOESN'T change to green properly if you get a TT timer during the start phase, if you end the level with a TT, or if you enter a timestop with a TT. So this function is called in /server/powerups.cs (TimeTravelItem::onPickup), /server/triggers.cs (TimeStopTrigger), /server/game.cs (endGameSetup).
-	PlayGui.updateTimeTravelCountdown();
-}
-
-function PlayGui::updateTimeTravelCountdown(%this) {
-	if (!$pref::timeTravelTimer) {
-		PGCountdownTT.setVisible(false);
-		return;
-	}
-
-	%preciseMode = $pref::timeTravelTimer == 2;
-	%timeUsed = %this.bonusTime;
-	if (!%preciseMode)
-		%timeUsed += 99; // When you pick up a 5s timer, it should start by displaying 5.0, instead of 4.9. This also prevents the TT timer from showing 0.0. But if you add 100, picking up a 5s timer can show "5.1". Turns out adding 99 actually works perfectly here.
-	else if (!$pref::Thousandths)
-		%timeUsed += 9;
-
-	if (%timeUsed > 999999)
-		%timeUsed = 999999;
-
-	%secondsLeft = mFloor(%timeUsed / 1000);
-	%tenths = mFloor(%timeUsed / 100) % 10;
-	%hundredths = mFloor(%timeUsed / 10) % 10;
-	%thousandths = %timeUsed % 10;
-
-	%one = mFloor(%secondsLeft) % 10;
-	%ten = mFloor(%secondsLeft / 10) % 10;
-	%hun = mFloor(%secondsLeft / 100);
-
-	%color = (%this.stopped || $PlayTimerActive == 0) ? $TimeColor["stopped"] : $TimeColor["normal"]; // can try $Game::TimeStoppedClients >= 1
-
-	%offsetIfThousandths = $pref::Thousandths ? 5 : 0;
-	if (%secondsLeft < 10) {
-		PGCountdownTTFirstDigit.setNumberColor(%one, %color);
-		PGCountdownTTSecondDigit.setNumberColor(%tenths, %color);
-		PGCountdownTTSecondDigit.setPosition("83" + %offsetIfThousandths SPC "22");
-		PGCountdownTTThirdDigit.setNumberColor(%hundredths, %color);
-		PGCountdownTTThirdDigit.setPosition("109" + %offsetIfThousandths SPC "22");
-		PGCountdownTTFourthDigit.setNumberColor(%thousandths, %color);
-		// This shenanigans with three decimal points is ridiculous and I hate it, but I couldn't find a better way to
-		// get the decimal points to layer the way they should otherwise. Our previous solution of repositioning the
-		// decimal point caused it to appear in at the wrong depth which looks very strange in the MBG texture pack. If
-		// there's a way to change the render order of it and keep just one decimal point, that'd be much better!!
-		PGCountdownTTPoint1.setVisible(true);
-		PGCountdownTTPoint1.setPosition("63" + %offsetIfThousandths SPC "22");
-		PGCountdownTTPoint1.setNumberColor("point", %color);
-		PGCountdownTTPoint2.setVisible(false);
-		PGCountdownTTPoint3.setVisible(false);
-		%digits = 4;
-	} else if (%secondsLeft < 100) {
-		PGCountdownTTFirstDigit.setNumberColor(%ten, %color);
-		PGCountdownTTSecondDigit.setNumberColor(%one, %color);
-		PGCountdownTTSecondDigit.setPosition("69" + %offsetIfThousandths SPC "22");
-		PGCountdownTTThirdDigit.setNumberColor(%tenths, %color);
-		PGCountdownTTThirdDigit.setPosition("109" + %offsetIfThousandths SPC "22");
-		PGCountdownTTFourthDigit.setNumberColor(%hundredths, %color);
-		PGCountdownTTFifthDigit.setNumberColor(%thousandths, %color);
-		PGCountdownTTPoint1.setVisible(false);
-		PGCountdownTTPoint2.setVisible(true);
-		PGCountdownTTPoint2.setPosition("89" + %offsetIfThousandths SPC "22");
-		PGCountdownTTPoint2.setNumberColor("point", %color);
-		PGCountdownTTPoint3.setVisible(false);
-		%digits = 5;
-	} else {
-		PGCountdownTTFirstDigit.setNumberColor(%hun, %color);
-		PGCountdownTTSecondDigit.setNumberColor(%ten, %color);
-		PGCountdownTTSecondDigit.setPosition("69" + %offsetIfThousandths SPC "0");
-		PGCountdownTTThirdDigit.setNumberColor(%one, %color);
-		PGCountdownTTThirdDigit.setPosition("95" + %offsetIfThousandths SPC "0");
-		PGCountdownTTFourthDigit.setNumberColor(%tenths, %color);
-		PGCountdownTTFifthDigit.setNumberColor(%hundredths, %color);
-		PGCountdownTTSixthDigit.setNumberColor(%thousandths, %color);
-		PGCountdownTTPoint1.setVisible(false);
-		PGCountdownTTPoint2.setVisible(false);
-		PGCountdownTTPoint3.setVisible(true);
-		PGCountdownTTPoint3.setPosition("115" + %offsetIfThousandths SPC "0");
-		PGCountdownTTPoint3.setNumberColor("point", %color);
-		%digits = 6;
-	}
-	
-	PGCountdownTTImage.setPosition("22" + %offsetIfThousandths SPC "34");
-	PGCountdownTTFirstDigit.setPosition("43" + %offsetIfThousandths SPC "22");
-	PGCountdownTTFourthDigit.setPosition("135" + %offsetIfThousandths SPC "22");
-	PGCountdownTTFifthDigit.setPosition("161" + %offsetIfThousandths SPC "22");
-	PGCountdownTTSixthDigit.setPosition("187" + %offsetIfThousandths SPC "22");
-
-	if (!%preciseMode)
-		%digits -= 2;
-	else if (!$pref::Thousandths)
-		%digits -= 1;
-	
-	//PGCountdownTTFirstDigit.setVisible(%digits >= 1); // Always true
-	//PGCountdownTTSecondDigit.setVisible(%digits >= 2); // Always true
-	PGCountdownTTThirdDigit.setVisible(%digits >= 3);
-	PGCountdownTTFourthDigit.setVisible(%digits >= 4);
-	PGCountdownTTFifthDigit.setVisible(%digits >= 5);
-	PGCountdownTTSixthDigit.setVisible(%digits >= 6);
-
-	PGCountdownTT.setVisible(%this.bonusTime);
 }
 
 function PlayGui::updateCountdownLeft(%this, %delta) {

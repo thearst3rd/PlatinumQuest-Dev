@@ -1,0 +1,23 @@
+// This map has been written by the Torque Constructor
+// For more information see http://www.garagegames.com
+
+{
+   "classname" "worldspawn"
+   "detail_number" "0"
+   "min_pixels" "250"
+   "geometry_scale" "32"
+   "light_geometry_scale" "8"
+   "ambient_color" "0 0 0"
+   "emergency_ambient_color" "0 0 0"
+   "mapversion" "220"
+
+   // Brush 0
+   {
+      ( -544 -1152 592 ) ( -544 -1152 656 ) ( -544 -1088 656 ) bm_grid_blank3 [ 0 1 0 4608 ] [ 0 0 -1 2624 ] 0 0.25 0.25
+      ( -608 -1152 592 ) ( -608 -1088 592 ) ( -608 -1088 656 ) bm_grid_blank3 [ 0 -1 0 -4352 ] [ 0 0 -1 2624 ] 0 0.25 0.25
+      ( -608 -1088 592 ) ( -544 -1088 592 ) ( -544 -1088 656 ) bm_grid_blank3 [ -1 0 0 -2176 ] [ 0 0 -1 2624 ] 0 0.25 0.25
+      ( -608 -1152 592 ) ( -608 -1152 656 ) ( -544 -1152 656 ) bm_grid_blank3 [ 1 0 0 2432 ] [ 0 0 -1 2624 ] 0 0.25 0.25
+      ( -608 -1152 656 ) ( -608 -1088 656 ) ( -544 -1088 656 ) bm_grid_blank3 [ 1 0 0 2432 ] [ 0 -1 0 -4352 ] 0 0.25 0.25
+      ( -608 -1152 592 ) ( -544 -1152 592 ) ( -544 -1088 592 ) bm_grid_blank3 [ -1 0 0 -2176 ] [ 0 -1 0 -4352 ] 0 0.25 0.25
+   }
+}

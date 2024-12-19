@@ -4707,5 +4707,40 @@ new SimGroup(MissionGroup) {
       rotate = "1";
          noRespawn = "0";
    };
+   new StaticShape() {
+      position = "15 -3 0.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "LandMine_BM";
+         resetTime = "Default";
+   };
+   new StaticShape() {
+      position = "17 -3 0.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "LandMine_BM";
+         resetTime = "Default";
+   };
+   new StaticShape() {
+      position = "19 -3 0.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "LandMine_BM";
+         resetTime = "Default";
+   };
+   new StaticShape() {
+      position = "19 -1 0.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "LandMine_BM";
+         resetTime = "Default";
+   };
+   new StaticShape() {
+      position = "17 -1 0.5";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      dataBlock = "LandMine_BM";
+         resetTime = "Default";
+   };
 };
 //--- OBJECT WRITE END ---

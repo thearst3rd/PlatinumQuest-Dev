@@ -293,7 +293,6 @@ function buildMDataGroup() {
 //-------------------------------------------------------------------------------------
 
 function useMyMarbleCamera() {
-	return !isCannonActive() && MPMyMarbleExists();
 }
 
 function getMarbleCamYaw() {

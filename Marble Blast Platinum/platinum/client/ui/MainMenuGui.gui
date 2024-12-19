@@ -426,14 +426,6 @@ function MainMenuGui::checkScriptError(%this) {
 	}
 }
 
-function MainMenuGui::fixSizing(%this) {
-	if (%this.isAwake())
-		%this.schedule(getWord(getResolution(), 0) == 640 ? 10 : 100, fixSizing);
-	MenuCircle1.setExtent((getWord(Canvas.getExtent(), 1) * 154 / 948) SPC getWord(Canvas.getExtent(), 1));
-	MenuCircle2.setExtent((getWord(Canvas.getExtent(), 1) * 343 / 948) SPC(getWord(Canvas.getExtent(), 1) * 191 / 948));
-	MenuCircle2.setPosition(VectorAdd(VectorSub(Canvas.getExtent(), MenuCircle2.getExtent()), "25 25"));
-}
-
 function MainMenuGui::play(%this) {
 	if (getWord(getResolution(), 0) & 1 || getWord(getResolution(), 1) & 1) {
 		MessageBoxYesNo("Weird Resolution", "What type of resolution is " @ getResolution() @ ". You may have some problems.", "justPlayAlready();", "");

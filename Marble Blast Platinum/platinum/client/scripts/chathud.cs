@@ -408,7 +408,7 @@ function updateBubbleAnimation(%progress) {
 	// is to just pretend we have more text.
 
 	%isEndGame = (isObject(EndGameDlg.getGroup()) && EndGameDlg.getGroup().getName() $= "Canvas");
-	%moveChatUp = (lb() && $pref::ScreenshotMode == 0) || isCannonActive();
+	%moveChatUp = (lb() && $pref::ScreenshotMode == 0);
 
 	if (%moveChatUp) {
 		%textSize += (20 * ($LBPref::ChatMessageSize)) - 10; // previously 110 without the ChatMessageSize change
@@ -492,7 +492,7 @@ function addDownYellowMBG(%message,%color){
 		DownYellowMBGShadow.setAlpha(1.0);
 		$DownYellowFadeTimer = schedule(3000, 0, fadeDownYellowMBG, 1.0);
 		if (lb()) {
-			%hideChat      = $pref::ScreenshotMode > 0 || %isEndGame || isCannonActive();
+			%hideChat      = $pref::ScreenshotMode > 0;
 			if (!%hideChat) {
 				DownYellowMBG.setPosition(0 SPC getWord(VectorSub(PlayGui.getExtent(), 0 SPC 62 + (20 * ($LBPref::ChatMessageSize))), 1)); // Change position based on height of chat, if visible
 			}
