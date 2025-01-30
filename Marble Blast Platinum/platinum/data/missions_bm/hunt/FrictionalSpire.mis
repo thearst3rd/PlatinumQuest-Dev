@@ -4,21 +4,21 @@ new SimGroup(MissionGroup) {
    new ScriptObject(MissionInfo) {
          CustomRadarRule = "0";
          Time = "180000";
-         artist = "Your name here";
-         awesomeScore = "0";
+         artist = "James C.";
+         awesomeScore = "125";
          blast = "1";
-         desc = "Simply indescribable.";
+         desc = "Hunt for the gems while mastering the friction surfaces.";
          game = "Blasted";
          gameMode = "hunt";
-         goldScore = "0";
+         goldScore = "50";
          level = "6";
          maxGemsPerSpawn = "9";
          name = "Frictional Spire";
-         platinumScore = "0";
+         platinumScore = "75";
          radiusFromGem = "20";
          spawnBlock = "40";
          type = "Custom";
-         ultimateScore = "0";
+         ultimateScore = "100";
    };
    new MissionArea(MissionArea) {
       area = "-360 -648 720 1296";
@@ -61,8 +61,8 @@ new SimGroup(MissionGroup) {
    new SimGroup(PathNodeGroup) {
 
       new StaticShape(CameraPath1) {
-         position = "-10.8894 111.003 12.3648";
-         rotation = "0.031847 -0.191262 0.981022 161.445";
+         position = "-0.174693 -1.62035 -6.93317";
+         rotation = "0.210876 0.58092 0.78617 211.856";
          scale = "1 1 1";
          dataBlock = "PathNode";
             FinalRotOffset = "1 0 0 0";
@@ -5059,7 +5059,7 @@ new SimGroup(MissionGroup) {
          noRespawn = "0";
    };
    new Trigger(Bounds) {
-      position = "-27.5008 -27.5007 -91.5";
+      position = "-27.5008 -27.5007 -114";
       rotation = "1 0 0 0";
       scale = "55.0016 55.0013 228";
       dataBlock = "InBoundsTrigger";
