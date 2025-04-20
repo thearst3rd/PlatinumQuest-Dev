@@ -799,7 +799,7 @@ function PlayGui::refreshRed(%this) {
 		} else {
 			%dir = ClientMode::callback("timeMultiplier", 1);
 			if      (%dir > 0)
-				%this.isAlarmActive = %this.currentTime >= (MissionInfo.time - $PlayTimerAlarmStartTime) && %this.currentTime < MissionInfo.time;
+				%this.isAlarmActive = (MissionInfo.time > 0) && %this.currentTime >= (MissionInfo.time - $PlayTimerAlarmStartTime) && %this.currentTime < MissionInfo.time;
 			else if (%dir < 0)
 				%this.isAlarmActive = %this.currentTime <=                     $PlayTimerAlarmStartTime  && %this.currentTime > 0;
 			else

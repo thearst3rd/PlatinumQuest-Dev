@@ -241,7 +241,7 @@ function CompleteDemoDlg::open(%this, %callback) {
 		if ($Game::EasterEgg && $Game::EasterEggTime >= 0) {
 			%eggScore = $Game::EasterEggTime;
 			%format = formatTime(%eggScore);
-			%title = MissionInfo.name SPC "Egg" SPC %format;
+			%title = MissionInfo.name SPC "LumiCube" SPC %format;
 		} else {
 			%title = MissionInfo.name SPC "Unfinished Run";
 		}

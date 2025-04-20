@@ -615,9 +615,9 @@ function ExitGameDlg::onWake(%this) {
 	%info = getMissionInfo($Client::MissionFile);
 
 	if ($pref::restartReloadsLevels)
-		ExitGameRestart.setText("           Reload");
+		ExitGameRestart.setText("       Reload");
 	else
-		ExitGameRestart.setText("           Restart");
+		ExitGameRestart.setText("       Restart");
 
 	%shouldEndLevel = false;
 	if (($pref::AllowEndingScoreLevelsEarly || RtaSpeedrun.isEnabled) && (stripos(%info.gameMode, "hunt") != -1 || stripos(%info.gameMode, "gemmadness") != -1)) {
@@ -625,9 +625,9 @@ function ExitGameDlg::onWake(%this) {
 		%shouldEndLevel = PlayGui.gemCount >= %scoreToBeat;
 	}
 	if (%shouldEndLevel)
-		ExitGameYes.setText("           End Level");
+		ExitGameYes.setText("       End Level");
 	else
-		ExitGameYes.setText("           Exit");
+		ExitGameYes.setText("       Exit");
 
 	%title = "<just:center>" @ shrinkToFit(%info.name, $DefaultFont["Bold"], 42, 24, getWord(ExitGameInfo.getExtent(), 0));
 	ExitGameInfoTitle.setText(%title);
