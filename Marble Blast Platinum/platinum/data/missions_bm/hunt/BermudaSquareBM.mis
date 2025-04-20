@@ -9,7 +9,7 @@ new SimGroup(MissionGroup) {
          blast = "1";
          blueSpawnChance = "0";
          desc = "Grab gems above the waters of the Bermuda Square.";
-         game = "Blasted";
+         game = "BlastedMP";
          gameMode = "hunt";
          goldScore = "40";
          level = "2";

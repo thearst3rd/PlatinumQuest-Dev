@@ -7,7 +7,7 @@ new SimGroup(MissionGroup) {
          artist = "James C.";
          blast = "1";
          desc = "You won\'t have to place any flags for this one.";
-         game = "Blasted";
+         game = "BlastedMP";
          gameMode = "hunt";
          level = "13";
          maxGemsPerSpawn = "6";

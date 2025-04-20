@@ -5,7 +5,7 @@ new SimGroup(MissionGroup) {
          artist = "James C.";
          awesomeTime = "20000";
          desc = "Press the button located at the summit to unlock the finish.";
-         game = "Blasted";
+         game = "BlastedBonus";
          gameMode = "null";
          level = "4";
          music = "Pictures of Life.ogg";

@@ -6,7 +6,7 @@ new SimGroup(MissionGroup) {
          awesomeTime = "30000";
          desc = "Challenges are approaching.";
          fanStrength = "30";
-         game = "Blasted";
+         game = "BlastedBonus";
          gameMode = "null";
          goldTime = "45000";
          level = "3";

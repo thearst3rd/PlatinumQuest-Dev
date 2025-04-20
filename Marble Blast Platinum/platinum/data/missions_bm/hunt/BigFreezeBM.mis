@@ -9,7 +9,7 @@ new SimGroup(MissionGroup) {
          awesomeScore = "100";
          blast = "1";
          desc = "Freezing, isn\'t it?";
-         game = "Blasted";
+         game = "BlastedMP";
          gameMode = "hunt";
          level = "2";
          maxGemsPerSpawn = "9";

@@ -6,7 +6,7 @@ new SimGroup(MissionGroup) {
          artist = "James C.";
          awesomeTime = "20000";
          desc = "Choose the correct or safest path.";
-         game = "Blasted";
+         game = "BlastedBonus";
          gameMode = "null";
          level = "10";
          music = "Down Side.ogg";
