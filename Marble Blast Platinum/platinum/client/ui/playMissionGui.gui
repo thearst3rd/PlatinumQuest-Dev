@@ -50,28 +50,28 @@ new GuiControlProfile(PMBarButtonRightProfile : PQButtonProfile) {
 	hasBitmapArray = true;
 };
 new GuiControlProfile(PMBarButtonNoShadowProfile : PQButtonProfile) {
-	fillColor = "85 85 85 255";
+	fillColor = "241 242 242 255";
 	fillColorNA = "153 153 153 255";
 	justify = "center";
 	bitmap = "./play/barbuttonnoshadow.png";
 	hasBitmapArray = true;
 };
 new GuiControlProfile(PMBarButtonLeftNoShadowProfile : PQButtonProfile) {
-	fillColor = "85 85 85 255";
+	fillColor = "241 242 242 255";
 	fillColorNA = "153 153 153 255";
 	justify = "center";
 	bitmap = "./play/barbuttonleftnoshadow.png";
 	hasBitmapArray = true;
 };
 new GuiControlProfile(PMBarButtonRightNoShadowProfile : PQButtonProfile) {
-	fillColor = "85 85 85 255";
+	fillColor = "241 242 242 255";
 	fillColorNA = "153 153 153 255";
 	justify = "center";
 	bitmap = "./play/barbuttonrightnoshadow.png";
 	hasBitmapArray = true;
 };
 new GuiControlProfile(PMBarButtonSingleNoShadowProfile : PQButtonProfile) {
-	fillColor = "85 85 85 255";
+	fillColor = "241 242 242 255";
 	fillColorNA = "153 153 153 255";
 	justify = "center";
 	bitmap = "./play/barbuttonsinglenoshadow.png";
