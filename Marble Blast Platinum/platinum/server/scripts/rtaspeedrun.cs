@@ -126,7 +126,7 @@ function RtaSpeedrun::updateTimers(%this) {
 	}
 	$pref::Thousandths = %prevPrefThousandths;
 	if (%showSplit) {
-		%suffix = %lastTimeIsEgg ? "Egg Split" : "Split";
+		%suffix = %lastTimeIsEgg ? "Cube Split" : "Split";
 		%text = %text NL formatTimeHoursMs(%lastTime) SPC %suffix;
 	}
 	%this.setTimerText(%text);

@@ -1176,7 +1176,7 @@ new GuiControl(PlayMissionGui) {
 		profile = "GuiMLTextProfile";
 		horizSizing = "right";
 		vertSizing = "bottom";
-		position = "380 70";
+		position = "390 180";
 		extent = "600 100";
 		minExtent = "8 8";
 		visible = "1";
@@ -4882,7 +4882,7 @@ function PlayMissionGui::swapMissionListMP(%this) {
 }
 
 function PlayMissionGui::updateRtaSpeedrunTimer(%this, %text) {
-	PM_RtaSpeedrunTimer.setText("<condensed:48><color:FFFFFF><shadow:2:2><shadowcolor:777777>" @ %text);
+	PM_RtaSpeedrunTimer.setText("<condensed:48><color:FFFFFF>" @ %text);
 }
 
 //-----------------------------------------------------------------------------
