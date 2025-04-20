@@ -220,7 +220,7 @@ function MissionList::getMission(%this, %game, %difficulty, %file) {
 function MissionList::getMissionPreview(%this, %game, %difficulty, %mission) {
 	%file = %mission.file;
 	if (%mission.previews_directory !$= "") {
-			%dir = expandFilename(%mission.previews_directory);
+		%dir = expandFilename(%mission.previews_directory);
 	} else
 		%dir = expandFilename(%this.getPreviewDirectory(%game, %difficulty));
 
@@ -812,12 +812,12 @@ function OnlineMissionList::buildMissionList(%this, %game, %difficulty) {
 				}
 
 				//CRC BABYYY
-				%hash = getMissionHash(%info);
-				if (%hash $= %missionObj.hash) {
-					echo("Matched hash: " @ %missionObj SPC %info SPC %info.name);
-				} else {
-					error("Unmatched hash: " @ %missionObj SPC %info SPC %info.name);
-				}
+				// %hash = getMissionHash(%info);
+				// if (%hash $= %missionObj.hash) {
+				// 	echo("Matched hash: " @ %missionObj SPC %info SPC %info.name);
+				// } else {
+				// 	error("Unmatched hash: " @ %missionObj SPC %info SPC %info.name);
+				// }
 			} else {
 				//You don't have it? Just put an empty mission there instead
 				MissionInfoGroup.add(%info = new ScriptObject() {
@@ -1111,16 +1111,29 @@ function ServerMissionList::shouldCheckAchievements(%this, %game) {
 //-----------------------------------------------------------------------------
 
 function MarblelandMissionList::getGameList(%this) {
-	return "Levels\tLevels" NL
-	       "Packs\tPacks";
+	if (mp()) {
+		return "Marbleland\tMarbleland";
+	} else {
+		return "Levels\tLevels" NL
+		       "Packs\tPacks";
+	}
 }
 
 function MarblelandMissionList::getDifficultyList(%this, %game) {
+	if (mp()) {
+		return "Hunt\tHunt" NL
+		       "Collection\tCollection" NL
+		       "King\tKing" NL
+		       "Mega\tMega" NL
+		       "Race\tRace" NL
+		       "Uncategorized\tUncategorized";
+	}
+
 	switch$ (%game) {
 	case "Levels":
 		return "All\tAlphabetical" NL
 		       "Newest\tNewest First" NL
-			   "Installed\tInstalled Only";
+		       "Installed\tInstalled Only";
 	case "Packs":
 		%diffTree = %this.getDifficultyTree(%game);
 		%this.difficultyTreeList = "";
@@ -1192,6 +1205,23 @@ function MarblelandMissionList::getDifficultyTree(%this, %game) {
 
 function MarblelandMissionList::hasMissionList(%this, %game, %difficulty) {
 	switch$ (%game) {
+	case "Marbleland":
+		switch$ (%difficulty) {
+		case "Collection":
+			return true;
+		case "Hunt":
+			return true;
+		case "King":
+			return true;
+		case "Mega":
+			return true;
+		case "Race":
+			return true;
+		case "Uncategorized":
+			return true;
+		default:
+			return false;
+		}
 	case "Levels":
 		switch$ (%difficulty) {
 		case "All":
@@ -1219,6 +1249,9 @@ function MarblelandMissionList::buildMissionList(%this, %game, %difficulty) {
 
 	%sort = MissionSortSearchName;
 	switch$ (%game) {
+	case "Marbleland":
+		%ml = $MarblelandMissionList;
+		%sort = MissionSortSearchName;
 	case "Levels":
 		switch$ (%difficulty) {
 		case "All":
@@ -1242,8 +1275,33 @@ function MarblelandMissionList::buildMissionList(%this, %game, %difficulty) {
 			%mis = marblelandGetMission(%mis); // MarblelandPackages has an id
 		}
 
+		if (%game $= "Marbleland" && %mis.gameType !$= "multi") {
+			continue; // This is for MP
+		}
+
 		if (%mis.class $= "Array") {
 			continue;
+		}
+
+		if (%game $= "Marbleland") {
+			%isCollection = stristr(%mis.gameMode, "collection") != -1;
+			%isHunt = stristr(%mis.gameMode, "hunt") != -1;
+			%isKing = stristr(%mis.gameMode, "king") != -1;
+			%isMega = stristr(%mis.gameMode, "mega") != -1;
+			%isRace = stristr(%mis.gameMode, "race") != -1;
+
+			if (%isCollection && %difficulty !$= "Collection")
+				continue;
+			if (%isHunt && %difficulty !$= "Hunt")
+				continue;
+			if (%isKing && %difficulty !$= "King")
+				continue;
+			if (%isMega && %difficulty !$= "Mega")
+				continue;
+			if (%isRace && %difficulty !$= "Race")
+				continue;
+			if (!(%isCollection || %isHunt || %isKing || %isMega || %isRace) && %difficulty !$= "Uncategorized")
+				continue;
 		}
 
 		MissionInfoGroup.add(%info = new ScriptObject() {
@@ -1328,7 +1386,7 @@ function MarblelandMissionList::addInstalledMission(%this, %mis) {
 		});
 		%list.addEntry(%info);
 		%list.sort(MissionSortSearchName);
-		
+
 		//Fix level numbers
 		%count = %list.getSize();
 		for (%i = 0; %i < %count; %i ++) {

@@ -230,36 +230,36 @@ function onMissionLoaded() {
 	// Due to the sky not properly changing back when MBXP is activated, I will use this hack instead. ~Connie
 	// (there's probably some better way to do this, but for now this will do I guess) ~Also Connie
 	if ($TexturePack::MBXP && Sky.materialList $= "platinum/data/skies/sky_day.dml") { // If the player has the MBXP pack on and the sky is MBG, set it to the MBXP one.
-	   %sky = Sky.getID();
-	   new Sky(Sky) {
-		   position = "0 0 0";
-		   rotation = "1 0 0 0";
-		   scale = "1 1 1";
-		   cloudHeightPer[0] = %sky.cloudheightper0;
-		   cloudHeightPer[1] = %sky.cloudheightper1;
-		   cloudHeightPer[2] = %sky.cloudheightper2;
-		   cloudSpeed1 = %sky.cloudspeed1;
-		   cloudSpeed2 = %sky.cloudspeed2;
-		   cloudSpeed3 = %sky.cloudspeed3;
-		   visibleDistance = %sky.visibledistance;
-		   useSkyTextures = %sky.useskytextures;
-		   renderBottomTexture = %sky.renderbottomtexture;
-		   SkySolidColor = %sky.skysolidcolor;
-		   fogDistance = %sky.fogdistance;
-		   fogColor = %sky.fogcolor;
-		   fogVolume1 = %sky.fogvolume1;
-	   	   fogVolume2 = %sky.fogvolume2;
-		   fogVolume3 = %sky.fogvolume3;
-		   materialList = "platinum/data/skies/sky_mbxp/sky_day.dml";
-		   windVelocity = %sky.windvelocity;
-		   windEffectPrecipitation = %sky.windEffectPrecipitation;
-		   noRenderBans = %sky.norenderbans;
-		   fogVolumeColor1 = %sky.fogvolumecolor1;
-		   fogVolumeColor2 = %sky.fogvolumecolor2;
-		   fogVolumeColor3 = %sky.fogvolumecolor3;
-	   };
-	   %sky.delete();
-	   MissionData.add(Sky);
+		%sky = Sky.getID();
+		new Sky(Sky) {
+			position = "0 0 0";
+			rotation = "1 0 0 0";
+			scale = "1 1 1";
+			cloudHeightPer[0] = %sky.cloudheightper0;
+			cloudHeightPer[1] = %sky.cloudheightper1;
+			cloudHeightPer[2] = %sky.cloudheightper2;
+			cloudSpeed1 = %sky.cloudspeed1;
+			cloudSpeed2 = %sky.cloudspeed2;
+			cloudSpeed3 = %sky.cloudspeed3;
+			visibleDistance = %sky.visibledistance;
+			useSkyTextures = %sky.useskytextures;
+			renderBottomTexture = %sky.renderbottomtexture;
+			SkySolidColor = %sky.skysolidcolor;
+			fogDistance = %sky.fogdistance;
+			fogColor = %sky.fogcolor;
+			fogVolume1 = %sky.fogvolume1;
+			fogVolume2 = %sky.fogvolume2;
+			fogVolume3 = %sky.fogvolume3;
+			materialList = "platinum/data/skies/sky_mbxp/sky_day.dml";
+			windVelocity = %sky.windvelocity;
+			windEffectPrecipitation = %sky.windEffectPrecipitation;
+			noRenderBans = %sky.norenderbans;
+			fogVolumeColor1 = %sky.fogvolumecolor1;
+			fogVolumeColor2 = %sky.fogvolumecolor2;
+			fogVolumeColor3 = %sky.fogvolumecolor3;
+		};
+		%sky.delete();
+		MissionData.add(Sky);
 	}
 
 	$Game::GemCount = countGems(MissionGroup);
@@ -318,6 +318,10 @@ function onMissionReset() {
 
 	if (mp() && $MPPref::Server::DoubleSpawnGroups || $MPPref::Server::CompetitiveMode) {
 		$MP::ScoreSendingDisabled = true;
+	}
+
+	if (mp() && !$MPPref::Server::CompetitiveMode && !$MPPref::Server::DoubleSpawnGroups) {
+		$MP::ScoreSendingDisabled = false;
 	}
 
 	// Reset the players and inform them we're starting
@@ -404,6 +408,8 @@ function startGame() {
 	}
 	onNextFrame(setGameState, "start");
 	onNextFrame(activateMovingObjects, true);
+
+	RtaSpeedrun.missionStarted();
 }
 
 function endGameSetup() {
@@ -426,6 +432,8 @@ function endGameSetup() {
 	Mode::callback("onEndGameSetup", "");
 	serverCbOnEndGameSetup();
 	serverSendCallback("onEndGameSetup");
+
+	RtaSpeedrun.missionEnded();
 
 	if ($Server::ServerType $= "MultiPlayer") {
 		// update the score list
@@ -551,7 +559,7 @@ function serverStateStart() {
 	Time::set(Mode::callback("getStartTime", 0));
 	if (!$TexturePack::MBXP || lb()) {
 		$Game::StateSchedule = schedule(3500, 0, setGameState, "go");
-	} else { 
+	} else {
 		$Game::StateSchedule = schedule(2000, 0, setGameState, "go");
 	}
 }
@@ -597,11 +605,11 @@ function GameConnection::stateReady(%this) {
 	%this.setMessage("ready");
 	if (!$TexturePack::MBXP || lb()) {
 		%this.stateSchedule = %this.schedule(1500, "setGameState", "set");
-	} else { 
+	} else {
 		if ($Game::State !$= "Start")
 			%this.stateSchedule = %this.schedule(1500, "setGameState", "Go");
 	}
-	
+
 }
 
 function GameConnection::stateSet(%this) {
@@ -1001,8 +1009,7 @@ function GameConnection::onDestroyed(%this) {
 
 function GameConnection::onFoundGem(%this,%amount,%gem) {
 	%ret = $LB::LoggedIn || $Server::Dedicated;
-	if (%ret && $platform $= "windows")
-	{
+	if (%ret && $platform $= "windows") {
 		anticheatDetect(); // This shit aint exist on mac lmaoo
 	}
 	%this.gemCount += %amount;
@@ -1055,10 +1062,35 @@ function GameConnection::spawnPlayer(%this, %spawnPoint) {
 function GameConnection::startGame(%this) {
 	// Give the client control of the player
 	%this.setControlObject(%this.player);
+	%this.player.reloadShader();
 	%this.restarting = true;
 	%this.respawnPlayer();
 	%this.restarting = false;
 }
+
+function PMGDoReloadMission() {
+	activateMenuHandler("PMGMenu");
+
+	menuDestroyServer();
+
+	RootGui.setContent(LoadingGui);
+	RootGui.showPreviewImage(true);
+	Canvas.repaint();
+
+	menuCreateServer();
+	menuLoadMission($Server::MissionFile);
+	$Game::UseMenu = true;
+
+	RootGui.setContent(LoadingGui);
+}
+function PMGMenu_MissionLoaded() {
+	menuPlay();
+}
+function PMGMenu_Play() {
+	deactivateMenuHandler("PMGMenu");
+	RootGui.showPreviewImage(false);
+}
+
 
 // TODO: remove exitgame paramater
 
@@ -1071,6 +1103,11 @@ function restartLevel(%exitgame) {
 
 	if ($Server::ServerType $= "MultiPlayer") {
 		$MP::Restarting = true;
+	} else {
+		if ($pref::restartReloadsLevels) {
+			PMGDoReloadMission();
+			return;
+		}
 	}
 
 	$forceCheckpointRespawn = false;
@@ -1090,6 +1127,8 @@ function restartLevel(%exitgame) {
 
 	Mode::callback("onRestartLevel", "");
 	serverSendCallback("onRestartLevel");
+
+	RtaSpeedrun.missionRestarted();
 }
 
 function GameConnection::quickRespawnPlayer(%this) {
@@ -1124,8 +1163,7 @@ function GameConnection::stopRespawn(%this) {
 
 function GameConnection::respawnFromOOB(%this) {
 	// If we're finished, don't respawn.
-	if (%ret && $platform $= "windows")
-	{
+	if (%ret && $platform $= "windows") {
 		anticheatDetect(); // This shit aint exist on mac lmaoo
 	}
 	if ($Game::State $= "End")
@@ -1150,8 +1188,7 @@ function GameConnection::respawnFromOOB(%this) {
 
 function GameConnection::respawnPlayer(%this, %respawnPos) {
 	// specators don't need this in mp
-	if (%ret && $platform $= "windows")
-	{
+	if (%ret && $platform $= "windows") {
 		anticheatDetect(); // This shit aint exist on mac lmaoo
 	}
 	%isSpectating = ($Server::ServerType $= "Multiplayer" && %this.spectating);

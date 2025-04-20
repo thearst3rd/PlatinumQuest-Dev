@@ -50,6 +50,11 @@ $pref::ScorePredictorMaxFactor = 2;
 $pref::StopRecordingOnMenu = false;
 $pref::NoHolePunching = false;
 $pref::NoFadeIn = false;
+$pref::AllowEndingScoreLevelsEarly = true;
+
+$pref::RtaShowAllSplits = true;
+$pref::RtaSkipNameEntry = true;
+$pref::RtaShowEggSplits = true;
 
 $pref::checkLETip = "1";
 $pref::checkTip[1] = "1";
@@ -107,6 +112,14 @@ $pref::Audio::channelVolume8 = 0.5;
 $pref::OOBVoice = 1;
 $pref::Audio::AutomaticAudio = true;
 $pref::Audio::AudioPack = "Marble Blasted";
+$pref::timeTravelSounds = 1;
+$pref::parTimeAlarm = 1;
+$pref::recordingIndicator = 1;
+
+$pref::warpSpeedMusic = 0;
+$pref::finalLapMusic  = 0;
+$pref::panicMusic     = 0;
+$pref::temporalMusic  = 1;
 
 $Pref::EnableDirectInput = true;
 $Pref::Unix::OpenALFrequency = 44100;
@@ -164,6 +177,7 @@ $pref::Video::windowedRes = "1280 720";
 $pref::Video::disableVerticalSync = false;
 $pref::Video::MaxFPS = 0;
 $pref::Video::particleSystem = 0;
+$pref::Video::renderPriority = 0;
 //Video core
 $pref::Video::allowD3D = 0; //Nope
 $pref::Video::allowOpenGL = 1;

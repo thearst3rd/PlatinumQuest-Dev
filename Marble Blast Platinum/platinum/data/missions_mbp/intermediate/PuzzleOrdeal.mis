@@ -9,11 +9,12 @@ new SimGroup(MissionGroup) {
          level = "29";
          music = "Grudge.ogg";
          startHelpText = "Use your brain! If you have one, that is.";
+         easterEgg = "1";
          easterEggHint = "Use your brain to reach the top of the first arch. If you have one, that is.";
          ultimateHint = "Use your brain to find the shortcut! If you have one, that is.";
          ultimateTime = "20000";
          name = "Puzzle Ordeal";
-         artist = "Ian";
+         artist = "Ian rep. Pablo";
          desc = "Can you figure out how to get past the obstacles?";
          goldTime = "35000";
    };

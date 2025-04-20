@@ -17,8 +17,6 @@ new SimGroup(MissionGroup) {
          ultimateScore0 = "145";
          score0 = "20";
          game = "Ultra";
-         
-         overviewHeight = "0";
          score1 = "60";
          alarmStartTime = "25";
    };

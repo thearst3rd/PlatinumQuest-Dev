@@ -131,6 +131,8 @@ function clientCmdFoundEgg(%time, %eggName, %eggPickup) {
 	$Game::EasterEgg = true;
 	$Game::EasterEggTime = %time;
 
+	RtaSpeedrun.eggCollected();
+
 	%first = ($pref::EasterEggTime[$Server::MissionFile] $= "");
 	if ($pref::EasterEggTime[$Server::MissionFile] $= "") {
 		$pref::EasterEggTime[$Server::MissionFile] = %time;
@@ -343,6 +345,7 @@ function onNewMarble(%marble, %index) {
 
 	//Now that we know what shaders it should use, reset it
 	%marble.reloadShader();
+	%marble.schedule(100, reloadShader);
 }
 
 //-----------------------------------------------------------------------------

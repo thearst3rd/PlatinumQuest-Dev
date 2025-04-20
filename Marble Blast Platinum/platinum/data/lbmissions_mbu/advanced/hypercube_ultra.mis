@@ -14,7 +14,7 @@ new SimGroup(MissionGroup) {
          ultimateTime = "15000";
          noBlast = "1";
          useUltraMarble = "0";
-	 
+         displayFunc = "display_LB_LegacyHypercubeUltra";
    };
    new Sky(Sky) {
       sphereFront = $usermods @ "/data/shapes/skies/wintry/front.png";
@@ -761,3 +761,9 @@ new SimGroup(MissionGroup) {
    };
 };
 //--- OBJECT WRITE END ---
+//--- UNLOCK BEGIN ---
+function display_LB_LegacyHypercubeUltra(%mission) {
+	// Not used anymore
+	return false;
+}
+//--- UNLOCK END ---

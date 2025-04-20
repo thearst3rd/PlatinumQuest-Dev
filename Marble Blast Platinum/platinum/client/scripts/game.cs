@@ -329,16 +329,16 @@ function recordScore() {
 			if (%awesomeMessage) {
 				alxPlay(GotAwesomeSfx);
 			} else if ($pref::LevelAwesomes[$Server::MissionFile] > 4 &&
-				getField(%score, 0) == $ScoreType::Time &&
-				MissionInfo.awesomeTime && getField(%score, 1) < (MissionInfo.awesomeTime * 0.9) &&
-				getRandom() > 0.75) {
+			           getField(%score, 0) == $ScoreType::Time &&
+			           MissionInfo.awesomeTime && getField(%score, 1) < (MissionInfo.awesomeTime * 0.9) &&
+			           getRandom() > 0.75) {
 				//Super awesome or some bs
 				alxPlay(GotAwesomeSfx);
 				alxPlay(GotAwesomeAwesomeSfx);
 			} else if ($pref::LevelAwesomes[$Server::MissionFile] > 4 &&
-				getField(%score, 0) == $ScoreType::Score &&
-				MissionInfo.awesomeScore && getField(%score, 1) > (MissionInfo.awesomeScore * 1.15) &&
-				getRandom() > 0.75) {
+			           getField(%score, 0) == $ScoreType::Score &&
+			           MissionInfo.awesomeScore && getField(%score, 1) > (MissionInfo.awesomeScore * 1.15) &&
+			           getRandom() > 0.75) {
 				//Super awesome or some bs
 				alxPlay(GotAwesomeSfx);
 				alxPlay(GotAwesomeAwesomeSfx);
@@ -371,8 +371,7 @@ function recordScore() {
 				%marblelandScoreName = $LB::DisplayName;
 			else
 				%marblelandScoreName = $LB::Username;
-		}
-		else if ($pref::highScoreName !$= "")
+		} else if ($pref::highScoreName !$= "")
 			%marblelandScoreName = $pref::highScoreName;
 
 		MarblelandSubmit($Server::MissionFile, %marblelandScoreName, getField(%score, 1), getField(%score, 0));
@@ -419,7 +418,7 @@ function recordScore() {
 }
 
 function clientCmdGameEnd() {
-	if ($Client::PlayingDemo) {
+	if ($Client::PlayingDemo || $playingDemo) {
 		return;
 	}
 
@@ -464,7 +463,7 @@ function clientCmdGameEnd() {
 		else
 			%msgIn = " fifth";
 
-		if ($pref::DisableHighScoreNamePopup) {
+		if (($pref::DisableHighScoreNamePopup || ($pref::RtaSkipNameEntry && RtaSpeedrun.isEnabled)) && $pref::HighScoreName !$= "") {
 			EnterNameDlg.setVisible(false);
 			EnterNameEdit.makeFirstResponder(false);
 		} else {
@@ -485,10 +484,10 @@ function clientCmdGameEnd() {
 			EnterNameBox.setVisible(!%awesomeMessage);
 			EnterNameAwesomeBox.setVisible(%awesomeMessage);
 			EnterNameAwesomeText.setText("<just:center><bold:30>You beat an <spush><color:FF4444>Awesome " @ (%useLess ? "Time" : "Score") @ "<spop>!" NL
-				"<font:19>Every PlatinumQuest level has an Awesome Time or Score" SPC
-				"that requires plenty of skill to beat. They are based on the staff's best," SPC
-				"aimed for the hardcore players, and made to be pretty difficult." @
-				"<font:Arial:9>\n\n<font:19><just:center>Are you prepared for the <spush><color:200000>awesome<spop> quest awaiting you?");
+			                             "<font:19>Every PlatinumQuest level has an Awesome Time or Score" SPC
+			                             "that requires plenty of skill to beat. They are based on the staff's best," SPC
+			                             "aimed for the hardcore players, and made to be pretty difficult." @
+			                             "<font:Arial:9>\n\n<font:19><just:center>Are you prepared for the <spush><color:200000>awesome<spop> quest awaiting you?");
 			highScoreNameChanged();
 		}
 
@@ -666,7 +665,7 @@ function reformatGameEndText() {
 	%awesomeType  = (%awesomeTimeLabel  $= "N/A" ? "Rank" : "Rank");
 
 	//Get the world record
-	%record = false; 
+	%record = false;
 
 	%isMarbleland = marblelandIsMission($Client::MissionFile);
 
@@ -744,14 +743,19 @@ function reformatGameEndText() {
 
 	//Show what we need to
 	//Except always show Par because otherwise the end screen is too barren in MBG/MBP
-	if (%parTitle !$= "")                                  %text = %text @ "<just:left><spush>" @ %parTitle SPC %parType @ ":<just:right>" @ %parLabel @ "<spop>\n";
-	if (%goldTitle !$= ""     && %goldLabel !$= "N/A")     %text = %text @ "<just:left><spush>" @ %goldTitle SPC %goldType @ ":<just:right>" @ %goldLabel @ "<spop>\n";
-	if (%platinumTitle !$= "" && %platinumLabel !$= "N/A") %text = %text @ "<just:left><spush>" @ %platinumTitle SPC %platinumType @ ":<just:right>" @ %platinumLabel @ "<spop>\n";
-	if (%ultimateTitle !$= "" && %ultimateLabel !$= "N/A") %text = %text @ "<just:left><spush>" @ %ultimateTitle SPC %ultimateType @ ":<just:right>" @ %ultimateLabel @ "<spop>\n";
+	if (%parTitle !$= "")
+		%text = %text @ "<just:left><spush>" @ %parTitle SPC %parType @ ":<just:right>" @ %parLabel @ "<spop>\n";
+	if (%goldTitle !$= ""     && %goldLabel !$= "N/A")
+		%text = %text @ "<just:left><spush>" @ %goldTitle SPC %goldType @ ":<just:right>" @ %goldLabel @ "<spop>\n";
+	if (%platinumTitle !$= "" && %platinumLabel !$= "N/A")
+		%text = %text @ "<just:left><spush>" @ %platinumTitle SPC %platinumType @ ":<just:right>" @ %platinumLabel @ "<spop>\n";
+	if (%ultimateTitle !$= "" && %ultimateLabel !$= "N/A")
+		%text = %text @ "<just:left><spush>" @ %ultimateTitle SPC %ultimateType @ ":<just:right>" @ %ultimateLabel @ "<spop>\n";
 
 	//Awesome times
 	if (%showAwesome) {
-		if (%awesomeTitle !$= "" && %awesomeLabel !$= "N/A") %text = %text @ "<just:left><spush>" @ %awesomeTitle SPC %awesomeType @ ":<just:right>" @ %awesomeLabel @ "<spop>\n";
+		if (%awesomeTitle !$= "" && %awesomeLabel !$= "N/A")
+			%text = %text @ "<just:left><spush>" @ %awesomeTitle SPC %awesomeType @ ":<just:right>" @ %awesomeLabel @ "<spop>\n";
 	}
 	if (%record && %showRecord) {
 		%text = %text @ "<just:left><spush>" @ %recordTitle @ ":<just:right>" @ %recordLabel @ "<spop>\n";
@@ -814,11 +818,16 @@ function reformatGameEndText() {
 			%scoreText = %scoreText @ "<color:00DD00>" @(%i + 1) @ ". ";
 		} else {
 			switch (%i) {
-			case 0: %scoreText = %scoreText @ "<color:eec884>1. ";
-			case 1: %scoreText = %scoreText @ "<color:cdcdcd>2. ";
-			case 2: %scoreText = %scoreText @ "<color:c9afa0>3. ";
-			case 3: %scoreText = %scoreText @ "<color:a4a4a4>4. ";
-			case 4: %scoreText = %scoreText @ "<color:949494>5. ";
+			case 0:
+				%scoreText = %scoreText @ "<color:eec884>1. ";
+			case 1:
+				%scoreText = %scoreText @ "<color:cdcdcd>2. ";
+			case 2:
+				%scoreText = %scoreText @ "<color:c9afa0>3. ";
+			case 3:
+				%scoreText = %scoreText @ "<color:a4a4a4>4. ";
+			case 4:
+				%scoreText = %scoreText @ "<color:949494>5. ";
 			}
 		}
 
@@ -1047,12 +1056,18 @@ function formatScore(%score, %tab) {
 
 function formatRating(%rating) {
 	// Error Messages
-	if (%rating == -1)    return "Level Error";   // Level not found
-	if (%rating == -2)    return "Invalid Time";  // Score too low...
-	if (%rating == -3)    return "Submitting..."; // Submitting score
-	if (%rating == -4)    return "Still a WIP";   // Multiplayer Ratings
-	if (%rating == -5)    return "Still a WIP";   // Other multiplayer stuffs
-	if (%rating $= "INF") return "Server Error";  // The crap?
+	if (%rating == -1)
+		return "Level Error";   // Level not found
+	if (%rating == -2)
+		return "Invalid Time";  // Score too low...
+	if (%rating == -3)
+		return "Submitting..."; // Submitting score
+	if (%rating == -4)
+		return "Still a WIP";   // Multiplayer Ratings
+	if (%rating == -5)
+		return "Still a WIP";   // Other multiplayer stuffs
+	if (%rating $= "INF")
+		return "Server Error";  // The crap?
 
 	return formatCommas(%rating);
 }
@@ -1091,14 +1106,16 @@ function formatRating(%rating) {
 $ptsPerLevelLevel = 50;
 
 function levelTotalPoints(%level) {
-	if (%level <= 0) return 0;
+	if (%level <= 0)
+		return 0;
 	return (($ptsPerLevelLevel / 2) * %level * %level) - (($ptsPerLevelLevel / 2) * %level);
 }
 function levelDeltaPoints(%level) {
 	return levelTotalPoints(%level + 1) - levelTotalPoints(%level);
 }
 function pointsToLevel(%points) {
-	if (%points <= 0) return 1;
+	if (%points <= 0)
+		return 1;
 	return mRound(mSqrt((($ptsPerLevelLevel / 2) * ($ptsPerLevelLevel / 2)) + (($ptsPerLevelLevel * 2) * %points)) / $ptsPerLevelLevel);
 }
 

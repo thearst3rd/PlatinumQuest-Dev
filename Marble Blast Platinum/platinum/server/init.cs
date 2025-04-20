@@ -75,6 +75,7 @@ function initServer() {
 	exec("./scripts/centerprint.cs");
 	exec("./scripts/game.cs");
 	exec("./scripts/settings.cs");
+	exec("./scripts/rtaspeedrun.cs");
 }
 
 
@@ -94,6 +95,7 @@ function initDedicated() {
 
 	// Make sure this variable reflects the correct state.
 	$Server::Dedicated = true;
+	$DeferPackets = true;
 
 	// Let people control this server!
 	$Server::Controllable = true;
