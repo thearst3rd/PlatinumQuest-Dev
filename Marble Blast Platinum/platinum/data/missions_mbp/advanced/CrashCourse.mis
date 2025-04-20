@@ -7,9 +7,10 @@ new SimGroup(MissionGroup) {
          game = "Platinum";
          ultimateTime = "15500";
          ultimateHint = "Cut through bits of the level";
+         easterEgg = "1";
          easterEggHint = "Under one of the twisted platforms.";
          time = "50000";
-         artist = "Jase";
+         artist = "Jase rep. Pablo";
          level = "14";
          startHelpText = "Can you do it?";
          name = "Crash Course";

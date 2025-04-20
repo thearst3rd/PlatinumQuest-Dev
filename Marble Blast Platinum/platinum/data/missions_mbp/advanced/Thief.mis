@@ -12,10 +12,11 @@ new SimGroup(MissionGroup) {
          desc = "Invade the castle and steal all the gems within before time runs out!";
          ultimateTime = "70000";
          ultimateHint = "Ever hit a nuke with a gyrocopter? Try it, you get tons of height.";
+         easterEgg = "1";
          easterEggHint = "Nuke hit to one of the scenery castles.";
          type = "Advanced";
          goldTime = "150000";
-         artist = "Andrew";
+         artist = "Andrew rep. Phil";
          music = "Seaside Revisited.ogg";
          time = "210000";
    };

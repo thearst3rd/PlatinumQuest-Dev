@@ -53,9 +53,9 @@ if (!$Server::Dedicated) {
 	deleteVariables("$null");
 
 	// Good enough for science...
-	eval("f"@"u"@"n"@"c"@"t"@"i"@"o"@"n"@" "@"e"@"n"@"a"@"b"@"l"@"e"@"W"@"i"@"n"@"C"@"o"@"n"@"s"@"o"@"l"@"e"@"("@")"@" "@"{"@"}");
-	eval("f"@"u"@"n"@"c"@"t"@"i"@"o"@"n"@" "@"d"@"b"@"g"@"S"@"e"@"t"@"P"@"a"@"r"@"a"@"m"@"e"@"t"@"e"@"r"@"s"@"("@")"@" "@"{"@"}");
-	eval("f"@"u"@"n"@"c"@"t"@"i"@"o"@"n"@" "@"t"@"e"@"l"@"n"@"e"@"t"@"S"@"e"@"t"@"P"@"a"@"r"@"a"@"m"@"e"@"t"@"e"@"r"@"s"@"("@")"@" "@"{"@"}");
+	//eval("f"@"u"@"n"@"c"@"t"@"i"@"o"@"n"@" "@"e"@"n"@"a"@"b"@"l"@"e"@"W"@"i"@"n"@"C"@"o"@"n"@"s"@"o"@"l"@"e"@"("@")"@" "@"{"@"}");
+	//eval("f"@"u"@"n"@"c"@"t"@"i"@"o"@"n"@" "@"d"@"b"@"g"@"S"@"e"@"t"@"P"@"a"@"r"@"a"@"m"@"e"@"t"@"e"@"r"@"s"@"("@")"@" "@"{"@"}");
+	//eval("f"@"u"@"n"@"c"@"t"@"i"@"o"@"n"@" "@"t"@"e"@"l"@"n"@"e"@"t"@"S"@"e"@"t"@"P"@"a"@"r"@"a"@"m"@"e"@"t"@"e"@"r"@"s"@"("@")"@" "@"{"@"}");
 }
 
 
@@ -84,8 +84,14 @@ exec("./server/defaults.cs");
 exec("./client/scripts/version.cs");
 
 // Preferences (overide defaults)
+// Back up the prefs! - .backup cause people may have already backed them up
+copyFile(expandFilename("~/client/mbpPrefs.cs"), expandFilename("~/client/mbpPrefs.cs.backup"));
+copyFile(expandFilename("~/client/lbprefs.cs"), expandFilename("~/client/lbprefs.cs.backup"));
+
 exec("./client/mbpPrefs.cs");
 exec("./client/lbprefs.cs");
+
+exec("./client/scripts/migrations.cs");
 
 //This variable can fuck right off. Will crash your game on mission load if this
 // is not empty string.
@@ -216,6 +222,7 @@ package marble {
 		export("$LBPref::*", "~/client/lbprefs.cs", False);
 
 		MPsavePrefs();
+		RtaSpeedrun.saveProgress();
 
 		//So we don't hear the menu when we quit
 		alxSetChannelVolume(1, 0);
@@ -315,9 +322,9 @@ activatePackage(marble);
 
 function listResolutions() {
 	%deviceList = getDisplayDeviceList();
-	for(%deviceIndex = 0; (%device = getField(%deviceList, %deviceIndex)) !$= ""; %deviceIndex++) {
+	for (%deviceIndex = 0; (%device = getField(%deviceList, %deviceIndex)) !$= ""; %deviceIndex++) {
 		%resList = getResolutionList(%device);
-		for(%resIndex = 0; (%res = getField(%resList, %resIndex)) !$= ""; %resIndex++)
+		for (%resIndex = 0; (%res = getField(%resList, %resIndex)) !$= ""; %resIndex++)
 			echo(%device @ " - " @ getWord(%res, 0) @ " x " @ getWord(%res, 1) @ "(" @ getWord(%res, 2) @ " bpp)");
 	}
 }

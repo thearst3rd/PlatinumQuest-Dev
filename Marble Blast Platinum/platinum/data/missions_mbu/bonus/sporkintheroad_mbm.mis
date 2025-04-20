@@ -13,8 +13,7 @@ new SimGroup(MissionGroup) {
          gameMode = "null";
          gameplayType = "GemHunt";
          goldTime = "36000";
-         level = "3";
-         
+         level = "4";
          name = "Spork in the Road";
          type = "Single";
          ultimateTime = "24000";

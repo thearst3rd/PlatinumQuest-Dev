@@ -7,6 +7,7 @@ new SimGroup(MissionGroup) {
          game = "Platinum";
          level = "30";
          ultimateHint = "Trap your way to the finish, the intended way.";
+         easterEgg = "1";
          easterEggHint = "You'll need to do a traplaunch for this one.";
          startHelpText = "When times get tough, don\'t lose hope!";
          name = "Despair";
@@ -14,7 +15,7 @@ new SimGroup(MissionGroup) {
          ultimateTime = "27500";
          type = "Advanced";
          goldTime = "87750";
-         artist = "Matan";
+         artist = "Matan rep. Phil";
          music = "Grudge.ogg";
    };
    new MissionArea(MissionArea) {

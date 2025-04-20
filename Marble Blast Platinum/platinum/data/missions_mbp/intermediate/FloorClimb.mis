@@ -11,11 +11,12 @@ new SimGroup(MissionGroup) {
          alarmStartTime = "20";
          music = "Rising Temper.ogg";
          startHelpText = "Go up the path and use the powerups to get to the next floor.";
+         easterEgg = "1";
          easterEggHint = "Jump and double Super Jump high enough to reach it, but be careful, as you'll go out of bounds before getting it.";
          ultimateHint = "Use the Super Jump to get to the next floor from the sides.";
          ultimateTime = "50000";
          name = "Floor Climb";
-         artist = "Matan";
+         artist = "Matan rep. Pablo";
          desc = "Up the floors we go!";
          goldTime = "57500";
    };

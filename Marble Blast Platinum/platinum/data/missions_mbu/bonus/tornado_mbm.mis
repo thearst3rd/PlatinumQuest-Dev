@@ -14,8 +14,7 @@ new SimGroup(MissionGroup) {
          gameMode = "null";
          gameplayType = "GemHunt";
          goldTime = "60000";
-         level = "2";
-         
+         level = "3";
          name = "Tornado";
          silverTime = "190000";
          startHelpText = "Find all the gems!";

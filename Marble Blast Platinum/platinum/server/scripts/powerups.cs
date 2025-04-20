@@ -100,8 +100,9 @@ function PowerUp::onUse(%this, %obj, %user) {
 	}
 	if (%this.image !$= "") {
 		//Don't show two images if they already have one
-		if (!isEventPending(%user.client.unmount[%this.powerUpId]))
-			%user.client.mountPlayerImage(%this, %this.imageSlot);
+		if (isEventPending(%user.client.unmount[%this.powerUpId])) 
+			%user.client.unmountPlayerImage(%this.imageSlot); // Unmount and mount it again
+		%user.client.mountPlayerImage(%this, %this.imageSlot);
 
 		//But do cancel and reschedule
 		cancel(%user.client.unmount[%this.powerUpId]);
@@ -211,7 +212,7 @@ datablock ItemData(SuperBounceItem) {
 	coopClient = 1;
 
 	image = SuperBounceImage;
-	imageSlot = 5;
+	imageSlot = 3;
 
 	customField[0, "field"  ] = "showHelpOnPickup";
 	customField[0, "type"   ] = "boolean";
@@ -296,7 +297,7 @@ datablock ItemData(SuperSpeedItem) {
 	superCategory = "PowerUps";
 	category = "Marble Blast Gold/Platinum";
 	className = "PowerUp";
-	
+
 	powerUpId = 2;
 
 	activeAudio = DoSuperSpeedSfx;
@@ -325,7 +326,7 @@ datablock ItemData(SuperSpeedItem) {
 datablock ItemData(SuperSpeedItem_PQ : SuperSpeedItem) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
-	
+
 	shapeFile = "~/data/shapes_pq/Gameplay/Powerups/superspeed.dts";
 };
 
@@ -374,7 +375,7 @@ datablock ItemData(ShockAbsorberItem) {
 	emap = false;
 
 	image = ShockAbsorberImage;
-	imageSlot = 1;
+	imageSlot = 4;
 
 	customField[0, "field"  ] = "showHelpOnPickup";
 	customField[0, "type"   ] = "boolean";
@@ -405,7 +406,7 @@ datablock ShapeBaseImageData(ShockAbsorberImage) {
 datablock ItemData(ShockAbsorberItem_PQ : ShockAbsorberItem) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
-	
+
 	shapeFile = "~/data/shapes_pq/Gameplay/Powerups/pillow.dts";
 	image = ShockAbsorberImage_PQ;
 };
@@ -480,7 +481,7 @@ datablock ItemData(HelicopterItem) {
 
 	image = ActualHelicopterImage;
 	megaImage = MegaHelicopterImage;
-	imageSlot = 3;
+	imageSlot = 5;
 
 	customField[0, "field"  ] = "showHelpOnPickup";
 	customField[0, "type"   ] = "boolean";
@@ -524,7 +525,7 @@ datablock ShapeBaseImageData(MegaHelicopterImage : ActualHelicopterImage) {
 datablock ItemData(HelicopterItem_PQ : HelicopterItem) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
-	
+
 	shapeFile = "~/data/shapes_pq/Gameplay/Powerups/gyrocopter.dts";
 	image = HelicopterImage_PQ;
 };
@@ -706,7 +707,7 @@ datablock ItemData(TimeTravelItem) {
 datablock ItemData(TimeTravelItem_PQ : TimeTravelItem) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
-	
+
 	shapeFile = "~/data/shapes_pq/Gameplay/Powerups/timetravel.dts";
 
 	//For ::timeCheck() to replace if the time is negative
@@ -744,7 +745,7 @@ datablock ItemData(TimeTravelItem_BMGate : TimeTravelItem) {
 datablock ItemData(SundialItem_PQ : TimeTravelItem) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
-	
+
 	// Basic Item properties
 	shapeFile = "~/data/shapes_pq/Gameplay/Powerups/sundial.dts";
 
@@ -760,7 +761,7 @@ function TimeTravelItem::onAdd(%this, %obj) {
 
 	if (%obj.skin $= "")
 		%obj.skin = "base";
-		
+
 	// Skin takes effect upon mission reset or reload
 	if (%obj.skinName !$= "") { //clean up old skinname field
 		%obj.skin = %obj.skinName;
@@ -772,19 +773,19 @@ function TimeTravelItem::onAdd(%this, %obj) {
 	else
 		%obj.setSkinName(%obj.skin);
 
-	if ((Sky.materialList $= "platinum/data/skies/sky_day.dml") && (%obj.skin $= "base")) 
+	if ((Sky.materialList $= "platinum/data/skies/sky_day.dml") && (%obj.skin $= "base"))
 		%obj.skin = "mbg";
-		%obj.setSkinName(%obj.skin);
+	%obj.setSkinName(%obj.skin);
 }
 
 function TimeTravelItem::onPickup(%this,%obj,%user,%amount) {
-    %ret = $LB::LoggedIn || $Server::Dedicated;
-    if (%ret && $platform $= "windows") {
-        anticheatDetect(); // This shit aint exist on mac lmaoo
-    }
-    if (!Parent::onPickup(%this, %obj, %user, %amount)) {
-        return false;
-    }
+	%ret = $LB::LoggedIn || $Server::Dedicated;
+	if (%ret && $platform $= "windows") {
+		anticheatDetect(); // This shit aint exist on mac lmaoo
+	}
+	if (!Parent::onPickup(%this, %obj, %user, %amount)) {
+		return false;
+	}
 
     if (!Mode::callback("shouldAllowTTs", true)) {
         return false;
@@ -893,7 +894,7 @@ datablock ItemData(TimePenaltyItem : TimeTravelItem) {
 datablock ItemData(TimePenaltyItem_PQ : TimeTravelItem) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
-	
+
 	//pickupAudio = TimePenaltySfx;
 	shapeFile = "~/data/shapes_pq/Gameplay/Powerups/timepenalty.dts";
 
@@ -923,7 +924,7 @@ function TimePenaltyItem::onAdd(%this, %obj) {
 
 	if (%obj.skin $= "")
 		%obj.skin = "penalty";
-		
+
 	// Skin takes effect upon mission reset or reload
 	if (%obj.skinName !$= "") { //clean up old skinname field
 		%obj.skin = %obj.skinName;
@@ -935,9 +936,9 @@ function TimePenaltyItem::onAdd(%this, %obj) {
 	else
 		%obj.setSkinName(%obj.skin);
 
-	if ((Sky.materialList $= "platinum/data/skies/sky_day.dml") && (%obj.skin $= "penalty")) 
+	if ((Sky.materialList $= "platinum/data/skies/sky_day.dml") && (%obj.skin $= "penalty"))
 		%obj.skin = "mbgpenalty";
-		%obj.setSkinName(%obj.skin);
+	%obj.setSkinName(%obj.skin);
 
 	%this.checkTime(%obj);
 }
@@ -996,7 +997,7 @@ datablock ItemData(RespawningTimePenaltyItem : TimePenaltyItem) {
 datablock ItemData(RespawningTimeTravelItem_PQ : TimeTravelItem_PQ) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
-	
+
 	noRespawn = false;
 	//For ::timeCheck() to replace if the time is negative
 	replacement = "RespawningTimePenaltyItem_PQ";
@@ -1005,7 +1006,7 @@ datablock ItemData(RespawningTimeTravelItem_PQ : TimeTravelItem_PQ) {
 datablock ItemData(RespawningTimePenaltyItem_PQ : TimePenaltyItem_PQ) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
-	
+
 	noRespawn = false;
 	//For ::timeCheck() to replace if the time is negative
 	replacement = "RespawningTimeTravelItem_PQ";
@@ -1154,7 +1155,7 @@ datablock ItemData(AntiGravityItem) {
 datablock ItemData(AntiGravityItem_PQ : AntiGravityItem) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
-	
+
 	shapeFile = "~/data/shapes_pq/Gameplay/Powerups/GravMod.dts";
 
 	pickupName = "a Gravity Modifier!";
@@ -1319,7 +1320,7 @@ datablock ItemData(NestEgg_PQ) {
 	className = "PowerUp";	// Ditto
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
-	
+
 	// category: NestEggs	className: Egg
 
 	// Basic Item properties
@@ -1438,7 +1439,7 @@ function NoRespawnAntiGravityItem::onPickup(%this,%obj,%user,%amount) {
 datablock ItemData(NoRespawnAntiGravityItem_PQ : NoRespawnAntiGravityItem) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
-	
+
 	shapeFile = "~/data/shapes_pq/Gameplay/Powerups/GravMod.dts";
 
 	pickupName = "a Gravity Modifier!";
@@ -1528,17 +1529,16 @@ datablock ItemData(BlastItem) {
 // 	fxEmitter[0] = "BlastMBUEmitter";
 // };
 
-datablock ShapeBaseImageData(BlastImage)
-{
-   // Basic Item properties
-   shapeFile = "~/data/shapes_mbu/images/distort.dts";
-   emap = false;
-   mountPoint = 0;
-   offset = "0 0 0";
-   stateName[0]                     = "Grow";
-   stateSequence[0]                 = "grow";
+datablock ShapeBaseImageData(BlastImage) {
+	// Basic Item properties
+	shapeFile = "~/data/shapes_mbu/images/distort.dts";
+	emap = false;
+	mountPoint = 0;
+	offset = "0 0 0";
+	stateName[0]                     = "Grow";
+	stateSequence[0]                 = "grow";
 //   stateSound[0] = doBlastSfx;
-   ignoreMountRotation = true;
+	ignoreMountRotation = true;
 };
 
 function BlastItem_MBU::onAdd(%this, %obj) {
@@ -1567,13 +1567,19 @@ function BlastItem::onPickup(%this, %obj, %user, %amount) {
 //-----------------------------------------------------------------------------
 
 datablock AudioProfile(doMegaMarbleSfx) {
-    filename    = "~/data/sound/doMegaMarble.wav";
+	filename    = "~/data/sound/doMegaMarble.wav";
 	description = AudioDefault3d;
 	preload     = true;
 };
 
 datablock AudioProfile(PuMegaMarbleVoiceSfx) {
 	filename    = "~/data/sound/puMegaMarbleVoice.wav";
+	description = AudioDefault3d;
+	preload     = true;
+};
+
+datablock AudioProfile(MegaShrinkSfx) {
+	filename    = "~/data/sound/MegaShrink.wav";
 	description = AudioDefault3d;
 	preload     = true;
 };
@@ -1683,7 +1689,7 @@ function MegaMarbleItem::onUse(%this, %obj, %user) {
 
 function MegaMarbleItem::onUnuse(%this, %obj, %user) {
 	cancel(%user.megaSchedule);
-	//%user.client.play2d(MegaShrinkSfx);
+	%user.client.play2d(MegaShrinkSfx);
 	commandToClient(%user.client, 'PushTimer', 6, getSimTime(), 0);
 
 	%user.client.setMegaMarble(false);
@@ -1693,11 +1699,11 @@ function MegaMarbleItem::onUnuse(%this, %obj, %user) {
 		%user.client.unmountPlayerImage(HelicopterItem.imageSlot);
 
 		if ((MissionInfo.game $= "Ultra") || (MissionInfo.modification $= "Ultra")) {
-            %user.client.mountPlayerImage(HelicopterItem_MBU, HelicopterItem.imageSlot);
+			%user.client.mountPlayerImage(HelicopterItem_MBU, HelicopterItem.imageSlot);
 		} else if ((MissionInfo.game $= "PlatinumQuest") || (MissionInfo.modification $= "PlatinumQuest")) {
-            %user.client.mountPlayerImage(HelicopterItem_PQ, HelicopterItem.imageSlot);
+			%user.client.mountPlayerImage(HelicopterItem_PQ, HelicopterItem.imageSlot);
 		} else {
-            %user.client.mountPlayerImage(HelicopterItem, HelicopterItem.imageSlot);
+			%user.client.mountPlayerImage(HelicopterItem, HelicopterItem.imageSlot);
 		}
 	}
 }
@@ -1722,7 +1728,7 @@ datablock ItemData(TeleportItem) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
 	className = "PowerUp";
-	
+
 	powerUpId = 7;
 
 	activeAudio = DoTeleportItemSfx;
@@ -1785,22 +1791,22 @@ function TeleportItem::onInspectApply(%this, %obj) {
 
 function TeleportItem::onUse(%this, %obj, %user) {
 	if ($powerupLocked) {
-		    %this.heldPowerup = %item;
-		    %this.powerUpData = "";
-		    %this.setPowerUpId("0", %reset);
-		    return;
+		%this.heldPowerup = %item;
+		%this.powerUpData = "";
+		%this.setPowerUpId("0", %reset);
+		return;
 	} else {
-	    if (%user.teleporterFireNum == %user.client.fireNum)
-		    return false;
-	    if (%user.teleporterLocationSet) {
-		    //Activate teleporter
-		    %this.performTeleport(%obj, %user);
-		    return Parent::onUse(%this, %obj, %user);
-	    } else {
-		    //Set location
-		    %this.setLocation(%obj, %user);
-		    return false;
-	    }
+		if (%user.teleporterFireNum == %user.client.fireNum)
+			return false;
+		if (%user.teleporterLocationSet) {
+			//Activate teleporter
+			%this.performTeleport(%obj, %user);
+			return Parent::onUse(%this, %obj, %user);
+		} else {
+			//Set location
+			%this.setLocation(%obj, %user);
+			return false;
+		}
 	}
 
 }
@@ -1885,7 +1891,7 @@ datablock ItemData(AnvilItem) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
 	className = "PowerUp";
-	
+
 	powerUpId = 8;
 
 	activeAudio = DoAnvilSfx;
@@ -2003,7 +2009,7 @@ datablock ItemData(BubbleItem) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
 	className = "PowerUp";
-	
+
 
 	activeAudio = DoBubbleSfx;
 	pickupAudio = PuBubbleVoiceSfx;
@@ -2091,7 +2097,7 @@ function serverCmdBubbleTime(%client, %time) {
 datablock ItemData(CustomSuperJumpItem_PQ : SuperJumpItem) {
 	superCategory = "PowerUps";
 	category = "PlatinumQuest";
-	
+
 	// TODO: get a new DTS shape for weak super jump
 	shapeFile = "~/data/shapes_pq/Gameplay/Powerups/superjump.dts";
 	powerUpId = 9;
@@ -2205,7 +2211,7 @@ if (!$pref::LegacyItems) {
 
 		pickupName = "a Gravity Modifier!";
 	};
-	
+
 	datablock ItemData(TimeTravelItem_MBU : TimeTravelItem) {
 		superCategory = "PowerUps";
 		category = "Marble_Blast_Ultra";
@@ -2312,7 +2318,7 @@ if (!$pref::LegacyItems) {
 
 		pickupName = "a Gravity Modifier!";
 	};
-	
+
 	datablock ItemData(TimeTravelItem_MBU : TimeTravelItem) {
 		superCategory = "PowerUps";
 		category = "Marble_Blast_Ultra";
@@ -2343,48 +2349,45 @@ if (!$pref::LegacyItems) {
 	};
 	datablock ShapeBaseImageData(HelicopterImage_MBUBall : ActualHelicopterImage) {
 		shapeFile = "~/data/shapes/images/helicopter.dts";
-	};				
+	};
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------------------
 // The Super Stop ~ Code originally made by Whirligig for "Deceleration Derby", slightly modified from the .mis file of that level by Connie.
 // --------------------------------------------------------------------------------------------------------------------------------------------
 
-datablock AudioProfile(PuSuperStopVoiceSfx)
-{
-   filename    = "~/data/sound/custom/threefolder_GetSuperStop.wav";
-   description = AudioDefault3d;
-   preload = true;
+datablock AudioProfile(PuSuperStopVoiceSfx) {
+	filename    = "~/data/sound/custom/threefolder_GetSuperStop.wav";
+	description = AudioDefault3d;
+	preload = true;
 };
 
-datablock AudioProfile(DoSuperStopSfx)
-{
-   filename    = "~/data/sound/custom/threefolder_UseSuperStop.wav";
-   description = AudioDefault3d;
-   preload = true;
+datablock AudioProfile(DoSuperStopSfx) {
+	filename    = "~/data/sound/custom/threefolder_UseSuperStop.wav";
+	description = AudioDefault3d;
+	preload = true;
 };
 
-datablock ItemData(SuperStopItem)
-{
-   // Mission editor category
-   category = "PowerUps";
-   className = "PowerUp";
-   
-   powerUpId = 11;
+datablock ItemData(SuperStopItem) {
+	// Mission editor category
+	category = "PowerUps";
+	className = "PowerUp";
 
-   activeAudio = DoSuperStopSfx;
-   pickupAudio = PuSuperStopVoiceSfx;
+	powerUpId = 11;
 
-   // Basic Item properties
-   shapeFile = "~/data/shapes/items/superstop.dts";
-   mass = 1;
-   friction = 1;
-   elasticity = 0.3;
+	activeAudio = DoSuperStopSfx;
+	pickupAudio = PuSuperStopVoiceSfx;
 
-   // Dynamic properties defined by the scripts
-   pickupName = "a Super Stop PowerUp!";
-   useName = "Super Stop PowerUp";
-   maxInventory = 1;
+	// Basic Item properties
+	shapeFile = "~/data/shapes/items/superstop.dts";
+	mass = 1;
+	friction = 1;
+	elasticity = 0.3;
+
+	// Dynamic properties defined by the scripts
+	pickupName = "a Super Stop PowerUp!";
+	useName = "Super Stop PowerUp";
+	maxInventory = 1;
 };
 
 function SuperStopItem::onUse(%this, %obj, %user) {

@@ -30,25 +30,25 @@ new GuiControl(MarbleSelectDlg) {
 	minExtent = "8 8";
 	visible = "1";
 	helpTag = "0";
-		listIndex["platinum/data/shapes/balls/pack1/pack.json"] = 0;
-		defaultControl = "MS_Close";
-		commandCancel = "RootGui.popDialog(MarbleSelectDlg); PlayMissionGui.showBody();";
-		commandLeft = "MarbleSelectDlg.prev();";
-		commandRight = "MarbleSelectDlg.next();";
-		commandLSLeft = "MarbleSelectDlg.prev();";
-		commandLSRight = "MarbleSelectDlg.next();";
-		commandRSLeft = "MarbleSelectDlg.prevCat();";
-		commandRSRight = "MarbleSelectDlg.nextCat();";
-		commandRepeatLeft = true;
-		commandRepeatRight = true;
-		commandRepeatLSLeft = true;
-		commandRepeatLSRight = true;
-		commandRepeatRSLeft = true;
-		commandRepeatRSRight = true;
-		commandNameLSLeft = "Prev";
-		commandNameLSRight = "Next";
-		commandNameRSLeft = "Prev Category";
-		commandNameRSRight = "Next Category";
+	listIndex["platinum/data/shapes/balls/pack1/pack.json"] = 0;
+	defaultControl = "MS_Close";
+	commandCancel = "RootGui.popDialog(MarbleSelectDlg); PlayMissionGui.showBody();";
+	commandLeft = "MarbleSelectDlg.prev();";
+	commandRight = "MarbleSelectDlg.next();";
+	commandLSLeft = "MarbleSelectDlg.prev();";
+	commandLSRight = "MarbleSelectDlg.next();";
+	commandRSLeft = "MarbleSelectDlg.prevCat();";
+	commandRSRight = "MarbleSelectDlg.nextCat();";
+	commandRepeatLeft = true;
+	commandRepeatRight = true;
+	commandRepeatLSLeft = true;
+	commandRepeatLSRight = true;
+	commandRepeatRSLeft = true;
+	commandRepeatRSRight = true;
+	commandNameLSLeft = "Prev";
+	commandNameLSRight = "Next";
+	commandNameRSLeft = "Prev Category";
+	commandNameRSRight = "Next Category";
 
 	new GuiControl(PM_MarbleSelect) {
 		profile = "PQWindowProfile";
@@ -144,8 +144,8 @@ new GuiControl(MarbleSelectDlg) {
 			buttonType = "PushButton";
 			repeatPeriod = "1000";
 			repeatDecay = "1";
-				bitmap = "platinum/client/ui/play/leftright";
-				bitmapRotation = "180";
+			bitmap = "platinum/client/ui/play/leftright";
+			bitmapRotation = "180";
 		};
 		new GuiBorderButtonCtrl(MS_Prev) {
 			profile = "PQButtonProfile";
@@ -163,7 +163,7 @@ new GuiControl(MarbleSelectDlg) {
 			buttonType = "PushButton";
 			repeatPeriod = "1000";
 			repeatDecay = "1";
-				bitmap = "platinum/client/ui/play/leftright";
+			bitmap = "platinum/client/ui/play/leftright";
 		};
 		new GuiBorderButtonCtrl(MS_PrevCat) {
 			profile = "PQButtonProfile";
@@ -181,7 +181,7 @@ new GuiControl(MarbleSelectDlg) {
 			buttonType = "PushButton";
 			repeatPeriod = "1000";
 			repeatDecay = "1";
-				bitmap = "platinum/client/ui/play/leftright";
+			bitmap = "platinum/client/ui/play/leftright";
 		};
 		new GuiBorderButtonCtrl(MS_Close) {
 			profile = "PQButtonProfile";
@@ -216,8 +216,8 @@ new GuiControl(MarbleSelectDlg) {
 			buttonType = "PushButton";
 			repeatPeriod = "1000";
 			repeatDecay = "1";
-				bitmap = "platinum/client/ui/play/leftright";
-				bitmapRotation = "180";
+			bitmap = "platinum/client/ui/play/leftright";
+			bitmapRotation = "180";
 		};
 		new GuiCheckBoxCtrl(MS_NormalSizeCheck) {
 			profile = "PQCheckboxProfile";
@@ -375,7 +375,11 @@ function MarbleSelectDlg::generateCustomMarbleList(%this) {
 		}
 
 		// Insert the skin into the array
-		%array = new ScriptObject() {name = upperFirst(%shapeName); shape = %shapeName @ ".dts"; skin = %skin; };
+		%array = new ScriptObject() {
+			name = upperFirst(%shapeName);
+			shape = %shapeName @ ".dts";
+			skin = %skin;
+		};
 		CustomMarbleListGroup.add(%array);
 		%list.marbles.addEntry(%array);
 	}
@@ -407,7 +411,11 @@ function MarbleSelectDlg::generateCustomMarbleList(%this) {
 				%shapeName = "ball-superball.dts";
 
 				// Insert the skin into the array
-				%array = new ScriptObject() {name = upperFirst(fileBase(%skin)); shape = %shapeName; skin = fileBase(%skin); };
+				%array = new ScriptObject() {
+					name = upperFirst(fileBase(%skin));
+					shape = %shapeName;
+					skin = fileBase(%skin);
+				};
 				CustomMarbleListGroup.add(%array);
 				%list.marbles.addEntry(%array);
 			}

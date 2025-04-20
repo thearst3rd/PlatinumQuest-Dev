@@ -40,10 +40,10 @@ new GuiControl(MainMenuGui) {
 	minExtent = "8 8";
 	visible = "1";
 	helpTag = "0";
-		_guiSize = "800 600";
-		defaultControl = "MenuPlayButton";
-		tile = "0";
-		useVariable = "0";
+	_guiSize = "800 600";
+	defaultControl = "MenuPlayButton";
+	tile = "0";
+	useVariable = "0";
 
 	new GuiBitmapCtrl(MenuList) {
 		profile = "GuiDefaultProfile";
@@ -81,8 +81,8 @@ new GuiControl(MainMenuGui) {
 		lineSpacing = "2";
 		allowColorChars = "0";
 		maxChars = "-1";
-			noInvert = "1";
-			unformattedText = "<color:ffffff><just:right><bold:32>2.0.0";
+		noInvert = "1";
+		unformattedText = "<color:ffffff><just:right><bold:32>2.0.0";
 	};
 	new GuiMLTextCtrl(VersionSub) {
 		profile = "GuiMLTextProfile";
@@ -96,8 +96,8 @@ new GuiControl(MainMenuGui) {
 		lineSpacing = "2";
 		allowColorChars = "0";
 		maxChars = "-1";
-			noInvert = "1";
-			unformattedText = "<color:ffffff><font:18>Dev";
+		noInvert = "1";
+		unformattedText = "<color:ffffff><font:18>Dev";
 	};
 	new GuiControl(MenuMainButtons) {
 		profile = "GuiDefaultProfile";
@@ -108,10 +108,10 @@ new GuiControl(MainMenuGui) {
 		minExtent = "8 8";
 		visible = "1";
 		helpTag = "0";
-			_guiSize = "800 600";
-			defaultControl = "MenuPlayButton";
-			tile = "0";
-			useVariable = "0";
+		_guiSize = "800 600";
+		defaultControl = "MenuPlayButton";
+		tile = "0";
+		useVariable = "0";
 
 		new GuiBitmapButtonTextCtrl(MenuOnlineButton) {
 			profile = "MenuButtonProfile";
@@ -129,15 +129,15 @@ new GuiControl(MainMenuGui) {
 			repeatPeriod = "1000";
 			repeatDecay = "1";
 			bitmap = "./menu/menu";
-				controlDown = "MenuOptionsButton";
-				controlUp = "MenuPlayButton";
+			controlDown = "MenuOptionsButton";
+			controlUp = "MenuPlayButton";
 		};
 		new GuiBitmapButtonTextCtrl(MenuQuitButton) {
 			profile = "MenuButtonProfile";
 			horizSizing = "right";
 			vertSizing = "bottom";
 			position = "75 608";
-			extent = "500 85";
+			extent = "500 84";
 			minExtent = "8 8";
 			visible = "1";
 			command = "quit();";
@@ -149,7 +149,7 @@ new GuiControl(MainMenuGui) {
 			repeatPeriod = "1000";
 			repeatDecay = "1";
 			bitmap = "./menu/menu";
-				controlUp = "MenuReplaysButton";
+			controlUp = "MenuReplaysButton";
 		};
 		new GuiBitmapButtonTextCtrl(MenuPlayButton) {
 			profile = "MenuButtonProfile";
@@ -168,7 +168,7 @@ new GuiControl(MainMenuGui) {
 			repeatPeriod = "1000";
 			repeatDecay = "1";
 			bitmap = "./menu/menu";
-				controlDown = "MenuCommunityButton";
+			controlDown = "MenuCommunityButton";
 		};
 		new GuiBitmapButtonTextCtrl(MenuOptionsButton) {
 			profile = "MenuButtonProfile";
@@ -186,8 +186,8 @@ new GuiControl(MainMenuGui) {
 			repeatPeriod = "1000";
 			repeatDecay = "1";
 			bitmap = "./menu/menu";
-				controlDown = "MenuReplaysButton";
-				controlUp = "MenuCommunityButton";
+			controlDown = "MenuReplaysButton";
+			controlUp = "MenuCommunityButton";
 		};
 		new GuiBitmapButtonTextCtrl(MenuReplaysButton) {
 			profile = "MenuButtonProfile";
@@ -205,8 +205,8 @@ new GuiControl(MainMenuGui) {
 			repeatPeriod = "1000";
 			repeatDecay = "1";
 			bitmap = "./menu/menu";
-				controlDown = "MenuQuitButton";
-				controlUp = "MenuOptionsButton";
+			controlDown = "MenuQuitButton";
+			controlUp = "MenuOptionsButton";
 		};
 	};
 	new GuiTextEditCtrl(MenuPartyEdit) {
@@ -363,15 +363,15 @@ function MainMenuGui::onWake(%this) {
 
 	// if engine modifications are not being used
 	// don't let the client play the game!!!
-	if (!$PluginSystemInit) {
-		// mac don't use exe files, vary the message error code!
-		if ($platform $= "macos")
-			%message = "Please use the launcher to launch PlatinumQuest. If this error persists, contact the Platinum Team for support.";
-		else
-			%message = "Please launch the game using the launcher. If this error persists, contact the Platinum Team for support.";
-		MessageBoxOK("Engine Failure", %message, "quit();");
-		return;
-	}
+	// if (!$PluginSystemInit) {
+	// 	// mac don't use exe files, vary the message error code!
+	// 	if ($platform $= "macos")
+	// 		%message = "Please use the launcher to launch PlatinumQuest. If this error persists, contact the Platinum Team for support.";
+	// 	else
+	// 		%message = "Please launch the game using the launcher. If this error persists, contact the Platinum Team for support.";
+	// 	MessageBoxOK("Engine Failure", %message, "quit();");
+	// 	return;
+	// }
 
 	VersionText.setText(shadow("2 2", "0000007f") @ "<color:ffffff><just:right><bold:32>" @ $THIS_VERSION_NAME);
 	VersionSub.setText(shadow("1 1", "0000007f") @ "<color:ffffff><font:18>" @ $THIS_VERSION_SUB);
@@ -380,19 +380,19 @@ function MainMenuGui::onWake(%this) {
 		//Check if we have a joystick present
 		if (isJoystickDetected()) {
 			MessageBoxYesNo("Joystick Detected", "Do you want to use it to control your marble instead of the keyboard?" @
-				"\n\nSee the \"Controls\" section of the options menu to change this.", "$pref::Input::ControlDevice = \"Joystick\";savePrefs();enableControllerUI();", "$pref::Input::ControlDevice = \"Keyboard\";savePrefs();");
+			                "\n\nSee the \"Controls\" section of the options menu to change this.", "$pref::Input::ControlDevice = \"Joystick\";savePrefs();enableControllerUI();", "$pref::Input::ControlDevice = \"Keyboard\";savePrefs();");
 		} else {
 			$pref::Input::ControlDevice = "Keyboard";
 			savePrefs();
 		}
 	} else if ($pref::Input::ControlDevice $= "Joystick" && !isJoystickDetected()) {
-			MessageBoxYesNo("No Joystick Detected", "Do you want to switch to keyboard controls?" @
-				"\n\nSee the \"Controls\" section of the options menu to change this.", "$pref::Input::ControlDevice = \"Keyboard\";savePrefs();", "");
+		MessageBoxYesNo("No Joystick Detected", "Do you want to switch to keyboard controls?" @
+		                "\n\nSee the \"Controls\" section of the options menu to change this.", "$pref::Input::ControlDevice = \"Keyboard\";savePrefs();", "");
 	} else if ($pref::Input::ControlDevice $= "Joystick" && isJoystickDetected()) {
 		if (getJoystickName(0) $= "default" && $pref::Input::DefaultJoystickWarning $= "") {
 			$pref::Input::DefaultJoystickWarning = true;
 			MessageBoxOk("Unknown Joystick Type", "There is no configuration for this type of joystick. Using a generic Xbox 360 mapping." @
-				"\n\nSee platinum/client/config for available configurations.");
+			             "\n\nSee platinum/client/config for available configurations.");
 		}
 		enableControllerUI();
 	}
@@ -404,8 +404,7 @@ function MainMenuGui::onWake(%this) {
 		$pref::OpenALWarning = true;
 	}
 
-	if (!%this.downloadedMarbleland)
-	{
+	if (!%this.downloadedMarbleland) {
 		// Download marbleland levels so they're ready in case we search
 		// Hopefully the lagspike from loading the list happens during the already super long initial loading screen
 		marblelandDownloadMissionList();
@@ -427,11 +426,12 @@ function MainMenuGui::checkScriptError(%this) {
 }
 
 function MainMenuGui::play(%this) {
-	if (getWord(getResolution(), 0) & 1 || getWord(getResolution(), 1) & 1) {
-		MessageBoxYesNo("Weird Resolution", "What type of resolution is " @ getResolution() @ ". You may have some problems.", "justPlayAlready();", "");
-	} else {
-		justPlayAlready();
-	}
+	justPlayAlready();
+	// if (getWord(getResolution(), 0) & 1 || getWord(getResolution(), 1) & 1) {
+	// 	MessageBoxYesNo("Weird Resolution", "What type of resolution is " @ getResolution() @ ". You may have some problems.", "justPlayAlready();", "");
+	// } else {
+	// 	justPlayAlready();
+	// }
 }
 
 function MainMenuGui::showExtras(%this) {
@@ -440,6 +440,24 @@ function MainMenuGui::showExtras(%this) {
 	if (ControllerGui.isJoystick()) {
 		%first = MenuCommunityButtons.getObject(2).getName();
 		ControllerGui.selectControl(%first);
+	}
+	// Hide "Community" title at low resolutions
+	%communityButtons = MenuOnlineButton TAB MenuMarblelandButton TAB MenuForumsButton TAB MenuDiscordButton TAB MenuBackButton;
+	%communityButtonsCount = 5;
+	if (getWord(getResolution(), 1) <= 720 && MenuCommunityText.isVisible()) {
+		MenuCommunityBg.setVisible(0);
+		MenuCommunityText.setVisible(0);
+		for (%i = 0; %i < %communityButtonsCount; %i++) {
+			%button = getField(%communityButtons, %i);
+			%button.position = getWord(%button.position, 0) SPC (getWord(%button.position, 1) - 110);
+		}
+	} else if (getWord(getResolution(), 1) > 720 && !MenuCommunityText.isVisible()) {
+		MenuCommunityBg.setVisible(1);
+		MenuCommunityText.setVisible(1);
+		for (%i = 0; %i < %communityButtonsCount; %i++) {
+			%button = getField(%communityButtons, %i);
+			%button.position = getWord(%button.position, 0) SPC (getWord(%button.position, 1) + 110);
+		}
 	}
 }
 
@@ -470,8 +488,18 @@ function justPlayAlready() {
 }
 
 function checkParty() {
-	if (MenuPartyEdit.getValue() $= "party") {
+	%typed = MenuPartyEdit.getValue();
+	if (%typed $= "party") {
 		doParty();
+	}
+
+	//If the code isn't in the process of being typed, then discard it
+	//Fix (including %typed) by Yoshi, copied from PlayMissionGui::checkHolidaySecret()
+	if ((%typed !$= "p")   &&
+	    (%typed !$= "pa")  &&
+	    (%typed !$= "par") &&
+	    (%typed !$= "part")) {
+		MenuPartyEdit.setText("");
 	}
 }
 

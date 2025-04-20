@@ -13,8 +13,7 @@ new SimGroup(MissionGroup) {
          gameMode = "null";
          gameplayType = "GemHunt";
          goldTime = "40000";
-         level = "5";
-         
+         level = "6";
          name = "Half Pipe Extreme";
          type = "Single";
          ultimateTime = "25000";

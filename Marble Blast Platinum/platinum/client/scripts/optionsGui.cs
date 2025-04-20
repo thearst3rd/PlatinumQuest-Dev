@@ -107,6 +107,8 @@ function OptionsGui::back(%this) {
 
 function OptionsGui::onWake(%this, %dontDiscard) {
 	buildResolutionList();
+	if ($platform $= "windows")
+		buildRendererList();
 
 	%this.setTab("Graphics");
 
@@ -117,6 +119,8 @@ function OptionsGui::onWake(%this, %dontDiscard) {
 	}
 
 	$Options::TexturePackDirty = 0;
+	$Options::ResolutionChanged = false;
+	copyBlurImage(PM_MissionImage.bitmap);
 }
 
 function OptionsGui::apply(%this) {
@@ -129,35 +133,38 @@ function OptionsGui::apply(%this) {
 	flushInteriorRenderBuffers();
 	cleanupReflectiveMarble();
 
-	%newDisplay = ($pref::Video::displayDevice !$= getDisplayDeviceName());
-	%newRes = ($pref::Video::resolution !$= getResolution());
+	if ($Options::ResolutionChanged) {
+		%newDisplay = ($pref::Video::displayDevice !$= getDisplayDeviceName());
+		%newRes = ($pref::Video::resolution !$= getResolution());
 
-	if (%newDisplay) {
-		disablePostFX();
-		disableBlur();
-		disableShaders();
-		reloadDts();
-		setDisplayDevice($pref::Video::displayDevice,
-		                 firstWord($pref::Video::resolution),
-		                 getWord($pref::Video::resolution, 1),
-		                 getWord($pref::Video::resolution, 2),
-		                 $pref::Video::fullScreen);
-		//OptionsGui::deviceDependent( %this );
-	} else if (%newRes) {
-		disablePostFX();
-		disableBlur();
-		disableShaders();
-		reloadDts();
-		setScreenMode(firstWord($pref::Video::resolution),
-		              getWord($pref::Video::resolution, 1),
-		              getWord($pref::Video::resolution, 2),
-		              $pref::Video::fullScreen);
-	} else if ($pref::Video::fullScreen != isFullScreen()) {
-		disablePostFX();
-		disableBlur();
-		disableShaders();
-		reloadDts();
-		toggleFullScreen();
+		if (%newDisplay) {
+			disablePostFX();
+			disableBlur();
+			disableShaders();
+			reloadDts();
+			setDisplayDevice($pref::Video::displayDevice,
+			                 firstWord($pref::Video::resolution),
+			                 getWord($pref::Video::resolution, 1),
+			                 getWord($pref::Video::resolution, 2),
+			                 $pref::Video::fullScreen);
+			//OptionsGui::deviceDependent( %this );
+		} else if (%newRes) {
+			disablePostFX();
+			disableBlur();
+			disableShaders();
+			reloadDts();
+			setScreenMode(firstWord($pref::Video::resolution),
+			              getWord($pref::Video::resolution, 1),
+			              getWord($pref::Video::resolution, 2),
+			              $pref::Video::fullScreen);
+		} else if ($pref::Video::fullScreen != isFullScreen()) {
+			disablePostFX();
+			disableBlur();
+			disableShaders();
+			reloadDts();
+			toggleFullScreen();
+		}
+		$Options::ResolutionChanged = false;
 	}
 	if ($pref::Video::AntiAliasing != $OldConfig::Video::AntiAliasing) {
 		if ($platform $= "macos" && !(%newDisplay || %newRes)) {
@@ -224,27 +231,49 @@ function buildResolutionList() {
 	%resCount = getFieldCount(%resList);
 	%deskRes = getDesktopResolution();
 
-	//Extra resolutions
+	// Hardcoded resolutions - :(
 	%resList = %resList TAB "1024 768";
 	%resCount ++;
 	%resList = %resList TAB "1280 720";
 	%resCount ++;
+	%resList = %resList TAB "1280 1024";
+	%resCount ++;
+	%resList = %resList TAB "1366 768";
+	%resCount ++;
+	%resList = %resList TAB "1440 900";
+	%resCount ++;
+	%resList = %resList TAB "1600 900";
+	%resCount ++;
+	%resList = %resList TAB "1680 1050";
+	%resCount ++;
 	%resList = %resList TAB "1920 1080";
+	%resCount ++;
+	%resList = %resList TAB "2560 1440";
+	%resCount ++;
+	%resList = %resList TAB "2560 1600";
+	%resCount ++;
+	%resList = %resList TAB "2880 1620";
+	%resCount ++;
+	%resList = %resList TAB "2880 1800";
+	%resCount ++;
+	%resList = %resList TAB "3200 1800";
+	%resCount ++;
+	%resList = %resList TAB "3840 2160";
 	%resCount ++;
 
 	for (%i = 0; %i < %resCount; %i++) {
 		%res = getWords(getField(%resList, %i), 0, 1);
 
-		if (!$pref::Video::fullScreen) {
-			// Here they skip resolutions above your desktop res, in case you're playing windowed. Nice GG. Nice.
-			if (firstWord(%res) >= firstWord(%deskRes))
-				continue;
-			if (getWord(%res, 1) >= getWord(%deskRes, 1))
-				continue;
-		}
+		//if (!$pref::Video::fullScreen) {
+		// Here they skip resolutions above your desktop res, in case you're playing windowed. Nice GG. Nice.
+		if (firstWord(%res) >= firstWord(%deskRes))
+			continue;
+		if (getWord(%res, 1) >= getWord(%deskRes, 1))
+			continue;
+		// }
 
 		//Lower Bound
-		if (firstWord(%res) < 1024 || getWord(%res, 1) < 768)
+		if (firstWord(%res) < 1024 || getWord(%res, 1) < 720)
 			continue;
 
 		// yea add only if its not thar already man.
@@ -262,6 +291,21 @@ function sortResolution(%a, %b) {
 	return getWord(%a, 1) < getWord(%b, 1);
 }
 
+function buildRendererList() {
+	if (!isObject(OptRenderers)) {
+		Array(OptRenderers);
+	} else {
+		OptRenderers.clear();
+	}
+
+	OptRenderers.addEntry("Auto");
+	%renderers = getCompatibleRenderers();
+	for (%i = 0; %i < getWordCount(%renderers); %i ++) {
+		%renderer = getWord(%renderers, %i);
+		OptRenderers.addEntry(%renderer);
+	}
+}
+
 //-----------------------------------------------------------------------------
 
 function GuiSliderCtrl::getFormattedValue(%this, %min, %max) {
@@ -270,8 +314,10 @@ function GuiSliderCtrl::getFormattedValue(%this, %min, %max) {
 	%thisMin = getWord(%this.range, 0);
 	%thisMax = getWord(%this.range, 1);
 	//In case you're lazy
-	if (%min $= "") %min = %thisMin;
-	if (%max $= "") %max = %thisMax;
+	if (%min $= "")
+		%min = %thisMin;
+	if (%max $= "")
+		%max = %thisMax;
 	//Convert to [0, 1]
 	%value = (%value - %thisMin) / (%thisMax - %thisMin);
 	//Round to ticks
@@ -297,62 +343,53 @@ function GuiSliderCtrl::getJoyTickSize(%this) {
 // Graphics
 
 $i = -1;
-$Options::Name    ["Graphics", $i++] = "screenResolution";
-$Options::Title   ["Graphics", $i  ] = "Screen Resolution";
-$Options::Type    ["Graphics", $i  ] = "value";
 $Options::Name    ["Graphics", $i++] = "screenStyle";
 $Options::Title   ["Graphics", $i  ] = "Screen Style";
 $Options::Type    ["Graphics", $i  ] = "value";
+$Options::Name    ["Graphics", $i++] = "screenResolution";
+$Options::Title   ["Graphics", $i  ] = "Default Window Size";
+$Options::Type    ["Graphics", $i  ] = "value";
+if ($platform $= "windows") {
+	$Options::Name   ["Graphics", $i++] = "graphicsDriver";
+	$Options::Title  ["Graphics", $i  ] = "Graphics Driver";
+	$Options::Type   ["Graphics", $i  ] = "value";
+}
+$Options::Name    ["Graphics", $i++] = "animateBackground";
+$Options::Title   ["Graphics", $i  ] = "Level Previews";
+$Options::Type    ["Graphics", $i  ] = "boolean";
+if (canSupportPostFX()) { //No point supporting reflections if you don't support postfx anyway
+	$Options::Name    ["Graphics", $i++] = "marbleReflections";
+	$Options::Title   ["Graphics", $i  ] = "Marble Reflections";
+	$Options::Type    ["Graphics", $i  ] = "value";
+}
 $Options::Name    ["Graphics", $i++] = "textureQuality";
 $Options::Title   ["Graphics", $i  ] = "Texture Quality";
 $Options::Type    ["Graphics", $i  ] = "value";
-if (canSupportPostFX()) { //No point supporting reflections if you don't support postfx anyway
-	$Options::Name ["Graphics", $i++] = "marbleReflections";
-	$Options::Title["Graphics", $i  ] = "Marble Reflections";
-	$Options::Type ["Graphics", $i  ] = "value";
-	$Options::Name    ["Graphics", $i++] = "postprocessing";
-	$Options::Title   ["Graphics", $i  ] = "Post Processing";
-	$Options::Type    ["Graphics", $i  ] = "value";
-	$Options::Name    ["Graphics", $i++] = "bloom";
-	$Options::Title   ["Graphics", $i  ] = "Bloom";
-	$Options::Type    ["Graphics", $i  ] = "value";
-}
 $Options::Name    ["Graphics", $i++] = "interiorShaders";
 $Options::Title   ["Graphics", $i  ] = "Material Quality";
 $Options::Type    ["Graphics", $i  ] = "value";
-$Options::Name    ["Graphics", $i++] = "animateBackground";
-$Options::Title   ["Graphics", $i  ] = "Preload Levels";
-$Options::Type    ["Graphics", $i  ] = "boolean";
-$Options::Name    ["Graphics", $i++] = "legacyItems";
-$Options::Title   ["Graphics", $i  ] = "Legacy Items";
-$Options::Type    ["Graphics", $i  ] = "boolean";
-if (canSupportAntiAliasing()) { //This is not available on mac
-	$Options::Name ["Graphics", $i++] = "antiAliasing";
-	$Options::Title["Graphics", $i  ] = "Anti Aliasing";
-	$Options::Type ["Graphics", $i  ] = "value";
+if (canSupportPostFX()) {
+	$Options::Name    ["Graphics", $i++] = "postprocessing";
+	$Options::Title   ["Graphics", $i  ] = "Post Processing";
+	$Options::Type    ["Graphics", $i  ] = "value";
 }
+$Options::Name    ["Graphics", $i++] = "vsync";
+$Options::Title   ["Graphics", $i  ] = "Max Framerate";
+$Options::Type    ["Graphics", $i  ] = "value";
 $Options::Name    ["Graphics", $i++] = "maxFPS";
-$Options::Title   ["Graphics", $i  ] = "Max FPS";
+$Options::Title   ["Graphics", $i  ] = "Max Tickrate";
 $Options::Type    ["Graphics", $i  ] = "value";
-$Options::Name    ["Graphics", $i++] = "texturePack";
-$Options::Title   ["Graphics", $i  ] = "Texture Packs";
-$Options::Ctrl    ["Graphics", $i  ] = "button";
-$Options::Name    ["Graphics", $i++] = "particleSystem";
-$Options::Title   ["Graphics", $i  ] = "Particle System";
-$Options::Type    ["Graphics", $i  ] = "value";
-$Options::Name    ["Graphics", $i++] = "particles";
-$Options::Title   ["Graphics", $i  ] = "Particles";
-$Options::Ctrl    ["Graphics", $i  ] = "slider";
-$Options::Min     ["Graphics", $i  ] = 0;
-$Options::Max     ["Graphics", $i  ] = 200;
-$Options::Ticks   ["Graphics", $i  ] = 40; //Every 5
-$Options::JoyTicks["Graphics", $i  ] = 10; //Every 20
-$Options::Name    ["Graphics", $i++] = "smoothShading";
-$Options::Title   ["Graphics", $i  ] = "Smooth Shading";
-$Options::Type    ["Graphics", $i  ] = "boolean";
 $Options::Name    ["Graphics", $i++] = "fast";
 $Options::Title   ["Graphics", $i  ] = "Fast Mode";
 $Options::Type    ["Graphics", $i  ] = "boolean";
+$Options::Name    ["Graphics", $i++] = "texturePack";
+$Options::Title   ["Graphics", $i  ] = "Texture Packs";
+$Options::Ctrl    ["Graphics", $i  ] = "button";
+// if (canSupportAntiAliasing()) { //This is not available on mac (or at all in 2.10+ lol)
+// 	$Options::Name    ["Graphics", $i++] = "antiAliasing";
+// 	$Options::Title   ["Graphics", $i  ] = "Anti Aliasing";
+// 	$Options::Type    ["Graphics", $i  ] = "value";
+// }
 
 Array(TextureQualityArray);
 TextureQualityArray.addEntry("Low"    TAB 0);
@@ -367,15 +404,15 @@ MarbleReflectionQualityArray.addEntry("Advanced" TAB 2 TAB 128);
 Array(BloomQualityArray);
 BloomQualityArray.addEntry("Disabled" TAB 0);
 BloomQualityArray.addEntry("Basic"    TAB 1);
-BloomQualityArray.addEntry("High" TAB 2);
-BloomQualityArray.addEntry("Ultra" TAB 3);
+BloomQualityArray.addEntry("High"     TAB 2);
+BloomQualityArray.addEntry("Ultra"    TAB 3);
 
 Array(InteriorShadersQualityArray);
 InteriorShadersQualityArray.addEntry("Legacy" TAB -1);
 if (canSupportShaders()) {
-	InteriorShadersQualityArray.addEntry("Low"      TAB  0);
-	InteriorShadersQualityArray.addEntry("Medium"   TAB  1);
-	InteriorShadersQualityArray.addEntry("High"     TAB  2);
+	InteriorShadersQualityArray.addEntry("Low"    TAB  0);
+	InteriorShadersQualityArray.addEntry("Medium" TAB  1);
+	InteriorShadersQualityArray.addEntry("High"   TAB  2);
 }
 
 Array(AntiAliasingQualityArray);
@@ -385,16 +422,25 @@ AntiAliasingQualityArray.addEntry("4x"       TAB  4);
 AntiAliasingQualityArray.addEntry("8x"       TAB  8);
 
 Array(MaxFPSArray);
-MaxFPSArray.addEntry("Unlimited" TAB  -1);
-MaxFPSArray.addEntry("VSync"     TAB   0);
-MaxFPSArray.addEntry("30"        TAB  30);
-MaxFPSArray.addEntry("60"        TAB  60);
-MaxFPSArray.addEntry("75"        TAB  75);
-MaxFPSArray.addEntry("120"       TAB 120);
-MaxFPSArray.addEntry("200"       TAB 200);
+MaxFPSArray.addEntry("1000 TPS" TAB  -1);
+MaxFPSArray.addEntry("30 TPS"   TAB  30);
+MaxFPSArray.addEntry("60 TPS"   TAB  60);
+MaxFPSArray.addEntry("75 TPS"   TAB  75);
+MaxFPSArray.addEntry("100 TPS"  TAB  100);
+MaxFPSArray.addEntry("120 TPS"  TAB  120);
+MaxFPSArray.addEntry("144 TPS"  TAB  144);
+MaxFPSArray.addEntry("165 TPS"  TAB  165);
+MaxFPSArray.addEntry("200 TPS"  TAB  200);
+MaxFPSArray.addEntry("240 TPS"  TAB  240);
+MaxFPSArray.addEntry("360 TPS"  TAB  360);
+
+Array(RenderPriorityArray);
+RenderPriorityArray.addEntry("VSync" TAB 0);
+RenderPriorityArray.addEntry("Match Tickrate" TAB 1);
+RenderPriorityArray.addEntry("Unlimited" TAB 2);
 
 Array(ParticleSystemArray);
-ParticleSystemArray.addEntry("Marble Blast Ultra"   TAB 0);
+ParticleSystemArray.addEntry("Marble Blast Ultra" TAB 0);
 
 //-----------------------------------------------------------------------------
 // Audio
@@ -414,36 +460,51 @@ $Options::Max     ["Audio", 1] = 100;
 $Options::Ticks   ["Audio", 1] = 20; //Every 5
 $Options::JoyTicks["Audio", 1] = 20; //Every 5
 $Options::Name    ["Audio", 2] = "audioPack";
-$Options::Title   ["Audio", 2] = "Audio Pack";
+$Options::Title   ["Audio", 2] = "Default Sound Pack";
 $Options::Type    ["Audio", 2] = "value";
 $Options::Name    ["Audio", 3] = "automaticAudio";
 $Options::Title   ["Audio", 3] = "Automatic Audio Swap";
 $Options::Type    ["Audio", 3] = "boolean";
+$Options::Name    ["Audio", 4] = " ";
+$Options::Title   ["Audio", 4] = " ";
+$Options::Ctrl    ["Audio", 4] = "spacer";
+$Options::Name    ["Audio", 5] = "timeTravelSounds";
+$Options::Title   ["Audio", 5] = "Time Travel Sounds";
+$Options::Type    ["Audio", 5] = "boolean";
+$Options::Name    ["Audio", 6] = "parTimeAlarm";
+$Options::Title   ["Audio", 6] = "Par Time Alarm";
+$Options::Type    ["Audio", 6] = "boolean";
+$Options::Name    ["Audio", 7] = "finalLapMusic";
+$Options::Title   ["Audio", 7] = "Final Lap Music";
+$Options::Type    ["Audio", 7] = "boolean";
+$Options::Name    ["Audio", 8] = "panicMusic";
+$Options::Title   ["Audio", 8] = "Panic Music";
+$Options::Type    ["Audio", 8] = "boolean";
 
 //-----------------------------------------------------------------------------
 // Gameplay
 
 $i = -1;
-$Options::Name    ["Gameplay", $i++] = "fpsCounter";
-$Options::Title   ["Gameplay", $i  ] = "FPS Counter";
+$Options::Name    ["Gameplay", $i++] = "thousandths";
+$Options::Title   ["Gameplay", $i  ] = "Timer Precision";
 $Options::Type    ["Gameplay", $i  ] = "boolean";
+//$Options::Name    ["Gameplay", $i++] = "timeTravelTimer";
+//$Options::Title   ["Gameplay", $i  ] = "Time Travel Timer";
+//$Options::Type    ["Gameplay", $i  ] = "boolean";
+$Options::Name    ["Gameplay", $i++] = "fpsCounter";
+$Options::Title   ["Gameplay", $i  ] = "Performance Display";
+$Options::Type    ["Gameplay", $i  ] = "value";
 $Options::Name    ["Gameplay", $i++] = "freelook";
 $Options::Title   ["Gameplay", $i  ] = "Free-Look";
 $Options::Type    ["Gameplay", $i  ] = "boolean";
-$Options::Name    ["Gameplay", $i++] = "oobInsults";
-$Options::Title   ["Gameplay", $i  ] = "OOB Insults";
-$Options::Type    ["Gameplay", $i  ] = "boolean";
-$Options::Name    ["Gameplay", $i++] = "thousandths";
-$Options::Title   ["Gameplay", $i  ] = "Thousandths";
-$Options::Type    ["Gameplay", $i  ] = "boolean";
 $Options::Name    ["Gameplay", $i++] = "helptriggers";
-$Options::Title   ["Gameplay", $i  ] = "Help Triggers";
+$Options::Title   ["Gameplay", $i  ] = "Help Bubbles";
 $Options::Type    ["Gameplay", $i  ] = "boolean";
 $Options::Name    ["Gameplay", $i++] = "screenshotMode";
-$Options::Title   ["Gameplay", $i  ] = "Show/Hide HUD";
+$Options::Title   ["Gameplay", $i  ] = "HUD Visibility";
 $Options::Type    ["Gameplay", $i  ] = "boolean";
 $Options::Name    ["Gameplay", $i++] = "fov";
-$Options::Title   ["Gameplay", $i  ] = "FOV";
+$Options::Title   ["Gameplay", $i  ] = "Field of View";
 $Options::Ctrl    ["Gameplay", $i  ] = "slider";
 $Options::Min     ["Gameplay", $i  ] = 60;
 $Options::Max     ["Gameplay", $i  ] = 140;
@@ -456,24 +517,40 @@ $Options::Min     ["Gameplay", $i  ] = 5;
 $Options::Max     ["Gameplay", $i  ] = 85;
 $Options::Ticks   ["Gameplay", $i  ] = 80; //Every 1
 $Options::JoyTicks["Gameplay", $i  ] = 16; //Every 5
-$Options::Name    ["Gameplay", $i++] = "alwaysShowSpeedometer";
-$Options::Title   ["Gameplay", $i  ] = "Always Show Speedometer";
-$Options::Type    ["Gameplay", $i  ] = "boolean";
-$Options::Name    ["Gameplay", $i++] = "powerupsAlwaysOnRadar";
-$Options::Title   ["Gameplay", $i  ] = "Powerups Always on Radar";
-$Options::Type    ["Gameplay", $i  ] = "boolean";
-$Options::Name    ["Gameplay", $i++] = "powerupTimers";
-$Options::Title   ["Gameplay", $i  ] = "Powerup Timers";
-$Options::Type    ["Gameplay", $i  ] = "boolean";
-$Options::Name    ["Gameplay", $i++] = "timeTravelTimer";
-$Options::Title   ["Gameplay", $i  ] = "Time Travel Timer";
-$Options::Type    ["Gameplay", $i  ] = "boolean";
-$Options::Name    ["Gameplay", $i++] = "minimalSpectateUI";
-$Options::Title   ["Gameplay", $i  ] = "(Online) Minimal Spectate UI";
-$Options::Type    ["Gameplay", $i  ] = "boolean";
-$Options::Name    ["Gameplay", $i++] = "spchanges";
-$Options::Title   ["Gameplay", $i  ] = "Ultra Violet";
-$Options::Type    ["Gameplay", $i  ] = "boolean";
+$Options::Name    ["Gameplay", $i++] = "particles";
+$Options::Title   ["Gameplay", $i  ] = "Particles";
+$Options::Ctrl    ["Gameplay", $i  ] = "slider";
+$Options::Min     ["Gameplay", $i  ] = 0;
+$Options::Max     ["Gameplay", $i  ] = 200;
+$Options::Ticks   ["Gameplay", $i  ] = 40; //Every 5
+$Options::JoyTicks["Gameplay", $i  ] = 10; //Every 20
+$Options::Name    ["Gameplay", $i++] = "particleSystem";
+$Options::Title   ["Gameplay", $i  ] = "Particle System";
+$Options::Type    ["Gameplay", $i  ] = "value";
+$Options::Name    ["Gameplay", $i++] = "advancedOptions";
+$Options::Title   ["Gameplay", $i  ] = "Advanced Options";
+$Options::Ctrl    ["Gameplay", $i  ] = "button";
+// $Options::Name    ["Gameplay", $i++] = "oobInsults";
+// $Options::Title   ["Gameplay", $i  ] = "OOB Insults";
+// $Options::Type    ["Gameplay", $i  ] = "boolean";
+// $Options::Name    ["Gameplay", $i++] = "alwaysShowSpeedometer";
+// $Options::Title   ["Gameplay", $i  ] = "Always Show Speedometer";
+// $Options::Type    ["Gameplay", $i  ] = "boolean";
+// $Options::Name    ["Gameplay", $i++] = "powerupsAlwaysOnRadar";
+// $Options::Title   ["Gameplay", $i  ] = "Powerups Always on Radar";
+// $Options::Type    ["Gameplay", $i  ] = "boolean";
+// $Options::Name    ["Gameplay", $i++] = "powerupTimers";
+// $Options::Title   ["Gameplay", $i  ] = "Powerup Timers";
+// $Options::Type    ["Gameplay", $i  ] = "boolean";
+// $Options::Name    ["Gameplay", $i++] = "timeTravelTimer";
+// $Options::Title   ["Gameplay", $i  ] = "Time Travel Timer";
+// $Options::Type    ["Gameplay", $i  ] = "boolean";
+// $Options::Name    ["Gameplay", $i++] = "minimalSpectateUI";
+// $Options::Title   ["Gameplay", $i  ] = "(Online) Minimal Spectate UI";
+// $Options::Type    ["Gameplay", $i  ] = "boolean";
+// $Options::Name    ["Gameplay", $i++] = "spchanges";
+// $Options::Title   ["Gameplay", $i  ] = "Ultra Violet";
+// $Options::Type    ["Gameplay", $i  ] = "boolean";
 
 Array(ScreenshotModeArray);
 ScreenshotModeArray.addEntry("Show Everything"  TAB 0);
@@ -481,9 +558,15 @@ ScreenshotModeArray.addEntry("Hide Chat Online" TAB 1);
 ScreenshotModeArray.addEntry("Hide Everything"  TAB 2);
 
 Array(TimeTravelTimerArray);
-TimeTravelTimerArray.addEntry("Disabled"  TAB 0);
-TimeTravelTimerArray.addEntry("Enabled" TAB 1);
-TimeTravelTimerArray.addEntry("Enabled, Precise"  TAB 2);
+TimeTravelTimerArray.addEntry("Disabled"         TAB 0);
+TimeTravelTimerArray.addEntry("Enabled"          TAB 1);
+TimeTravelTimerArray.addEntry("Enabled, Precise" TAB 2);
+
+Array(FPSCounterArray);
+FPSCounterArray.addEntry("Disabled"       TAB 0);
+FPSCounterArray.addEntry("Framerate Only" TAB 1);
+FPSCounterArray.addEntry("Tickrate Only"  TAB 2);
+FPSCounterArray.addEntry("Show All"       TAB 3);
 
 //-----------------------------------------------------------------------------
 // Online
@@ -495,19 +578,19 @@ $Options::Type    ["Online", $i  ] = "boolean";
 $Options::Name    ["Online", $i++] = "showRecords";
 $Options::Title   ["Online", $i  ] = "Always Show World Record";
 $Options::Type    ["Online", $i  ] = "boolean";
-$Options::Name    ["Online", $i++] = "serverPort";
-$Options::Title   ["Online", $i  ] = "Server Port";
-$Options::Ctrl    ["Online", $i  ] = "textbox";
-$Options::Length  ["Online", $i  ] = 5;
 $Options::Name    ["Online", $i++] = "profanityFilter";
 $Options::Title   ["Online", $i  ] = "Profanity Filter";
 $Options::Type    ["Online", $i  ] = "boolean";
 $Options::Name    ["Online", $i++] = "globalSize";
-$Options::Title   ["Online", $i  ] = "Global Score Page Size";
+$Options::Title   ["Online", $i  ] = "Global Scores Per Page";
 $Options::Type    ["Online", $i  ] = "value";
 $Options::Name    ["Online", $i++] = "chatMessageSize";
 $Options::Title   ["Online", $i  ] = "In-Game Lines of Chat";
 $Options::Type    ["Online", $i  ] = "value";
+$Options::Name    ["Online", $i++] = "serverPort";
+$Options::Title   ["Online", $i  ] = "Server Port";
+$Options::Ctrl    ["Online", $i  ] = "textbox";
+$Options::Length  ["Online", $i  ] = 5;
 $Options::Name    ["Online", $i++] = "noholepunch";
 $Options::Title   ["Online", $i  ] = "Hole Punching";
 $Options::Type    ["Online", $i  ] = "boolean";
@@ -519,24 +602,24 @@ $Options::AutoLoginUserField = $i++;
 $Options::AutoLoginPassField = $i++;
 
 $Options::Name    ["Online", $Options::AutoLoginUserField] = "autoLoginUsername";
-$Options::Title   ["Online", $Options::AutoLoginUserField] = "Username";
+$Options::Title   ["Online", $Options::AutoLoginUserField] = "Auto Login Username";
 $Options::Ctrl    ["Online", $Options::AutoLoginUserField] = "textbox";
 $Options::Length  ["Online", $Options::AutoLoginUserField] = 255;
 $Options::Disable ["Online", $Options::AutoLoginUserField] = ($LBPref::AutoLogin !$= "User");
 $Options::Name    ["Online", $Options::AutoLoginPassField] = "AutoLoginPassword";
-$Options::Title   ["Online", $Options::AutoLoginPassField] = "Password";
+$Options::Title   ["Online", $Options::AutoLoginPassField] = "Auto Login Password";
 $Options::Ctrl    ["Online", $Options::AutoLoginPassField] = "password";
 $Options::Length  ["Online", $Options::AutoLoginPassField] = 255;
 $Options::Disable ["Online", $Options::AutoLoginPassField] = ($LBPref::AutoLogin !$= "User");
 
 
 Array(AutoLoginArray);
-AutoLoginArray.addEntry("None"  TAB "None");
+AutoLoginArray.addEntry("Disabled"  TAB "None");
 AutoLoginArray.addEntry("User"  TAB "User");
 AutoLoginArray.addEntry("Guest" TAB "Guest");
 
 Array(ProfanityFilterArray);
-ProfanityFilterArray.addEntry("Disable" TAB 0);
+ProfanityFilterArray.addEntry("Disabled" TAB 0);
 ProfanityFilterArray.addEntry("Minimal" TAB 1);
 ProfanityFilterArray.addEntry("Strong"  TAB 2);
 
@@ -556,7 +639,24 @@ ChatMessageSizeArray.addEntry("6" TAB 6);
 // Graphics Functions.
 
 function Opt_screenResolution_getDisplay() {
-	return getWord($pref::Video::Resolution, 0) SPC "x" SPC getWord($pref::Video::Resolution, 1);
+	if ($pref::Video::fullScreen)
+		return "Not Available";
+
+	if ($Options::ResolutionChanged)
+		return getWord($pref::Video::Resolution, 0) SPC "x" SPC getWord($pref::Video::Resolution, 1);
+
+	%curRes = $pref::Video::windowedRes;
+	%curResX = getWord(%curRes, 0);
+	%curResY = getWord(%curRes, 1);
+
+	%wndResX = getWord($pref::Video::Resolution, 0);
+	%wndResY = getWord($pref::Video::Resolution, 1);
+
+	if (%curResX == %wndResX && %curResY == %wndResY) {
+		return %wndResX SPC "x" SPC %wndResY;
+	} else {
+		return %curResX SPC "x" SPC %curResY;
+	}
 }
 
 function Opt_screenResolution_getValue() {
@@ -572,6 +672,7 @@ function Opt_screenResolution_decrease() {
 	%current = OptResolutions.getEntry(%index);
 	$pref::Video::resolution = %current SPC getWord($pref::Video::resolution, 2);
 	$pref::Video::WindowedRes = %current SPC getWord($pref::Video::resolution, 2);
+	$Options::ResolutionChanged = true;
 }
 
 function Opt_screenResolution_increase() {
@@ -583,6 +684,7 @@ function Opt_screenResolution_increase() {
 	%current = OptResolutions.getEntry(%index);
 	$pref::Video::resolution = %current SPC getWord($pref::Video::resolution, 2);
 	$pref::Video::WindowedRes = %current SPC getWord($pref::Video::resolution, 2);
+	$Options::ResolutionChanged = true;
 }
 
 //-----------------------------------------------------------------------------
@@ -611,6 +713,7 @@ function Opt_screenStyle_updateResolution() {
 	//And update the resolution pref... by going back and forth the really hacky way
 	eval(OptionsscreenResolutionLeftArrow.command);
 	eval(OptionsscreenResolutionRightArrow.command);
+	$Options::ResolutionChanged = true;
 }
 
 //-----------------------------------------------------------------------------
@@ -781,31 +884,33 @@ function Opt_animateBackground_increase() {
 
 //-----------------------------------------------------------------------------
 
-function Opt_legacyItems_getDisplay() {
-	return $pref::legacyItems ? "Enabled" : "Disabled";
-}
+//Moved to Advanced Options
 
-function Opt_legacyItems_getValue() {
-	return $pref::legacyItems;
-}
+// function Opt_legacyItems_getDisplay() {
+// 	return $pref::legacyItems ? "Enabled" : "Disabled";
+// }
 
-function Opt_legacyItems_decrease() {
-	$pref::legacyItems = !$pref::legacyItems;
+// function Opt_legacyItems_getValue() {
+// 	return $pref::legacyItems;
+// }
 
-	if (!$liAssert) {
-		$liAssert = true;
-		MessageBoxOK("Notice", "This option requires you to restart the game.");
-	}
-}
+// function Opt_legacyItems_decrease() {
+// 	$pref::legacyItems = !$pref::legacyItems;
 
-function Opt_legacyItems_increase() {
-	$pref::legacyItems = !$pref::legacyItems;
+// 	if (!$liAssert) {
+// 		$liAssert = true;
+// 		MessageBoxOK("Notice", "This option requires you to restart the game.");
+// 	}
+// }
 
-	if (!$liAssert) {
-		$liAssert = true;
-		MessageBoxOK("Notice", "This option requires you to restart the game.");
-	}
-}
+// function Opt_legacyItems_increase() {
+// 	$pref::legacyItems = !$pref::legacyItems;
+
+// 	if (!$liAssert) {
+// 		$liAssert = true;
+// 		MessageBoxOK("Notice", "This option requires you to restart the game.");
+// 	}
+// }
 
 //-----------------------------------------------------------------------------
 
@@ -829,10 +934,8 @@ function Opt_antiAliasing_decrease() {
 	}
 	$pref::Video::AntiAliasing = getField(AntiAliasingQualityArray.getEntry(%index), 1);
 
-	if (%index > 1 && !$aaAssert) {
-		$aaAssert = true;
-		MessageBoxOK("Performance Notice", "With higher levels of anti-aliasing you may experience performace drops. If you experience lag after activating this, try reducing this setting.");
-	}
+	if (%index > 1 && !$aaAssert)
+		antiAliasingAssert();
 }
 
 function Opt_antiAliasing_increase() {
@@ -843,10 +946,13 @@ function Opt_antiAliasing_increase() {
 	}
 	$pref::Video::AntiAliasing = getField(AntiAliasingQualityArray.getEntry(%index), 1);
 
-	if (%index > 1 && !$aaAssert) {
-		$aaAssert = true;
-		MessageBoxOK("Performance Notice", "With higher levels of anti-aliasing you may experience performace drops. If you experience lag after activating this, try reducing this setting.");
-	}
+	if (%index > 1 && !$aaAssert)
+		antiAliasingAssert();
+}
+
+function antiAliasingAssert() {
+	$aaAssert = true;
+	MessageBoxOK("Performance Notice", "With higher levels of anti-aliasing you may experience performace drops. If you experience lag after activating this, try reducing this setting.");
 }
 
 //-----------------------------------------------------------------------------
@@ -854,6 +960,14 @@ function Opt_antiAliasing_increase() {
 function Opt_maxFPS_getDisplay() {
 	%entry = MaxFPSArray.getEntryByField($pref::Video::MaxFPS, 1);
 	if (%entry $= "") {
+		if ($pref::Video::MaxFPS == 0) {
+			// This is vsync
+			$pref::Video::verticalSync = true;
+			$pref::Video::MaxFPS = -1; // Unlimited fps
+			%entry = MaxFPSArray.getEntryByField($pref::Video::MaxFPS, 1);
+			return getField(%entry, 0);
+		}
+
 		return $pref::Video::MaxFPS;
 	}
 	return getField(%entry, 0);
@@ -871,11 +985,8 @@ function Opt_maxFPS_decrease() {
 	}
 	$pref::Video::MaxFPS = getField(MaxFPSArray.getEntry(%index), 1);
 
-	if ($platform $= "macos" && (%index == 0) && !$vsyncAssert) {
-		$vsyncAssert = true;
-		MessageBoxOK("Performance Notice", "Unlimited framerate will make your game render as fast as possible." NL
-			"This has been known to turn laptops into toasters as OSX doesn't activate the fans until your CPU reaches almost boiling point.");
-	}
+	if ($platform $= "macos" && (%index == 0) && !$vsyncAssert)
+		vSyncAssert();
 }
 
 function Opt_maxFPS_increase() {
@@ -886,13 +997,102 @@ function Opt_maxFPS_increase() {
 	}
 	$pref::Video::MaxFPS = getField(MaxFPSArray.getEntry(%index), 1);
 
-	if ($platform $= "macos" && (%index == 0) && !$vsyncAssert) {
-		$vsyncAssert = true;
-		MessageBoxOK("Performance Notice", "Unlimited framerate will make your game render as fast as possible." NL
-			"This has been known to turn laptops into toasters as OSX doesn't activate the fans until your CPU reaches almost boiling point.");
-	}
+	if ($platform $= "macos" && (%index == 0) && !$vsyncAssert)
+		vSyncAssert();
 }
 
+function vSyncAssert() {
+	$vsyncAssert = true;
+	MessageBoxOK("MacOS Performance Notice", "Unlimited tickrate will make your game compute as fast as possible. " @
+	             "This has been known to turn laptops very hot as macOS doesn't activate the fans until your CPU reaches almost boiling point.");
+}
+
+function Opt_vsync_getDisplay() {
+	if ($pref::Video::renderPriority $= "")
+		$pref::Video::renderPriority = 0;
+	%entry = RenderPriorityArray.getEntryByField($pref::Video::renderPriority, 1);
+	if (%entry $= "") {
+		return $pref::Video::renderPriority;
+	}
+	return getField(%entry, 0);
+}
+
+function Opt_vsync_getValue() {
+	return $pref::Video::renderPriority;
+}
+
+function Opt_vsync_decrease() {
+	%index = RenderPriorityArray.getIndexByField($pref::Video::renderPriority, 1);
+	%index --;
+	if (%index < 0) {
+		%index = RenderPriorityArray.getSize() - 1;
+	}
+	$pref::Video::renderPriority = getField(RenderPriorityArray.getEntry(%index), 1);
+}
+
+function Opt_vsync_increase() {
+	%index = RenderPriorityArray.getIndexByField($pref::Video::renderPriority, 1);
+	%index ++;
+	if (%index == RenderPriorityArray.getSize()) {
+		%index = 0;
+	}
+	$pref::Video::renderPriority = getField(RenderPriorityArray.getEntry(%index), 1);
+}
+
+
+function Opt_graphicsDriver_getDisplay() {
+	%value = $pref::Video::RendererOverride;
+	if (%value $= "")
+		return "Automatic";
+	return $pref::Video::RendererOverride;
+}
+
+function Opt_graphicsDriver_getValue() {
+	return $pref::Video::RendererOverride;
+}
+
+function Opt_graphicsDriver_decrease() {
+	%index = OptRenderers.getIndex($pref::Video::RendererOverride, 1);
+	if ($pref::Video::RendererOverride $= "")
+		%index = 0;
+
+	%index --;
+	if (%index < 0)
+		%index = OptRenderers.getSize() - 1;
+	if (%index == 0)
+		$pref::Video::RendererOverride = "";
+	else
+		$pref::Video::RendererOverride = OptRenderers.getEntry(%index);
+
+	if (!$gdAssert)
+		graphicsDriverAssert();
+}
+
+function Opt_graphicsDriver_increase() {
+	%index = OptRenderers.getIndex($pref::Video::RendererOverride, 1);
+	if ($pref::Video::RendererOverride $= "")
+		%index = 0;
+
+	%index ++;
+	if (%index == OptRenderers.getSize())
+		%index = 0;
+	if (%index == 0)
+		$pref::Video::RendererOverride = "";
+	else
+		$pref::Video::RendererOverride = OptRenderers.getEntry(%index);
+
+	if (!$gdAssert)
+		graphicsDriverAssert();
+}
+
+function graphicsDriverAssert() {
+	$gdAssert = true;
+	MessageBoxOK("Warning", "Please do not change this option unless you know exactly what you are doing. " @
+	       "It is best to leave this option on Automatic unless you are experiencing issues with the game. " NL
+	       "Consequences of changing this option may include the game not starting or not rendering properly." NL "" NL
+	       "<just:center>This option requires you to restart the game." NL "" NL
+	       "You accept all responsibility for changing this option.");
+}
 
 //-----------------------------------------------------------------------------
 
@@ -918,7 +1118,7 @@ function Opt_particleSystem_decrease() {
 
 	if (!$psAssert) {
 		$psAssert = true;
-		MessageBoxOK("Notice", "This option requires you to restart the game.");
+		restartAssert();
 	}
 }
 
@@ -932,17 +1132,26 @@ function Opt_particleSystem_increase() {
 
 	if (!$psAssert) {
 		$psAssert = true;
-		MessageBoxOK("Notice", "This option requires you to restart the game.");
+		restartAssert();
 	}
 }
 
 //-----------------------------------------------------------------------------
+
+function restartAssert() {
+	MessageBoxOK("Notice", "This option requires you to restart the game.");
+}
 
 //-----------------------------------------------------------------------------
 
 function Opt_texturePack_edit() {
 	// Dialog does all the config for us (and sets $Options::TexturePackDirty)
 	RootGui.pushDialog(OptionsTexturePackDlg);
+}
+
+function Opt_advancedOptions_edit() {
+	// Dialog does all the config for us
+	RootGui.pushDialog(AdvancedOptionsDlg);
 }
 
 //-----------------------------------------------------------------------------
@@ -1161,7 +1370,11 @@ function OptionsGui::updateChannelVolume(%this, %channel) {
 // Gameplay Functions
 
 function Opt_fpsCounter_getDisplay() {
-	return $pref::showFPSCounter ? "Enabled" : "Disabled";
+	%entry = FPSCounterArray.getEntryByField($pref::showFPSCounter, 1);
+	if (%entry $= "") {
+		return $pref::showFPSCounter ? "Enabled" : "Disabled";
+	}
+	return getField(%entry, 0);
 }
 
 function Opt_fpsCounter_getValue() {
@@ -1169,12 +1382,22 @@ function Opt_fpsCounter_getValue() {
 }
 
 function Opt_fpsCounter_decrease() {
-	$pref::showFPSCounter = !$pref::showFPSCounter;
+	%index = FPSCounterArray.getIndexByField($pref::showFPSCounter, 1);
+	%index --;
+	if (%index < 0) {
+		%index = FPSCounterArray.getSize() - 1;
+	}
+	$pref::showFPSCounter = getField(FPSCounterArray.getEntry(%index), 1);
 	FPSMetreCtrl.setVisible($pref::showFPSCounter);
 }
 
 function Opt_fpsCounter_increase() {
-	$pref::showFPSCounter = !$pref::showFPSCounter;
+	%index = FPSCounterArray.getIndexByField($pref::showFPSCounter, 1);
+	%index ++;
+	if (%index >= FPSCounterArray.getSize()) {
+		%index = 0;
+	}
+	$pref::showFPSCounter = getField(FPSCounterArray.getEntry(%index), 1);
 	FPSMetreCtrl.setVisible($pref::showFPSCounter);
 }
 
@@ -1198,26 +1421,28 @@ function Opt_freelook_increase() {
 
 //-----------------------------------------------------------------------------
 
-function Opt_oobInsults_getDisplay() {
-	return $pref::showOOBMessages ? "Enabled" : "Disabled";
-}
+// Moved to Advanced Options
 
-function Opt_oobInsults_getValue() {
-	return $pref::showOOBMessages;
-}
+// function Opt_oobInsults_getDisplay() {
+// 	return $pref::showOOBMessages ? "Enabled" : "Disabled";
+// }
 
-function Opt_oobInsults_decrease() {
-	$pref::showOOBMessages = !$pref::showOOBMessages;
-}
+// function Opt_oobInsults_getValue() {
+// 	return $pref::showOOBMessages;
+// }
 
-function Opt_oobInsults_increase() {
-	$pref::showOOBMessages = !$pref::showOOBMessages;
-}
+// function Opt_oobInsults_decrease() {
+// 	$pref::showOOBMessages = !$pref::showOOBMessages;
+// }
+
+// function Opt_oobInsults_increase() {
+// 	$pref::showOOBMessages = !$pref::showOOBMessages;
+// }
 
 //-----------------------------------------------------------------------------
 
 function Opt_thousandths_getDisplay() {
-	return $pref::Thousandths ? "Enabled" : "Disabled";
+	return $pref::Thousandths ? "Thousandths" : "Hundredths";
 }
 
 function Opt_thousandths_getValue() {
@@ -1388,6 +1613,78 @@ function Opt_automaticaudio_increase() {
 
 //-----------------------------------------------------------------------------
 
+function Opt_timetravelsounds_getDisplay() {
+	return $pref::timeTravelSounds ? "Enabled" : "Disabled";
+}
+
+function Opt_timetravelsounds_getValue() {
+	return $pref::timeTravelSounds;
+}
+
+function Opt_timetravelsounds_decrease() {
+	$pref::timeTravelSounds = !$pref::timeTravelSounds;
+}
+
+function Opt_timetravelsounds_increase() {
+	$pref::timeTravelSounds = !$pref::timeTravelSounds;
+}
+
+//-----------------------------------------------------------------------------
+
+function Opt_partimealarm_getDisplay() {
+	return $pref::parTimeAlarm ? "Enabled" : "Disabled";
+}
+
+function Opt_partimealarm_getValue() {
+	return $pref::parTimeAlarm;
+}
+
+function Opt_partimealarm_decrease() {
+	$pref::parTimeAlarm = !$pref::parTimeAlarm;
+}
+
+function Opt_partimealarm_increase() {
+	$pref::parTimeAlarm = !$pref::parTimeAlarm;
+}
+
+//-----------------------------------------------------------------------------
+
+function Opt_finalLapMusic_getDisplay() {
+	return $pref::finalLapMusic ? "Enabled" : "Disabled";
+}
+
+function Opt_finalLapMusic_getValue() {
+	return $pref::finalLapMusic;
+}
+
+function Opt_finalLapMusic_decrease() {
+	$pref::finalLapMusic = !$pref::finalLapMusic;
+}
+
+function Opt_finalLapMusic_increase() {
+	$pref::finalLapMusic = !$pref::finalLapMusic;
+}
+
+//-----------------------------------------------------------------------------
+
+function Opt_panicMusic_getDisplay() {
+	return $pref::panicMusic ? "Enabled" : "Disabled";
+}
+
+function Opt_panicMusic_getValue() {
+	return $pref::panicMusic;
+}
+
+function Opt_panicMusic_decrease() {
+	$pref::panicMusic = !$pref::panicMusic;
+}
+
+function Opt_panicMusic_increase() {
+	$pref::panicMusic = !$pref::panicMusic;
+}
+
+//-----------------------------------------------------------------------------
+
 function Opt_fov_getValue() {
 	return $pref::Player::defaultFov;
 }
@@ -1497,7 +1794,7 @@ function Opt_spChanges_increase() {
 	$pref::spchanges = !$pref::spchanges;
 	if ($pref::spchanges)
 		MessageBoxOK("The Time Has Come", "With this feature enabled Marble Blast Ultra Levels will now resemble their 360 counterparts even more in Singleplayer!");
-	
+
 }
 
 //-----------------------------------------------------------------------------
@@ -1836,41 +2133,43 @@ function OptionsGui::buildTab(%this, %tab) {
 		%whatControl = $Options::Ctrl[%tab, %i];
 
 		switch$ (%whatControl) {
-			case "slider":
-				%valueFont = %valueFontSlider;
-				%tickSize = "$pref::Input::ControlDevice $= \"Joystick\" ? " @ %valueCtrl @ ".getJoyTickSize() :" @ %valueCtrl @ ".getTickSize()";
-				%commandSlider = "opt_" @ %name @ "_setValue(" @ %valueCtrl @ ".getFormattedValue());";
-				%commandLeft   = "opt_" @ %name @ "_decrease(" @ %tickSize @ ");" @ %valueCtrl @ ".setValue(opt_" @ %name @ "_getValue());";
-				%commandRight  = "opt_" @ %name @ "_increase(" @ %tickSize @ ");" @ %valueCtrl @ ".setValue(opt_" @ %name @ "_getValue());";
-				%commandSlider = %commandSlider @ %displayCtrl @ ".setText(\"" @ %valueFont @ "\" @ opt_" @ %name @ "_getDisplay());";
-				%commandLeft   = %commandLeft   @ %displayCtrl @ ".setText(\"" @ %valueFont @ "\" @ opt_" @ %name @ "_getDisplay());";
-				%commandRight  = %commandRight  @ %displayCtrl @ ".setText(\"" @ %valueFont @ "\" @ opt_" @ %name @ "_getDisplay());";
-				%nameLeft = "Decrease";
-				%nameRight = "Increase";
-			case "textbox" or "password":
-				%valueFont = %valueFontTextbox;
-				%commandTextbox = "opt_" @ %name @ "_setValue(" @ %valueCtrl @ ".getValue());";
-				%commandValidate = "opt_" @ %name @ "_validate(" @ %valueCtrl @ ".getValue());";
-				%commandLeft  = "";
-				%commandRight = "";
-				%nameLeft = "";
-				%nameRight = "";
-			case "button":
-				%valueFont = %valueFontButton;
-				%commandButton = "opt_" @ %name @ "_edit();";
-				%commandLeft  = "";
-				%commandRight = "";
-				%nameLeft = "";
-				%nameRight = "";
-			default:
-				%valueFont = %valueFontButton;
-				%commandLeft  = "opt_" @ %name @ "_decrease(); ";
-				%commandRight = "opt_" @ %name @ "_increase(); ";
-				%commandLeft  = %commandLeft  @ %displayCtrl @ ".setText(\"" @ %valueFont @ "\" @ opt_" @ %name @ "_getDisplay());";
-				%commandRight = %commandRight @ %displayCtrl @ ".setText(\"" @ %valueFont @ "\" @ opt_" @ %name @ "_getDisplay());";
+		case "slider":
+			%valueFont = %valueFontSlider;
+			%tickSize = "$pref::Input::ControlDevice $= \"Joystick\" ? " @ %valueCtrl @ ".getJoyTickSize() :" @ %valueCtrl @ ".getTickSize()";
+			%commandSlider = "opt_" @ %name @ "_setValue(" @ %valueCtrl @ ".getFormattedValue());";
+			%commandLeft   = "opt_" @ %name @ "_decrease(" @ %tickSize @ ");" @ %valueCtrl @ ".setValue(opt_" @ %name @ "_getValue());";
+			%commandRight  = "opt_" @ %name @ "_increase(" @ %tickSize @ ");" @ %valueCtrl @ ".setValue(opt_" @ %name @ "_getValue());";
+			%commandSlider = %commandSlider @ %displayCtrl @ ".setText(\"" @ %valueFont @ "\" @ opt_" @ %name @ "_getDisplay());";
+			%commandLeft   = %commandLeft   @ %displayCtrl @ ".setText(\"" @ %valueFont @ "\" @ opt_" @ %name @ "_getDisplay());";
+			%commandRight  = %commandRight  @ %displayCtrl @ ".setText(\"" @ %valueFont @ "\" @ opt_" @ %name @ "_getDisplay());";
+			%nameLeft = "Decrease";
+			%nameRight = "Increase";
+		case "textbox" or "password":
+			%valueFont = %valueFontTextbox;
+			%commandTextbox = "opt_" @ %name @ "_setValue(" @ %valueCtrl @ ".getValue());";
+			%commandValidate = "opt_" @ %name @ "_validate(" @ %valueCtrl @ ".getValue());";
+			%commandLeft  = "";
+			%commandRight = "";
+			%nameLeft = "";
+			%nameRight = "";
+		case "button":
+			%valueFont = %valueFontButton;
+			%commandButton = "opt_" @ %name @ "_edit();";
+			%commandLeft  = "";
+			%commandRight = "";
+			%nameLeft = "";
+			%nameRight = "";
+		case "spacer":
+			%title = "";
+		default:
+			%valueFont = %valueFontButton;
+			%commandLeft  = "opt_" @ %name @ "_decrease(); ";
+			%commandRight = "opt_" @ %name @ "_increase(); ";
+			%commandLeft  = %commandLeft  @ %displayCtrl @ ".setText(\"" @ %valueFont @ "\" @ opt_" @ %name @ "_getDisplay());";
+			%commandRight = %commandRight @ %displayCtrl @ ".setText(\"" @ %valueFont @ "\" @ opt_" @ %name @ "_getDisplay());";
 
-				%nameLeft = (%type $= "boolean" ? "Toggle" : "Decrease");
-				%nameRight = (%type $= "boolean" ? "Toggle" : "Increase");
+			%nameLeft = (%type $= "boolean" ? "Toggle" : "Decrease");
+			%nameRight = (%type $= "boolean" ? "Toggle" : "Increase");
 		}
 
 		%content.add(new GuiControl(%ctrl) {
@@ -1882,16 +2181,16 @@ function OptionsGui::buildTab(%this, %tab) {
 			minExtent = "8 8";
 			visible = "1";
 			helpTag = "0";
-				controlLSUp = %upCtrl;
-				controlLSDown = %downCtrl;
-				commandRSLeft = %commandLeft;
-				commandRSRight = %commandRight;
-				commandRepeatRSLeft = true;
-				commandRepeatRSRight = true;
-				controlOffset = "6 -6";
-				controlExtent = (%width - 7) SPC (%rowHeight + 12);
-				commandName["RSLeft"] = %nameLeft;
-				commandName["RSRight"] = %nameRight;
+			controlLSUp = %upCtrl;
+			controlLSDown = %downCtrl;
+			commandRSLeft = %commandLeft;
+			commandRSRight = %commandRight;
+			commandRepeatRSLeft = true;
+			commandRepeatRSRight = true;
+			controlOffset = "6 -6";
+			controlExtent = (%width - 7) SPC (%rowHeight + 12);
+			commandName["RSLeft"] = %nameLeft;
+			commandName["RSRight"] = %nameRight;
 
 			new GuiMLTextCtrl(%titleCtrl) {
 				profile = "GuiMLTextProfile";
@@ -1909,153 +2208,155 @@ function OptionsGui::buildTab(%this, %tab) {
 		});
 
 		switch$ (%whatControl) {
-			case "slider":
-				%range = $Options::Min[%tab, %i] SPC $Options::Max[%tab, %i];
-				%defaultValue = call("Opt_" @ %name @ "_getValue");
-				%ctrl.add(new GuiBitmapCtrl() {
-					profile = "GuiDefaultProfile";
-					horizSizing = "right";
-					vertSizing = "bottom";
-					position = "400 18";
-					extent = "230 10";
-					minExtent = "8 8";
-					visible = "1";
-					helpTag = "0";
-					bitmap = "~/client/ui/options/slider_bar";
-					wrap = "0";
-				});
-				%ctrl.add(new GuiSliderCtrl(%valueCtrl) {
-					profile = "GuiSliderProfile";
-					horizSizing = "right";
-					vertSizing = "bottom";
-					position = "385 5";
-					extent = "260 35";
-					minExtent = "8 8";
-					visible = "1";
-					altCommand = %commandSlider;
-					helpTag = "0";
-					range = %range;
-					ticks = $Options::Ticks[%tab, %i];
-					joyTicks = $Options::JoyTicks[%tab, %i];
-					value = %defaultValue;
-					bitmap = "~/client/ui/options/slider";
-				});
-				%ctrl.add(new GuiMLTextCtrl(%displayCtrl) {
-					profile = "GuiMLTextProfile";
-					horizSizing = "right";
-					vertSizing = "bottom";
-					position = "625 8";
-					extent = "75 14";
-					minExtent = "8 8";
-					visible = "1";
-					helpTag = "0";
-					lineSpacing = "2";
-					allowColorChars = "0";
-					maxChars = "-1";
-				});
-				eval(%commandSlider); // hack to get slider UI to show textbox.
+		case "slider":
+			%range = $Options::Min[%tab, %i] SPC $Options::Max[%tab, %i];
+			%defaultValue = call("Opt_" @ %name @ "_getValue");
+			%ctrl.add(new GuiBitmapCtrl() {
+				profile = "GuiDefaultProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "400 18";
+				extent = "230 10";
+				minExtent = "8 8";
+				visible = "1";
+				helpTag = "0";
+				bitmap = "~/client/ui/options/slider_bar";
+				wrap = "0";
+			});
+			%ctrl.add(new GuiSliderCtrl(%valueCtrl) {
+				profile = "GuiSliderProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "385 5";
+				extent = "260 35";
+				minExtent = "8 8";
+				visible = "1";
+				altCommand = %commandSlider;
+				helpTag = "0";
+				range = %range;
+				ticks = $Options::Ticks[%tab, %i];
+				joyTicks = $Options::JoyTicks[%tab, %i];
+				value = %defaultValue;
+				bitmap = "~/client/ui/options/slider";
+			});
+			%ctrl.add(new GuiMLTextCtrl(%displayCtrl) {
+				profile = "GuiMLTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "625 8";
+				extent = "75 14";
+				minExtent = "8 8";
+				visible = "1";
+				helpTag = "0";
+				lineSpacing = "2";
+				allowColorChars = "0";
+				maxChars = "-1";
+			});
+			eval(%commandSlider); // hack to get slider UI to show textbox.
 
-			case "textbox" or "password":
-				%var = $Options::Var[%tab, %i];
-				%length = $Options::Length[%tab, %i];
-				%defaultValue = call("Opt_" @ %name @ "_getValue");
-				%ctrl.add(new GuiControl() {
-					profile = "PQTextboxBorderProfile";
-					horizSizing = "right";
-					vertSizing = "bottom";
-					position = "381 4";
-					extent = "319 32";
-					minExtent = "21 21";
-					visible = "1";
+		case "textbox" or "password":
+			%var = $Options::Var[%tab, %i];
+			%length = $Options::Length[%tab, %i];
+			%defaultValue = call("Opt_" @ %name @ "_getValue");
+			%ctrl.add(new GuiControl() {
+				profile = "PQTextboxBorderProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "381 4";
+				extent = "319 32";
+				minExtent = "21 21";
+				visible = "1";
 
-					new GuiTextEditCtrl(%valueCtrl) {
-						profile = "PQTextboxProfile";
-						horizSizing = "right";
-						vertSizing = "bottom";
-						position = "3 1";
-						extent = "313 26";
-						minExtent = "8 8";
-						visible = "1";
-						variable = %var;
-						command = %commandTextbox;
-						helpTag = "0";
-						maxLength = %length;
-						maxPixelWidth = "0";
-						validate = %commandValidate;
-						historySize = "0";
-						password = (%whatControl $= "password");
-						tabComplete = "0";
-						sinkAllKeyEvents = "0";
-					};
-				});
-				%valueCtrl.setValue(%defaultValue);
-				eval(%commandTextbox);
+				new GuiTextEditCtrl(%valueCtrl) {
+					profile = "PQTextboxProfile";
+					horizSizing = "right";
+					vertSizing = "bottom";
+					position = "3 1";
+					extent = "313 26";
+					minExtent = "8 8";
+					visible = "1";
+					variable = %var;
+					command = %commandTextbox;
+					helpTag = "0";
+					maxLength = %length;
+					maxPixelWidth = "0";
+					validate = %commandValidate;
+					historySize = "0";
+					password = (%whatControl $= "password");
+					tabComplete = "0";
+					sinkAllKeyEvents = "0";
+				};
+			});
+			%valueCtrl.setValue(%defaultValue);
+			eval(%commandTextbox);
 
-			case "button":
-				%ctrl.add(new GuiBorderButtonCtrl(%buttonCtrl) {
-					profile = "GuiBorderButtonProfile";
-					horizSizing = "right";
-					vertSizing = "bottom";
-					position = "375 -2";
-					extent = "331 44";
-					minExtent = "8 8";
-					visible = "1";
-					command = %commandButton;
-					helpTag = "0";
-					text = "Edit...";
-					groupNum = "1";
-					buttonType = "PushButton";
-					repeatPeriod = "1000";
-					repeatDecay = "1";
-				});
-				%ctrl.commandSelect = %commandButton;
-				%ctrl.commandNameSelect = "Edit";
-			default:
-				%ctrl.add(new GuiMLTextCtrl(%displayCtrl) {
-					profile = "GuiMLTextProfile";
-					horizSizing = "right";
-					vertSizing = "bottom";
-					position = "420 5";
-					extent = "242 14";
-					minExtent = "8 8";
-					visible = "1";
-					helpTag = "0";
-					lineSpacing = "2";
-					allowColorChars = "0";
-					maxChars = "-1";
-				});
-				%ctrl.add(new GuiBorderButtonCtrl(%rightArrow) {
-					profile = "GuiBorderButtonProfile";
-					horizSizing = "right";
-					vertSizing = "bottom";
-					position = "662 -2";
-					extent = "44 44";
-					minExtent = "8 8";
-					visible = "1";
-					command = %commandRight;
-					helpTag = "0";
-					text = ">";
-					groupNum = "1";
-					buttonType = "PushButton";
-					repeatPeriod = "1000";
-					repeatDecay = "1";
-				});
-				%ctrl.add(new GuiBorderButtonCtrl(%leftArrow) {
-					profile = "GuiBorderButtonProfile";
-					horizSizing = "right";
-					vertSizing = "bottom";
-					position = "375 -2";
-					extent = "44 44";
-					minExtent = "8 8";
-					visible = "1";
-					command = %commandLeft;
-					helpTag = "0";
-					text = "<";
-					groupNum = "1";
-					buttonType = "PushButton";
-					repeatPeriod = "1000";
-					repeatDecay = "1";
-				});
+		case "button":
+			%ctrl.add(new GuiBorderButtonCtrl(%buttonCtrl) {
+				profile = "GuiBorderButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "375 -2";
+				extent = "331 44";
+				minExtent = "8 8";
+				visible = "1";
+				command = %commandButton;
+				helpTag = "0";
+				text = "Edit...";
+				groupNum = "1";
+				buttonType = "PushButton";
+				repeatPeriod = "1000";
+				repeatDecay = "1";
+			});
+			%ctrl.commandSelect = %commandButton;
+			%ctrl.commandNameSelect = "Edit";
+		case "spacer":
+		//Do nothing
+		default:
+			%ctrl.add(new GuiMLTextCtrl(%displayCtrl) {
+				profile = "GuiMLTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "420 5";
+				extent = "242 14";
+				minExtent = "8 8";
+				visible = "1";
+				helpTag = "0";
+				lineSpacing = "2";
+				allowColorChars = "0";
+				maxChars = "-1";
+			});
+			%ctrl.add(new GuiBorderButtonCtrl(%rightArrow) {
+				profile = "GuiBorderButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "662 -2";
+				extent = "44 44";
+				minExtent = "8 8";
+				visible = "1";
+				command = %commandRight;
+				helpTag = "0";
+				text = ">";
+				groupNum = "1";
+				buttonType = "PushButton";
+				repeatPeriod = "1000";
+				repeatDecay = "1";
+			});
+			%ctrl.add(new GuiBorderButtonCtrl(%leftArrow) {
+				profile = "GuiBorderButtonProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = "375 -2";
+				extent = "44 44";
+				minExtent = "8 8";
+				visible = "1";
+				command = %commandLeft;
+				helpTag = "0";
+				text = "<";
+				groupNum = "1";
+				buttonType = "PushButton";
+				repeatPeriod = "1000";
+				repeatDecay = "1";
+			});
 		}
 
 		%titleCtrl.setText(%titleFont @ %title);
@@ -2121,10 +2422,14 @@ function getMapDisplayName(%device, %action, %fullText) {
 		} else {
 			if (strstr(%action, "axis") != -1) {
 				switch$ (%action) {
-				case "xaxis": return "Mouse X Axis";
-				case "yaxis": return "Mouse Y Axis";
-				case "zaxis": return "Scroll Wheel";
-				default:      return "??";
+				case "xaxis":
+					return "Mouse X Axis";
+				case "yaxis":
+					return "Mouse Y Axis";
+				case "zaxis":
+					return "Scroll Wheel";
+				default:
+					return "??";
 				}
 			} else {
 				error("Mouse input object other than button or axis passed to getDisplayMapName:" SPC %action @ "!");
@@ -2141,11 +2446,16 @@ function getMapDisplayName(%device, %action, %fullText) {
 
 function getJoystickName(%index) {
 	%type = getJoystickType(%index);
-	if (stripos(%type, "Xbox One") != -1) return "xboxone";
-	if (stripos(%type, "X360") != -1) return "xbox360";
-	if (stripos(%type, "XInput") != -1) return "xbox360"; //Ew but windows
-	if (stripos(%type, "Xbox 360") != -1) return "xbox360";
-	if (stripos(%type, "PS4") != -1) return "ps4";
+	if (stripos(%type, "Xbox One") != -1)
+		return "xboxone";
+	if (stripos(%type, "X360") != -1)
+		return "xbox360";
+	if (stripos(%type, "XInput") != -1)
+		return "xbox360"; //Ew but windows
+	if (stripos(%type, "Xbox 360") != -1)
+		return "xbox360";
+	if (stripos(%type, "PS4") != -1)
+		return "ps4";
 	//TODO: make the configs control this, instead of the other way around
 
 	return "default";
@@ -2172,19 +2482,32 @@ function getDefaultControllerMapName(%action) {
 			%mods = %wordCount > 1 ? getWords(%action, 0, %wordCount - 2) @ " " : "";
 			%object = getWord(%action, %wordCount - 1);
 			switch$ (%object) {
-			case "xpov":   %object = "POV1 x";
-			case "ypov":   %object = "POV1 y";
-			case "upov":   %object = "POV1 up";
-			case "dpov":   %object = "POV1 down";
-			case "lpov":   %object = "POV1 left";
-			case "rpov":   %object = "POV1 right";
-			case "xpov2":  %object = "POV2 x";
-			case "ypov2":  %object = "POV2 y";
-			case "upov2":  %object = "POV2 up";
-			case "dpov2":  %object = "POV2 down";
-			case "lpov2":  %object = "POV2 left";
-			case "rpov2":  %object = "POV2 right";
-			default:       %object = "??";
+			case "xpov":
+				%object = "POV1 x";
+			case "ypov":
+				%object = "POV1 y";
+			case "upov":
+				%object = "POV1 up";
+			case "dpov":
+				%object = "POV1 down";
+			case "lpov":
+				%object = "POV1 left";
+			case "rpov":
+				%object = "POV1 right";
+			case "xpov2":
+				%object = "POV2 x";
+			case "ypov2":
+				%object = "POV2 y";
+			case "upov2":
+				%object = "POV2 up";
+			case "dpov2":
+				%object = "POV2 down";
+			case "lpov2":
+				%object = "POV2 left";
+			case "rpov2":
+				%object = "POV2 right";
+			default:
+				%object = "??";
 			}
 			return %mods @ %object;
 		} else {
@@ -2194,13 +2517,20 @@ function getDefaultControllerMapName(%action) {
 				%mods = %wordCount > 1 ? getWords(%action, 0, %wordCount - 2) @ " " : "";
 				%object = getWord(%action, %wordCount - 1);
 				switch$ (%object) {
-				case "xaxis":  %object = "X Axis";
-				case "yaxis":  %object = "Y Axis";
-				case "zaxis":  %object = "Z Axis";
-				case "rxaxis": %object = "Right X Axis";
-				case "ryaxis": %object = "Right Y Axis";
-				case "rzaxis": %object = "Right Z Axis";
-				default:       %object = "??";
+				case "xaxis":
+					%object = "X Axis";
+				case "yaxis":
+					%object = "Y Axis";
+				case "zaxis":
+					%object = "Z Axis";
+				case "rxaxis":
+					%object = "Right X Axis";
+				case "ryaxis":
+					%object = "Right Y Axis";
+				case "rzaxis":
+					%object = "Right Z Axis";
+				default:
+					%object = "??";
 				}
 				return %mods @ %object;
 			} else {
@@ -2383,11 +2713,14 @@ function OptionsGui::disableJoystick(%this) {
 function isSharedTriggers(%joystickNum) {
 	%count = getField(getJoystickAxes(%joystickNum), 0);
 	//Can't deal with this
-	if ($platform !$= "windows") return false;
+	if ($platform !$= "windows")
+		return false;
 	//Probably should have a console function for this
-	if ($Input::XInput) return false;
+	if ($Input::XInput)
+		return false;
 	//5 fields -- only one trigger axis. Probably shared
-	if (%count == 5) return true;
+	if (%count == 5)
+		return true;
 	//No idea, best to not chance it
 	return false;
 }
@@ -2423,23 +2756,23 @@ function OptionsGui::generateHotkeysList(%this) {
 			}
 
 			OptionsInputHotkeys.add(
-				%box = new GuiControl(%boxName) {
-					profile = "GuiMLTextProfile";
-					horizSizing = "right";
-					vertSizing = "bottom";
-					position = 0 SPC (%row * %height);
-					extent = "400 37";
-					minExtent = "8 8";
-					visible = "1";
-					helpTag = "0";
-						controlSelect = %buttonName;
-						controlUp = %lastBoxName;
-						controlName["Select"] = "Edit";
-						commandRight = "OptionsGui.inputGoRight(\"" @ %boxName @ "\");";
-						commandRepeatRight = true;
-						controlOffset = "0 -4";
-						controlExtent = "400 45";
-				}
+			%box = new GuiControl(%boxName) {
+				profile = "GuiMLTextProfile";
+				horizSizing = "right";
+				vertSizing = "bottom";
+				position = 0 SPC (%row * %height);
+				extent = "400 37";
+				minExtent = "8 8";
+				visible = "1";
+				helpTag = "0";
+				controlSelect = %buttonName;
+				controlUp = %lastBoxName;
+				controlName["Select"] = "Edit";
+				commandRight = "OptionsGui.inputGoRight(\"" @ %boxName @ "\");";
+				commandRepeatRight = true;
+				controlOffset = "0 -4";
+				controlExtent = "400 45";
+			}
 			);
 			%lastBoxName.controlDown = %boxName;
 			%lastBoxName = %boxName;
@@ -2457,7 +2790,7 @@ function OptionsGui::generateHotkeysList(%this) {
 					lineSpacing = "2";
 					allowColorChars = "0";
 					maxChars = "-1";
-						defaultText = "<bold:28>" @ %title @ ":";
+					defaultText = "<bold:28>" @ %title @ ":";
 				});
 
 				%addButton = "Opt_Input_Add_" @ %device @ "_" @ %bindFn;
@@ -2476,11 +2809,11 @@ function OptionsGui::generateHotkeysList(%this) {
 					buttonType = "PushButton";
 					repeatPeriod = "1000";
 					repeatDecay = "1";
-						controlLeft = %buttonName;
-						controlCancel = %box;
-						commandName["Select"] = "Add";
-						commandSelect = "OptionsGui.addBinding(\"" @ %bindFn @ "\", \"" @ %title @ "\");";
-						controlName["Cancel"] = "Cancel";
+					controlLeft = %buttonName;
+					controlCancel = %box;
+					commandName["Select"] = "Add";
+					commandSelect = "OptionsGui.addBinding(\"" @ %bindFn @ "\", \"" @ %title @ "\");";
+					controlName["Cancel"] = "Cancel";
 				});
 				%sideButton = %addButton;
 			} else {
@@ -2500,11 +2833,11 @@ function OptionsGui::generateHotkeysList(%this) {
 					buttonType = "PushButton";
 					repeatPeriod = "1000";
 					repeatDecay = "1";
-						controlLeft = %buttonName;
-						controlCancel = %box;
-						commandName["Select"] = "Remove";
-						commandSelect = "OptionsGui.removeBinding(\"" @ %bindFn @ "\", \"" @ %title @ "\");";
-						controlName["Cancel"] = "Cancel";
+					controlLeft = %buttonName;
+					controlCancel = %box;
+					commandName["Select"] = "Remove";
+					commandSelect = "OptionsGui.removeBinding(\"" @ %bindFn @ "\", \"" @ %title @ "\");";
+					controlName["Cancel"] = "Cancel";
 				});
 				%sideButton = %subButton;
 			}
@@ -2950,9 +3283,9 @@ function OptRemapInputCtrl::onInputEvent(%this, %device, %action) {
 			} else {
 				%prevCmdName = $Options::HotKey[$pref::Input::ControlDevice, %prevMapIndex, "Title"];
 				MessageBoxYesNo("WARNING",
-					"\"" @ %mapName @ "\" is already bound to \""
-					@ %prevCmdName @ "\"!\nDo you want to undo this mapping?",
-					"OptionsGui.redoMapping(" @ %device @ ", \"" @ %action @ "\", \"" @ %cmd @ "\");", "");
+				                "\"" @ %mapName @ "\" is already bound to \""
+				                @ %prevCmdName @ "\"!\nDo you want to undo this mapping?",
+				                "OptionsGui.redoMapping(" @ %device @ ", \"" @ %action @ "\", \"" @ %cmd @ "\");", "");
 			}
 			return;
 		}
@@ -3001,9 +3334,9 @@ function OptionsGui::event(%this, %joy, %category, %event, %val) {
 					if ($pref::Input::TriggerAction[%otherTrigger] !$= "" && $pref::Input::TriggerAction[%otherTrigger] !$= %this.remapCommand) {
 						//Yes we do, show a warning
 						MessageBoxYesNo("DirectInput Triggers", "Due to the way Windows reads your controller, you will be unable to press" SPC
-							"both LT and RT at the same time. You can still bind an action to each if you want, but note that pressing both" SPC
-							"at the same time will make neither one of the actions happen. Do you still want to bind this?",
-							"OptionsGui.onJoyRebind(\"" @ %axis @ "\");", "OptionsGui.cancelDITriggerBind();");
+						                "both LT and RT at the same time. You can still bind an action to each if you want, but note that pressing both" SPC
+						                "at the same time will make neither one of the actions happen. Do you still want to bind this?",
+						                "OptionsGui.onJoyRebind(\"" @ %axis @ "\");", "OptionsGui.cancelDITriggerBind();");
 					} else {
 						//Don't have the other one bound, just bind it like normal
 						OptionsGui.onJoyRebind(%axis);
@@ -3068,9 +3401,9 @@ function OptionsGui::onJoyRebind(%this, %action) {
 			} else {
 				%prevCmdName = $Options::HotKey[$pref::Input::ControlDevice, %prevMapIndex, "Title"];
 				MessageBoxYesNo("WARNING",
-					"\"" @ %actionName @ "\" is already bound to \""
-					@ %prevCmdName @ "\"!\nDo you want to undo this mapping?",
-					"OptionsGui.setJoyMapping(\"" @ %action @ "\");", "");
+				                "\"" @ %actionName @ "\" is already bound to \""
+				                @ %prevCmdName @ "\"!\nDo you want to undo this mapping?",
+				                "OptionsGui.setJoyMapping(\"" @ %action @ "\");", "");
 			}
 		}
 	}

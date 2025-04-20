@@ -41,7 +41,7 @@ for ($file = findFirstFile("packages/marbleland/*.mbpak"); $file !$= ""; $file =
 	MarblelandPackages.addEntry(fileBase($file));
 }
 
-//$baseMods = "platinum";
+$baseMods = "packages";
 $userMods = "platinum";
 $displayHelp = false;
 
@@ -85,6 +85,10 @@ function popFront(%list, %delim) {
 }
 
 function onFrameAdvance() {
+
+}
+
+function onFrameAdvanceWithPause() {
 
 }
 
@@ -202,6 +206,7 @@ for ($i = 1; $i < $Game::argc ; $i++) {
 	case "-dedicated":
 		$argUsed[$i]++;
 		$Server::Dedicated = true;
+		$DeferPackets = true;
 	//-------------------
 	case "-help":
 		$displayHelp = true;
@@ -325,7 +330,8 @@ function getFullPath(%path) {
 	%base = getSubStr(%base, 0, strrpos(%base, %ds));
 	if (getSubStr(trim(%path), 0, 1) $= "~")
 		%path = $usermods @ getSubStr(trim(%path), 1, strlen(%path));
-	if (getSubStr(trim(%path), 0, 1) !$= "/") %path = "/" @ %path;
+	if (getSubStr(trim(%path), 0, 1) !$= "/")
+		%path = "/" @ %path;
 
 	return %base @ strreplace(%path, "/", %ds);
 }

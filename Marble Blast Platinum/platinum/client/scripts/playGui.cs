@@ -154,7 +154,7 @@ function PlayGui::onWake(%this) {
 	PGSpeedometer.setVisible(ClientMode::callback("shouldShowSpeedometer", false));
 
 	if ($pref::alwaysshowspeedometer) {
-	    PGSpeedometer.setVisible(1);	
+		PGSpeedometer.setVisible(1);
 	}
 
 	ClientMode::callback("onShowPlayGui", "");
@@ -163,6 +163,8 @@ function PlayGui::onWake(%this) {
 function PlayGui::onSleep(%this) {
 	%this.stopFPSCounter();
 	%this.stopCountdown();
+	%this.isAlarmActive = false;
+	Physics::popAllLayers();
 	RootGui.resetDisplay();
 
 	$InPlayGUI = false;
@@ -198,12 +200,12 @@ function PlayGui::onSleep(%this) {
 }
 
 function PlayGui::updateRecordingIndicator(%this) {
-    if ($Game::Record && !mp() && !$playingDemo) {
+	if ($pref::recordingIndicator && $Game::Record && !mp() && !$playingDemo) {
 		PG_RecordingIndicator.setVisible(true);
-        RecordingIndicatorIcon.setVisible(true);
+		RecordingIndicatorIcon.setVisible(true);
 	} else {
-	    PG_RecordingIndicator.setVisible(false);
-		RecordingIndicatorIcon.setVisible(false);	
+		PG_RecordingIndicator.setVisible(false);
+		RecordingIndicatorIcon.setVisible(false);
 	}
 }
 
@@ -218,13 +220,32 @@ function PlayGui::stopFPSCounter(%this) {
 // Just more of a shorthand
 function PlayGui::doFPSCounter(%this) {
 	%pingnum = "high";
-	if (ServerConnection.getPing() >= 100) %pingnum = "medium";
-	if (ServerConnection.getPing() >= 250) %pingnum = "low";
-	if (ServerConnection.getPing() >= 500) %pingnum = "matanny";
-	if (ServerConnection.getPing() >= 1000) %pingnum = "unknown";
-	%fps = $fps::real;
-	if (%fps >= 100) %fps = mRound(%fps) @ " ";
-	FPSMetreText.setText("<bold:24><just:left>FPS:<condensed:23>" SPC %fps @ ($Server::ServerType $= "MultiPlayer" ? "<bitmap:" @ $usermods @ "/client/ui/lb/play/connection-" @ %pingnum @ ".png>" : ""));
+	if (ServerConnection.getPing() >= 100)
+		%pingnum = "medium";
+	if (ServerConnection.getPing() >= 250)
+		%pingnum = "low";
+	if (ServerConnection.getPing() >= 500)
+		%pingnum = "matanny";
+	if (ServerConnection.getPing() >= 1000)
+		%pingnum = "unknown";
+	%ups = $fps::modded;
+	if (%ups >= 100)
+		%ups = mRound(%ups) @ " ";
+
+	%fps = $fps::draw;
+	if (%fps >= 100)
+		%fps = mRound(%fps) @ " ";
+
+	%fps = rPad(%fps, 4);
+	%ups = rPad(%ups, 4);
+
+	%fpsText = (($pref::showFPSCounter & 1) != 0) ? ("<bold:24><just:left>FPS:<condensed:23>" SPC %fps) : "";
+	%upsText = (($pref::showFPSCounter & 2) != 0) ? ("<bold:24><just:left>TPS:<condensed:23>" SPC %ups) : "";
+	%spacer = ($pref::showFPSCounter == 3) ? " | " : "";
+
+	%mpText = ($Server::ServerType $= "MultiPlayer" ? "<bitmap:" @ $usermods @ "/client/ui/lb/play/connection-" @ %pingnum @ ".png>" : "");
+
+	FPSMetreText.setText(%fpsText @ %spacer @ %upsText @ %mpText);
 	cancel(%this.fpsCounterSched);
 	%this.fpsCounterSched = %this.schedule(500, doFPSCounter);
 }
@@ -305,13 +326,23 @@ function PlayGui::updateGems(%this, %updateMax) {
 
 	if ($PlayGuiGem) {
 		// PQ gets its own gem
-		if ($currentGame $= "PlatinumQuest") {
+		if (MissionInfo.game $= "Hunt") {
+			if        (getSubStr(Sky.materialList, 0, 22) $= "platinum/data/skies_pq")  {
+				%skins = "platinum";
+				%dts   = $usermods @ "/data/shapes_pq/gameplay/gems/gem.dts";
+			} else if (getSubStr(Sky.materialList, 0, 23) $= "platinum/data/skies_mbu") {
+				%skins = "red";
+				%dts   = $usermods @ "/data/shapes_mbu/items/gem.dts";
+			} else {
+				%skins = "base black blue green orange platinum purple red turquoise yellow";
+				%dts   = $usermods @ "/data/shapes/items/gem.dts";
+			}
+		} else if (MissionInfo.game $= "PlatinumQuest") {
 			%skins = "platinum";
-			%dts = $usermods @ "/data/shapes_pq/gameplay/gems/gem.dts";
-		} else if
-		   ($currentGame $= "Ultra") {
+			%dts   = $usermods @ "/data/shapes_pq/gameplay/gems/gem.dts";
+		} else if (MissionInfo.game $= "Ultra") {
 			%skins = "red";
-			%dts = $usermods @ "/data/shapes_mbu/items/gem.dts";
+			%dts   = $usermods @ "/data/shapes_mbu/items/gem.dts";
 		} else {
 			%skins = "base black blue green orange platinum purple red turquoise yellow";
 			%dts = $usermods @ "/data/shapes/items/gem.dts";
@@ -360,8 +391,8 @@ function PlayGui::updateGems(%this, %updateMax) {
 	GemsFoundTen.setNumberColor(%ten, %color);
 	GemsFoundOne.setNumberColor(%one, %color);
 
-	GemsFoundHundred.setVisible(!(%hun == 0) || $pref::GemCounterAlwaysThreeDigits); 
-	GemsFoundTen.setVisible(!(%hun == 0 && %ten == 0) || $pref::GemCounterAlwaysThreeDigits || $pref::GemCounterAlwaysTwoDigits); 
+	GemsFoundHundred.setVisible(!(%hun == 0) || $pref::GemCounterAlwaysThreeDigits);
+	GemsFoundTen.setVisible(!(%hun == 0 && %ten == 0) || $pref::GemCounterAlwaysThreeDigits || $pref::GemCounterAlwaysTwoDigits);
 
 	%this.GemsFoundHundredTracked = %hun;
 	%this.GemsFoundTenTracked = %ten;
@@ -384,9 +415,11 @@ function PlayGui::updateGems(%this, %updateMax) {
 		GemsTotalTen.setPosition("171 22");
 		GemsTotalOne.setPosition("197 22");
 	}
-	
-	GemsQuota.setPosition((%max < 10? "218" : (%max < 100? "244" : "270")) + (%hun == 0? -26 : 0) SPC "47");
-	// quota is 37 away by default, 120+37=157 144+37=181, -24 if current gems are 2 digit instead of 3 digit
+	// Since the counter always displays 3 digits, there's no need for this to be active when that setting is also active. ~ Connie
+	if (!$pref::GemCounterAlwaysThreeDigits) {
+		GemsQuota.setPosition((%max < 10? "218" : (%max < 100? "244" : "270")) + (%hun == 0? -26 : 0) SPC "47");
+		// quota is 37 away by default, 120+37=157 144+37=181, -24 if current gems are 2 digit instead of 3 digit
+	}
 	if (%maxNeedsToUpdate) {
 		%one = %max % 10;
 		%ten = ((%max - %one) / 10) % 10;
@@ -550,14 +583,22 @@ function specialBarFor(%id) {
 }
 
 function PlayGui::updateBarPositions(%this) {
-	if (!isObject(ServerConnection) || !isObject(ServerConnection.getControlObject()))
+	if (!isObject(ServerConnection) || !isObject(LocalClientConnection.player) || !isObject($MP::MyMarble))
 		return;
 
-	%trans = ServerConnection.getControlObject().getCameraTransform();
+	%trans = $MP::MyMarble.getCameraTransform();
 
 	//Which bars are active
 	%bubble = ($Game::BubbleInfinite || $Game::BubbleTime > 0);
 	%fireball = $Client::FireballActive;
+
+	if (%this.powerupTimersLength == 0 && !%bubble && !%fireball) {
+		PG_FirstTimerContainer.setVisible(false);
+		PG_SecondTimerContainer.setVisible(false);
+		PG_ThirdTimerContainer.setVisible(false);
+		PG_FourthTimerContainer.setVisible(false);
+		return;
+	}
 
 	//Get the position of the side of the marble for us to position the bars relative to it
 	%obj = ServerConnection.getControlObject();
@@ -734,36 +775,50 @@ function PlayGui::setBonusTime(%this, %time) {
 	%this.bonusTime = %time;
 	if (alxIsPlaying($BonusSfx) && !%time)
 		alxStop($BonusSfx);
-	if ($BonusSfx $= "" && %time && !alxIsPlaying($PlayTimerAlarmHandle))
+	if ($pref::timeTravelSounds && $BonusSfx $= "" && %time && !alxIsPlaying($PlayTimerAlarmHandle))
 		$BonusSfx = alxPlay(TimeTravelLoopSfx);
 }
 
 function PlayGui::addBonusTime(%this, %dt) {
 	%this.bonusTime = add64_int(%this.bonusTime, %dt);
-	if ($BonusSfx $= "" && !alxIsPlaying($PlayTimerAlarmHandle))
+	if ($pref::timeTravelSounds && $BonusSfx $= "" && !alxIsPlaying($PlayTimerAlarmHandle))
 		$BonusSfx = alxPlay(TimeTravelLoopSfx);
 }
 
 function PlayGui::refreshRed(%this) {
 	if ($PlayTimerActive && $InPlayGUI) {
-		if (%this.bonusTime || $Editor::Opened || %this.stopped)
+		if (%this.bonusTime || $Editor::Opened || %this.stopped) {
 			$PlayTimerColor = $TimeColor["stopped"];
-		else {
+			if ($Game::Finished)
+				%this.isAlarmActive = false;
+		} else if (!$pref::parTimeAlarm) {
+			$PlayTimerColor = $TimeColor["normal"];
+			%this.isAlarmActive  = false;
+			$PlayTimerAlarmText  = false;
+			$PlayTimerFailedText = false;
+		} else {
 			%dir = ClientMode::callback("timeMultiplier", 1);
-			if (%dir > 0) {
+			if      (%dir > 0)
+				%this.isAlarmActive = (MissionInfo.time > 0) && %this.currentTime >= (MissionInfo.time - $PlayTimerAlarmStartTime) && %this.currentTime < MissionInfo.time;
+			else if (%dir < 0)
+				%this.isAlarmActive = %this.currentTime <=                     $PlayTimerAlarmStartTime  && %this.currentTime > 0;
+			else
+				%this.isAlarmActive = false;
+
+			if (%this.isAlarmActive) {
+				if (!alxIsPlaying($PlayTimerAlarmHandle))
+					$PlayTimerAlarmHandle = alxPlay(TimerAlarm);
+
+				if (!$PlayTimerAlarmText) {
+					%seconds = ($PlayTimerAlarmStartTime / 1000);
+					addBubbleLine(%seconds SPC (%seconds == 1 ? "second" : "seconds") SPC "remaining.", false, 5000);
+					$PlayTimerAlarmText = true;
+				}
+
+				$PlayTimerColor = (((%this.currentTime / 1000) % 2) ? $TimeColor["danger"] : $TimeColor["normal"]);
+			} else if (%dir > 0) {
 				if (!MissionInfo.time || %this.currentTime < (MissionInfo.time - $PlayTimerAlarmStartTime)) {
 					$PlayTimerColor = $TimeColor["normal"];
-				} else if (%this.currentTime >= (MissionInfo.time - $PlayTimerAlarmStartTime) && %this.currentTime < MissionInfo.time) {
-					if (!alxIsPlaying($PlayTimerAlarmHandle))
-						$PlayTimerAlarmHandle = alxPlay(TimerAlarm);
-
-					if (!$PlayTimerAlarmText) {
-						%seconds = ($PlayTimerAlarmStartTime / 1000);
-						addBubbleLine(%seconds SPC (%seconds == 1 ? "second" : "seconds") SPC "remaining.", false, 5000);
-						$PlayTimerAlarmText = true;
-					}
-
-					$PlayTimerColor = (((%this.currentTime / 1000) % 2) ? $TimeColor["danger"] : $TimeColor["normal"]);
 				} else {
 					if (alxIsPlaying($PlayTimerAlarmHandle))
 						alxStop($PlayTimerAlarmHandle);
@@ -777,17 +832,7 @@ function PlayGui::refreshRed(%this) {
 				}
 			} else if (%dir < 0) {
 				$PlayTimerColor = $TimeColor["normal"];
-				if (%this.currentTime <= $PlayTimerAlarmStartTime && %this.currentTime > 0) {
-					if (!alxIsPlaying($PlayTimerAlarmHandle))
-						$PlayTimerAlarmHandle = alxPlay(TimerAlarm);
-
-					if (!$PlayTimerAlarmText) {
-						%seconds = ($PlayTimerAlarmStartTime / 1000);
-						addBubbleLine(%seconds SPC (%seconds == 1 ? "second" : "seconds") SPC "remaining.", false, 5000);
-						$PlayTimerAlarmText = true;
-					}
-					$PlayTimerColor = (((%this.currentTime / 1000) % 2) ? $TimeColor["danger"] : $TimeColor["normal"]);
-				} else if (%this.currentTime == 0) {
+				if (%this.currentTime == 0) {
 					if (alxIsPlaying($PlayTimerAlarmHandle))
 						alxStop($PlayTimerAlarmHandle);
 					$PlayTimerColor = $TimeColor["stopped"];
@@ -862,6 +907,7 @@ package frameAdvance {
 		}
 
 		PlayGui.updateSpeedometer();
+		pitchMusic();
 
 		if (shouldUpdateBlast()) {
 			clientUpdateBlast(%timeDelta);
@@ -909,7 +955,6 @@ package frameAdvance {
 
 		if ($Game::ScriptCameraTransform) {
 			PG_ShowCtrl.setCameraTransform(getScriptCameraTransform());
-			PG_SaveMyBaconCtrl.setCameraTransform(getScriptCameraTransform());
 		}
 
 		//Fireball
@@ -956,7 +1001,7 @@ function PlayGui::setTimeStopped(%this, %stopped) {
 	echo("Time stop:" SPC %stopped);
 
 	if (%stopped) {
-		if ($BonusSfx $= "" && !alxIsPlaying($PlayTimerAlarmHandle))
+		if ($pref::timeTravelSounds && $BonusSfx $= "" && !alxIsPlaying($PlayTimerAlarmHandle))
 			$BonusSfx = alxPlay(TimeTravelLoopSfx);
 	}
 
@@ -1042,7 +1087,7 @@ function PlayGui::updateCountdownLeft(%this, %delta) {
 		PGCountdownLeftThirdDigitOrDecimal.setNumberColor(9, %color);
 		PGCountdownLeftThirdDigitOrDecimal.setPosition("407" + %leftOffset + %offsetIfThousandths SPC "0");
 	}
-	
+
 	PGCountdownLeftImage.setPosition("344" + %leftOffset + %offsetIfThousandths SPC "3"); // 348 - 4 for this one.
 	PGCountdownLeftFirstDigit.setPosition("375" + %leftOffset + %offsetIfThousandths SPC "0");
 	PGCountdownLeftSecondDigit.setPosition("391" + %leftOffset + %offsetIfThousandths SPC "0");
@@ -1108,16 +1153,16 @@ function PlayGui::updateControls(%this) {
 
 //-----------------------------------------------------------------------------
 
-$numberPaths[0] = $userMods @ "/client/ui/game/numbers/0.png";
-$numberPaths[1] = $userMods @ "/client/ui/game/numbers/1.png";
-$numberPaths[2] = $userMods @ "/client/ui/game/numbers/2.png";
-$numberPaths[3] = $userMods @ "/client/ui/game/numbers/3.png";
-$numberPaths[4] = $userMods @ "/client/ui/game/numbers/4.png";
-$numberPaths[5] = $userMods @ "/client/ui/game/numbers/5.png";
-$numberPaths[6] = $userMods @ "/client/ui/game/numbers/6.png";
-$numberPaths[7] = $userMods @ "/client/ui/game/numbers/7.png";
-$numberPaths[8] = $userMods @ "/client/ui/game/numbers/8.png";
-$numberPaths[9] = $userMods @ "/client/ui/game/numbers/9.png";
+$numberPaths[0] = $userMods @ "/client/ui/game/numbers/0";
+$numberPaths[1] = $userMods @ "/client/ui/game/numbers/1";
+$numberPaths[2] = $userMods @ "/client/ui/game/numbers/2";
+$numberPaths[3] = $userMods @ "/client/ui/game/numbers/3";
+$numberPaths[4] = $userMods @ "/client/ui/game/numbers/4";
+$numberPaths[5] = $userMods @ "/client/ui/game/numbers/5";
+$numberPaths[6] = $userMods @ "/client/ui/game/numbers/6";
+$numberPaths[7] = $userMods @ "/client/ui/game/numbers/7";
+$numberPaths[8] = $userMods @ "/client/ui/game/numbers/8";
+$numberPaths[9] = $userMods @ "/client/ui/game/numbers/9";
 $numberPaths["point"] = $userMods @ "/client/ui/game/numbers/point.png";
 $numberPaths["colon"] = $userMods @ "/client/ui/game/numbers/colon.png";
 $numberPaths["dash"] = $userMods @ "/client/ui/game/numbers/dash.png";
@@ -1156,7 +1201,7 @@ function PlayGui::displayGemMessage(%this, %amount, %color) {
 		profile = "GemCollectionMessageProfile";
 		horizSizing = "center";
 		vertSizing = "center";
-		position = %startPos;
+		position = getWords(%startPos, 0, 2);
 		extent = "400 100";
 		minExtent = "8 8";
 		visible = "1";
@@ -1263,7 +1308,7 @@ function PlayGui::stopCountdown(%this) {
 }
 
 function PlayGui::updateCountdown(%this, %delta) {
-	%this.countdownTime = sub64_int(%this.countdownTime, %delta);
+	%this.countdownTime = %this.countdownTime - %delta;
 
 	%visible = (%this.countdownTime > -5000);
 	if (!%visible) {
@@ -1321,4 +1366,8 @@ function PlayGui::startCountdownLeft(%this, %time, %image) {
 	PGCountdownLeftImage.setBitmap("platinum/client/ui/game/countdown/" @ %image);
 	%this.countdownLeftTime = %time;
 	%this.runningCountdownLeft = true;
+}
+
+function PlayGui::updateRtaSpeedrunTimer(%this, %text) {
+	PG_RtaSpeedrunTimer.setText("<condensed:48><color:FFFFFF><shadow:2:2><shadowcolor:777777>" @ %text);
 }

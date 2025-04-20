@@ -113,21 +113,21 @@ function checkSupportedExtensions() {
 	%info = getVideoDriverInfo();
 	$Video::OpenGLVersion = getWord(getField(%info, 2), 0);
 
-	if ($Video::OpenGLVersion < 2) {
-		//OpenGL 1.x support is a very bad thing
-		error("OpenGL " @ $Video::OpenGLVersion @ " detected! This means either your graphics card is not detected or it's so old it doesn't support OpenGL 2.");
-		error("In either case, there is no way PQ will be able to run. Make sure your drivers are up to date and your card was made after 2006.");
+	// if ($Video::OpenGLVersion < 2) {
+	// 	//OpenGL 1.x support is a very bad thing
+	// 	error("OpenGL " @ $Video::OpenGLVersion @ " detected! This means either your graphics card is not detected or it's so old it doesn't support OpenGL 2.");
+	// 	error("In either case, there is no way PQ will be able to run. Make sure your drivers are up to date and your card was made after 2006.");
 
-		//This will kill nearly everything custom GL we do. I don't think it's enough though.
-		disableGraphicsExtender();
-		return;
-	}
+	// 	//This will kill nearly everything custom GL we do. I don't think it's enough though.
+	// 	disableGraphicsExtender();
+	// 	return;
+	// }
 
 	//GL_EXTENSIONS lies, so we have to check for texture arrays by creating a shader that uses them and
 	// seeing if that fails to compile.
-	$Video::SupportsExtension["GL_EXT_texture_array"] = glTestExtension("GL_EXT_texture_array");
+	$Video::SupportsExtension["GL_EXT_texture_array"] = true; // glTestExtension("GL_EXT_texture_array");
 	//Can't actually use framebuffer_object in a shader so this is how we check
-	$Video::SupportsExtension["GL_ARB_framebuffer_object"] = findWord(glGetExtensions(), "GL_ARB_framebuffer_object") != -1;
+	$Video::SupportsExtension["GL_ARB_framebuffer_object"] = true; // findWord(glGetExtensions(), "GL_ARB_framebuffer_object") != -1;
 }
 
 function applyGraphicsQuality() {
@@ -217,14 +217,27 @@ function updateFrameController() {
 	// Unlimited.
 	switch ($pref::Video::MaxFPS) {
 	case -1: //Unlimited
-		setVerticalSync(false);
 		setTickInterval(1);
 	case 0: //Vsync
 		setVerticalSync(true);
-		setTickInterval(1);
+		$pref::Video::renderPriority = 0;
 	default: //Manual
+		setMaxFPS($pref::Video::MaxFPS);
+	}
+
+	if ($pref::Video::renderPriority $= "")
+		$pref::Video::renderPriority = 1;
+
+	switch ($pref::Video::renderPriority) {
+	case 0: // Vsync
+		setVerticalSync(true);
+		$pref::prioritizeRender = false;
+	case 1:
 		setVerticalSync(false);
-		setTickInterval(1000 / $pref::Video::MaxFPS);
+		$pref::prioritizeRender = false;
+	case 2:
+		setVerticalSync(false);
+		$pref::prioritizeRender = true;
 	}
 }
 
@@ -242,7 +255,12 @@ function enableBlur() {
 		return;
 	}
 
-	blurInit($pref::Video::resolution, $pref::Video::BlurPasses, "platinum/data/shaders/blurV.glsl", "platinum/data/shaders/blurF.glsl");
+	if (isFullScreen()) {
+		%res = $pref::Video::resolution;
+	} else {
+		%res = $pref::Video::windowedRes;
+	}
+	blurInit(%res, $pref::Video::BlurPasses, "platinum/data/shaders/blurV.glsl", "platinum/data/shaders/blurF.glsl");
 
 	//Hack-- update menu blurs if we've reset over the framebuffer
 	if (RootGui.previewImage) {
@@ -256,46 +274,13 @@ function reloadBlur() {
 }
 
 function canSupportShaders() {
-	// Texture Arrays
-	if (!$Video::SupportsExtension["GL_EXT_texture_array"]) {
-		return false;
-	}
-
 	return true;
 }
 
 function canSupportPostFX() {
-	%extensions = glGetExtensions();
-	if (!$Video::SupportsExtension["GL_ARB_framebuffer_object"]) {
-		return false;
-	}
-	//GDI Generic causes all sorts of problems for us
-	if ($Video::OpenGLVersion < 2) {
-		return false;
-	}
-	//CrossOver / WinE on Mac OS (crashes with any type of AA used)
-	//if ($platform $= "windows" && (strpos(%extensions, "APPLE") != -1))
-	//	return false;
-
 	return true;
 }
 
 function canSupportAntiAliasing() {
-	%extensions = glGetExtensions();
-	if (!$Video::SupportsExtension["GL_ARB_framebuffer_object"]) {
-		return false;
-	}
-	//GDI Generic causes all sorts of problems for us
-	if ($Video::OpenGLVersion < 2) {
-		return false;
-	}
-	//CrossOver / WinE on Mac OS (crashes with any type of AA used)
-	//if ($platform $= "windows" && (strpos(%extensions, "APPLE") != -1))
-	//	return false;
-
-	//Mac doesn't support multisample framebuffer objects
-	if ($platform $= "macos")
-		return false;
-
-	return true;
+	return false; // Rip
 }
