@@ -7,7 +7,7 @@ new SimGroup(MissionGroup) {
          artist = "James C.";
          awesomeTime = "45000";
          desc = "Grab all the required gems in this five story arena.";
-         game = "Blasted";
+         game = "BlastedBonus";
          gameMode = "quota";
          level = "6";
          

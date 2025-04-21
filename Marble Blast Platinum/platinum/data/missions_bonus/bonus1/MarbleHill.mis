@@ -7,7 +7,7 @@ new SimGroup(MissionGroup) {
          artist = "James C.";
          awesomeTime = "30000";
          desc = "Make your way to the finish.";
-         game = "Blasted";
+         game = "BlastedBonus";
          gameMode = "null";
          level = "1";
          music = "Pictures of Life.ogg";

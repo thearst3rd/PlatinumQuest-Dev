@@ -8,7 +8,7 @@ new SimGroup(MissionGroup) {
          artist = "James C.";
          blast = "1";
          desc = "Get more points than your friends in this utopia of building blocks.";
-         game = "Blasted";
+         game = "BlastedMP";
          gameMode = "hunt";
          level = "1";
          maxGemsPerSpawn = "6";

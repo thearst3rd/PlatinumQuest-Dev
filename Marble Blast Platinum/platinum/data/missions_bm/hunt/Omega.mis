@@ -9,7 +9,7 @@ new SimGroup(MissionGroup) {
          awesomeScore = "115";
          blast = "1";
          desc = "Through the curves and slopes surrounding the viaduct, seek the gems.";
-         game = "Blasted";
+         game = "BlastedMP";
          gameMode = "hunt";
          goldScore = "55";
          level = "13";

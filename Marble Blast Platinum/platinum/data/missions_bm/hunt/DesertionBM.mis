@@ -9,7 +9,7 @@ new SimGroup(MissionGroup) {
          awesomeScore = "115";
          blast = "1";
          desc = "Roam around this large sandbox as you hunt for the gems.";
-         game = "Blasted";
+         game = "BlastedMP";
          gameMode = "hunt";
          goldScore = "40";
          level = "4";

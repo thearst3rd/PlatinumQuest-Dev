@@ -6,7 +6,7 @@ new SimGroup(MissionGroup) {
          artist = "James C.";
          awesomeTime = "80000";
          desc = "Avoid the tornadoes in this windy course. Be a proud storm chaser!";
-         game = "Blasted";
+         game = "BlastedBonus";
          gameMode = "null";
          level = "12";
          

@@ -8,7 +8,7 @@ new SimGroup(MissionGroup) {
          awesomeScore = "145";
          blast = "1";
          desc = "Skate your way through this vibrant arena!";
-         game = "Blasted";
+         game = "BlastedMP";
          gameMode = "Hunt";
          goldScore = "70";
          level = "15";

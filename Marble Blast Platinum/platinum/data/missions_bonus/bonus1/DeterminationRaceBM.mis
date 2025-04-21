@@ -7,7 +7,7 @@ new SimGroup(MissionGroup) {
          artist = "James C.";
          awesomeTime = "15000";
          desc = "Get the best time while passing the obstacles.";
-         game = "Blasted";
+         game = "BlastedBonus";
          gameMode = "null";
          level = "8";
          

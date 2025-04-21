@@ -9,7 +9,7 @@ new SimGroup(MissionGroup) {
          awesomeScore = "140";
          blast = "1";
          desc = "Hunt for the gems surrounding the beacon.";
-         game = "Blasted";
+         game = "BlastedMP";
          gameMode = "hunt";
          level = "1";
          maxGemsPerSpawn = "9";

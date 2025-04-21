@@ -6,7 +6,7 @@ new SimGroup(MissionGroup) {
          artist = "James C.";
          awesomeTime = "40000";
          desc = "Grab all the gems in this three story playground.";
-         game = "Blasted";
+         game = "BlastedBonus";
          gameMode = "null";
          level = "7";
          music = "Floating Leaf.ogg";

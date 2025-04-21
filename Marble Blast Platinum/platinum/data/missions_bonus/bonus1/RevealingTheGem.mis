@@ -7,7 +7,7 @@ new SimGroup(MissionGroup) {
          awesomeTime = "50000";
          desc = "Find four buttons to unlock the gem.";
          fanStrength = "35";
-         game = "Blasted";
+         game = "BlastedBonus";
          gameMode = "null";
          level = "8";
          

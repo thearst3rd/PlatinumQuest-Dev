@@ -8,7 +8,7 @@ new SimGroup(MissionGroup) {
          awesomeScore = "125";
          blast = "1";
          desc = "Hunt for the gems while mastering the friction surfaces.";
-         game = "Blasted";
+         game = "BlastedMP";
          gameMode = "hunt";
          goldScore = "50";
          level = "6";

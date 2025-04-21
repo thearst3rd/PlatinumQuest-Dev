@@ -1,25 +1,25 @@
 {
-	"name": "Bonus",
+	"name": "BlastedBonus",
 	"display": "Bonus",
 	"order": 2,
 	"difficulties":
 	[
 		{
-			"name": "Bonus 1",
+			"name": "Bonus1",
 			"display": "Bonus 1",
 			"missionDirectory": "platinum/data/missions_bonus/bonus1",
 			"bitmapDirectory": "platinum/data/missions_bonus/bonus1",
 			"previewDirectory": "platinum/data/missiona_bonus/bonus1"
 		},
 		{
-			"name": "Bonus 2",
+			"name": "Bonus2",
 			"display": "Bonus 2",
 			"missionDirectory": "platinum/data/missions_bonus/bonus2",
 			"bitmapDirectory": "platinum/data/missions_bonus/bonus2",
 			"previewDirectory": "platinum/data/missions_bonus/bonus2"
 		},
 		{
-			"name": "Bonus 3",
+			"name": "Bonus3",
 			"display": "Bonus 3",
 			"missionDirectory": "platinum/data/missions_bonus/bonus3",
 			"bitmapDirectory": "platinum/data/missions_bonus/bonus3",
