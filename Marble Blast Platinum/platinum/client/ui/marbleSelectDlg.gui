@@ -444,7 +444,7 @@ function MarbleSelectDlg::loadPrefs(%this) {
 		// Load prefs, search for skins and marbles
 		// Default values so we don't get errors on the first run
 		if ($MPPref::marbleCategory $= "" || $MPPref::marbleIndex $= "") {
-			$MPPref::marbleCategory = "PQ Classic";
+			$MPPref::marbleCategory = "Ultra";
 			$MPPref::marbleIndex = 0;
 			$MPPref::marbleNormalize = true;
 		}
@@ -459,7 +459,7 @@ function MarbleSelectDlg::loadPrefs(%this) {
 		// Load prefs, search for skins and marbles
 		// Default values so we don't get errors on the first run
 		if ($LBPref::marbleCategory $= "" || $LBPref::marbleIndex $= "") {
-			$LBPref::marbleCategory = "PQ Classic";
+			$LBPref::marbleCategory = "Ultra";
 			$LBPref::marbleIndex = 0;
 			$LBPref::marbleNormalize = true;
 		}
@@ -474,7 +474,7 @@ function MarbleSelectDlg::loadPrefs(%this) {
 		// Load prefs, search for skins and marbles
 		// Default values so we don't get errors on the first run
 		if ($pref::marbleCategory $= "" || $pref::marbleIndex $= "") {
-			$pref::marbleCategory = "PQ Classic";
+			$pref::marbleCategory = "Ultra";
 			$pref::marbleIndex = 0;
 			$pref::marbleNormalize = true;
 		}

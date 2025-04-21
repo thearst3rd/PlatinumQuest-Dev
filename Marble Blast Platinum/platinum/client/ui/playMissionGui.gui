@@ -1252,8 +1252,8 @@ function PlayMissionGui::init(%this) {
 		%this.ml = getMissionList("lb");
 
 		//Default mission list
-		%defaultGame = "Chapters";
-		%defaultType = "Chapter 1";
+		%defaultGame = "Blasted";
+		%defaultType = "Chapter1";
 
 		//Preferences
 		%game  = ($LBPref::CurrentGame          $= "" ? %defaultGame : $LBPref::CurrentGame);
@@ -1267,8 +1267,8 @@ function PlayMissionGui::init(%this) {
 		}
 
 		//Default mission list
-		%defaultGame = "Chapters";
-		%defaultType = "Chapter 1";
+		%defaultGame = "Blasted";
+		%defaultType = "Chapter1";
 
 		//Preferences
 		%game  = ($pref::CurrentGame          $= "" ? %defaultGame : $pref::CurrentGame);
