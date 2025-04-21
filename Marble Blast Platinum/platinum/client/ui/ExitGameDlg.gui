@@ -526,7 +526,7 @@ new GuiControl(ExitGameDlg) {
 				command = "ExitGameDlg.toggleExtras();";
 				accelerator = "return";
 				helpTag = "0";
-				text = "           Back";
+				text = "       Back";
 				groupNum = "-1";
 				buttonType = "PushButton";
 				repeatPeriod = "1000";
@@ -544,7 +544,7 @@ new GuiControl(ExitGameDlg) {
 				command = "RootGui.pushDialog(JukeboxDlg);";
 				accelerator = "escape";
 				helpTag = "0";
-				text = "           Music";
+				text = "       Music";
 				groupNum = "-1";
 				buttonType = "PushButton";
 				repeatPeriod = "1000";
@@ -561,7 +561,7 @@ new GuiControl(ExitGameDlg) {
 				visible = "1";
 				command = "RootGui.pushDialog(MarbleSelectDlg);";
 				helpTag = "0";
-				text = "           Marbles";
+				text = "       Marbles";
 				groupNum = "-1";
 				buttonType = "PushButton";
 				repeatPeriod = "1000";
@@ -578,7 +578,7 @@ new GuiControl(ExitGameDlg) {
 				visible = "1";
 				command = "if ($ControllerEvent) {$Game::Record = !$Game::Record; $ThisControl.setValue($Game::Record); } ExitGameDlg.doMidGameRecord();";
 				helpTag = "0";
-				text = "           Record";
+				text = "       Record";
 				variable = "$Game::Record";
 				groupNum = "-1";
 				buttonType = "ToggleButton";
